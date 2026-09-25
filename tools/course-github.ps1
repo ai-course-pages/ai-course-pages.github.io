@@ -37,8 +37,10 @@ $names = @(git remote)
 if ($names -contains "origin") { git remote set-url origin $origin } else { git remote add origin $origin }
 $env:GIT_TERMINAL_PROMPT = "0"
 $env:GCM_INTERACTIVE = "Never"
-$extra = "AUTHORIZATION: bearer $token"
-& git -c "credential.helper=" -c "http.https://github.com/.extraheader=$extra" push -u origin main
+$pair = "x-access-token:" + $token
+$basic = [Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes($pair))
+$extra = "AUTHORIZATION: Basic $basic"
+& git -c "http.https://github.com/.extraheader=$extra" push -u origin main
 if ($LASTEXITCODE -ne 0) { throw "git push failed" }
 $body = '{"source":{"branch":"main","path":"/"}}'
 try {
