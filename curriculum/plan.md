@@ -11,8 +11,11 @@ The course is filled in around whatever page is active. Pages may land in the mi
 | U1.B.2 | using models | middle, after B.1 | Cap clocks (hours, next day, week, month), web chat versus coding CLI, free before paid high effort |
 | U1.B.3 | using models | middle, after B.2 | Pace one window: spend down before reset, or about 1/7 per day and repair the rest |
 | U1.S.1 | using models | middle, after B.3 | Turn caps, when to open a new CLI session, and which paths to pass across |
+| U1.S.2 | using models | middle, after S.1 | Export a web thread into a seed prompt and/or a file. Open the next thread with See: and the file name |
 
-The page under review is S.1. It assumes B.1 and B.3. A coherent section is the preferred point to open a new session, and the same test still gates a GitHub push.
+The page under review is S.2. It is the web-chat pair of S.1.
+
+When this using-models run is coherent, practice S.1 by resuming in a new CLI session with that handoff template. S.2 can be practiced earlier, on a disposable web thread or on one the reader is willing to leave. Coherence still gates a GitHub push.
 
 Do not push this repo to GitHub until one strand is a coherent run of several segments and a review says it is ready. Local pages can still be added.
 

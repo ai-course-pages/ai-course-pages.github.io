@@ -4,6 +4,6 @@ window.SITE = {
   title: "Artificial Intelligence",
   githubUser: "ai-course-pages",
   iteration: 1,
-  published: ["L1.C.1", "U1.E.1", "U1.B.1", "U1.B.2", "U1.B.3", "U1.S.1"],
+  published: ["L1.C.1", "U1.E.1", "U1.B.1", "U1.B.2", "U1.B.3", "U1.S.1", "U1.S.2"],
   host: "github-pages"
 };
