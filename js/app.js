@@ -1,0 +1,222 @@
+(function () {
+  var SITE = window.SITE;
+  var CATALOG = window.CATALOG;
+  var KEY = "arti-dogfood-v1";
+  var app = document.getElementById("app");
+  var iterationEl = document.getElementById("iteration");
+  var hostEl = document.getElementById("host");
+
+  iterationEl.textContent = "Iteration " + SITE.iteration;
+  hostEl.textContent = hostLine();
+
+  function hostLine() {
+    var user = (SITE.githubUser || "").trim();
+    if (!user) {
+      return "New GitHub account not set. The live site will be https://USERNAME.github.io/ from a repository named USERNAME.github.io. Nothing is deployed yet.";
+    }
+    return "Pages target: https://" + user.toLowerCase() + ".github.io/ from repository " + user + ".github.io. Dynamic hosting is not connected.";
+  }
+
+  function loadProgress() {
+    try {
+      var raw = JSON.parse(localStorage.getItem(KEY) || "");
+      if (!raw || typeof raw.visits !== "object" || raw.visits === null) return { visits: {} };
+      return raw;
+    } catch (err) {
+      return { visits: {} };
+    }
+  }
+
+  function saveProgress(progress) {
+    localStorage.setItem(KEY, JSON.stringify(progress));
+  }
+
+  function visitOf(id, progress) {
+    return progress.visits[id] || null;
+  }
+
+  function statusOf(id, progress) {
+    var visit = visitOf(id, progress);
+    if (!visit) return { kind: "new", label: "not tried" };
+    if (visit.iteration !== SITE.iteration) {
+      return {
+        kind: "stale",
+        label: "tried in iteration " + visit.iteration + "; current is " + SITE.iteration
+      };
+    }
+    return { kind: "tried", label: "tried this iteration" };
+  }
+
+  function itemById(id) {
+    for (var i = 0; i < CATALOG.items.length; i++) {
+      if (CATALOG.items[i].id === id) return CATALOG.items[i];
+    }
+    return null;
+  }
+
+  function abilityText(ids) {
+    return ids.split(";").map(function (id) {
+      id = id.trim();
+      for (var i = 0; i < CATALOG.abilities.length; i++) {
+        if (CATALOG.abilities[i].id === id) return CATALOG.abilities[i].text;
+      }
+      return id;
+    }).join(" ");
+  }
+
+  function isPublished(id) {
+    return SITE.published.indexOf(id) !== -1;
+  }
+
+  function parseRoute() {
+    var hash = location.hash.replace(/^#/, "");
+    var match = /^\/item\/([A-Za-z0-9.]+)$/.exec(hash);
+    if (match) return { name: "item", id: match[1] };
+    return { name: "home" };
+  }
+
+  function h(tag, className, text) {
+    var node = document.createElement(tag);
+    if (className) node.className = className;
+    if (text != null) node.textContent = text;
+    return node;
+  }
+
+  function render() {
+    app.textContent = "";
+    var route = parseRoute();
+    if (route.name === "item") renderItem(route.id);
+    else renderHome();
+  }
+
+  function renderHome() {
+    var progress = loadProgress();
+    var lede = h("p", "lede", "Every item is open. Trying one does not unlock or block another. A rewrite bumps the iteration, and tries from older iterations stay on the row without counting as current.");
+    var rule = h("p", "rule", "This iteration publishes the outline only. Open an item to read its syllabus line. The lesson body is written after you describe what you could follow and what seems reasonable to learn next.");
+    app.appendChild(lede);
+    app.appendChild(rule);
+
+    var actions = h("div", "actions");
+    actions.appendChild(button("I looked through the outline", function () { markTried("outline"); }, "primary"));
+    actions.appendChild(button("Copy experience note", function () { copyNote("outline"); }));
+    actions.appendChild(button("Reset tried marks", resetProgress));
+    app.appendChild(actions);
+    var outlineStatus = statusOf("outline", progress);
+    app.appendChild(h("p", "meta status " + outlineStatus.kind, "Outline: " + outlineStatus.label));
+
+    CATALOG.levels.forEach(function (level) {
+      var title = level.title + " · " + level.points + " points · " + level.code;
+      app.appendChild(h("h2", null, title));
+      if (level.requires) {
+        app.appendChild(h("p", "meta", "Builds on " + level.requires + ". You can open these items before finishing " + level.requires + "."));
+      }
+      var list = h("ol", "items");
+      CATALOG.items.filter(function (item) { return item.level === level.id; }).forEach(function (item) {
+        var status = statusOf(item.id, progress);
+        var link = h("a", "row");
+        link.href = "#/item/" + item.id;
+        var top = h("div", "row-top");
+        top.appendChild(h("span", "id", item.id + " · " + item.track));
+        var badge = h("span", "status " + status.kind, isPublished(item.id) ? "lesson is up · " + status.label : status.label);
+        top.appendChild(badge);
+        link.appendChild(top);
+        link.appendChild(h("span", null, item.text));
+        var li = h("li");
+        li.appendChild(link);
+        list.appendChild(li);
+      });
+      app.appendChild(list);
+    });
+  }
+
+  function renderItem(id) {
+    var item = itemById(id);
+    var back = h("a", "back", "Back to the outline");
+    back.href = "#/";
+    app.appendChild(back);
+    if (!item) {
+      app.appendChild(h("h2", null, "No item " + id));
+      return;
+    }
+    var progress = loadProgress();
+    var status = statusOf(item.id, progress);
+    app.appendChild(h("h2", null, item.id));
+    app.appendChild(h("p", "item-body", item.text));
+    app.appendChild(h("p", "meta", "Track: " + item.track + ". Bind: " + item.bind + "."));
+    app.appendChild(h("p", "meta", "Ability: " + abilityText(item.ability)));
+    if (item.deepens) app.appendChild(h("p", "meta", "Extends: " + item.deepens + "."));
+    app.appendChild(h("p", "meta status " + status.kind, status.label));
+
+    var slot = h("div", "note");
+    if (isPublished(item.id)) {
+      slot.textContent = "Loading the lesson…";
+      fetch("content/" + item.id + ".html").then(function (response) {
+        if (!response.ok) throw new Error("missing");
+        return response.text();
+      }).then(function (html) {
+        slot.innerHTML = html;
+      }).catch(function () {
+        slot.textContent = "This item is marked published, and content/" + item.id + ".html is missing.";
+      });
+    } else {
+      slot.textContent = "No lesson body in this iteration. The line above is the syllabus item. Say what you want to try, including an item further down the list.";
+    }
+    app.appendChild(slot);
+
+    var actions = h("div", "actions");
+    actions.appendChild(button("I tried this", function () { markTried(item.id); }, "primary"));
+    actions.appendChild(button("Copy experience note", function () { copyNote(item.id); }));
+    actions.appendChild(button("Reset tried marks", resetProgress));
+    app.appendChild(actions);
+  }
+
+  function button(label, onClick, className) {
+    var node = h("button", className || "", label);
+    node.type = "button";
+    node.addEventListener("click", onClick);
+    return node;
+  }
+
+  function markTried(id) {
+    var progress = loadProgress();
+    progress.visits[id] = { iteration: SITE.iteration, at: new Date().toISOString() };
+    saveProgress(progress);
+    render();
+  }
+
+  function resetProgress() {
+    saveProgress({ visits: {} });
+    render();
+  }
+
+  function copyNote(id) {
+    var visit = visitOf(id, loadProgress());
+    var text = [
+      "section: " + id,
+      "iteration: " + SITE.iteration,
+      "tried_under_iteration: " + (visit ? visit.iteration : ""),
+      "what I could follow:",
+      "what got in the way:",
+      "what seems reasonable to learn next:",
+      "rewrite earlier sections:",
+      ""
+    ].join("\n");
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () {
+        flash("Experience note copied.");
+      }, function () {
+        flash(text);
+      });
+    } else {
+      flash(text);
+    }
+  }
+
+  function flash(message) {
+    var node = h("p", "rule", message);
+    app.appendChild(node);
+  }
+
+  window.addEventListener("hashchange", render);
+  render();
+})();

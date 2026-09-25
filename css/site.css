@@ -1,0 +1,113 @@
+:root {
+  color-scheme: light;
+  --bg: #f4f1ea;
+  --ink: #1c1915;
+  --muted: #5c564c;
+  --line: #d9d2c5;
+  --paper: #fffcf7;
+  --accent: #0f5c4c;
+  --stale: #8a4b08;
+  --tried: #0f5c4c;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 18px/1.5 "Segoe UI", Georgia, serif;
+}
+
+a { color: var(--accent); }
+
+.wrap {
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 3rem;
+}
+
+header.site {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: baseline;
+  margin-bottom: 1.5rem;
+}
+
+header.site p,
+.lede,
+.meta,
+footer {
+  color: var(--muted);
+}
+
+h1, h2 { font-weight: 650; line-height: 1.2; }
+
+h1 { font-size: 1.8rem; margin: 0 0 0.4rem; }
+
+h2 { font-size: 1.15rem; margin: 1.6rem 0 0.4rem; }
+
+.rule {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  padding: 0.8rem 1rem;
+  margin: 1rem 0 0.4rem;
+}
+
+ol.items, .actions {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+ol.items li { margin: 0.35rem 0; }
+
+ol.items a.row,
+.item-body,
+.note {
+  display: block;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  padding: 0.7rem 0.85rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+ol.items a.row:hover { border-color: var(--accent); }
+
+.row-top, .actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  align-items: baseline;
+}
+
+.id { font-family: Consolas, "Cascadia Mono", monospace; font-size: 0.85rem; }
+
+.status { font-size: 0.85rem; color: var(--muted); white-space: nowrap; }
+.status.tried { color: var(--tried); }
+.status.stale { color: var(--stale); }
+
+button, .back {
+  font: inherit;
+  background: var(--paper);
+  color: var(--ink);
+  border: 1px solid var(--ink);
+  padding: 0.35rem 0.7rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+button.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+.actions { margin: 1rem 0; flex-wrap: wrap; }
+
+.meta { margin: 0.2rem 0; font-size: 0.95rem; }
+
+footer { margin-top: 2rem; font-size: 0.9rem; }
+
+@media (max-width: 640px) {
+  .row-top, header.site { flex-direction: column; }
+  .status { white-space: normal; }
+}

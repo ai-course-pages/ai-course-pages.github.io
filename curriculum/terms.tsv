@@ -1,0 +1,27 @@
+sv	en	where
+vision	computer vision	L1.C.4; do not shorten to "vision"
+normer	standards	L1.D.3; pair with laws and other regulations
+andra bestämmelser	other regulations	L1.D.3; L2.D.2; always with laws
+bakomliggande funktionssätt	underlying mechanisms	aims S4
+beståndsdelar	components	A1
+byggstenar	building blocks	L2.X.5 only; neural networks
+konfigurering	configuration	L2.X.7
+idrifttagande	implementation	L2.X.1; aliases: commissioning, deployment
+kvalitetssäkring	quality assurance	L2.X.1
+underhåll	maintenance	L2.X.1
+artificiella neuronnät	artificial neural networks	L2.X.5
+djupa neuronnät	deep neural networks	L2.X.7
+övervakat lärande	supervised learning	L1.C.6
+oövervakat lärande	unsupervised learning	L1.C.6
+märkt data	labeled data	L2.X.6
+omärkt data	unlabeled data	L2.X.6
+träningsdata	training data	L2.X.6
+testdata	test data	L2.X.6
+spelagent	game agent	L1.X.2; L2.X.2; L2.X.3
+bearbetning av naturligt språk	natural language processing	abbrev NLP
+logiska förklaringar	logical explanations of results based on the dataset	L2.D.5
+val av data	data selection	L1.C.2; L2.D.5
+datakvalitet	data quality	L1.C.2; L2.D.5
+hållbar utveckling	sustainable development	aims S6
+mänsklig intelligens	human intelligence	A3; aims S7
+artificiell intelligens	artificial intelligence	title; abbrev AI
