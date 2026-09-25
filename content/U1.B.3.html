@@ -1,0 +1,92 @@
+<article class="lesson">
+  <h2>How to pace one usage window</h2>
+  <p>A usage window is one clock with an amount and a reset time. Two common plans use the same arithmetic. <strong>Spend-down</strong> means the leftover expires at the reset, so the useful work should happen before then. <strong>Even pace</strong> means spreading the window across its days, then repairing the later days when one day runs hot or cold.</p>
+
+  <h3>If these words are new</h3>
+  <p class="earlier">This page follows the budgeting pair. A learner with little background would want these first.</p>
+  <ul>
+    <li><strong>U1.E.1</strong> Low, medium, and high change the hidden reasoning on each turn. Extra High waits.</li>
+    <li><strong>U1.B.1</strong> A long thread makes every later turn more expensive, because the earlier turns are sent again.</li>
+    <li><strong>U1.B.2</strong> Several clocks can run at once. A few-hour pause can stop you while a weekly clock still has room.</li>
+  </ul>
+
+  <h3>Where the number shows up</h3>
+  <p>In a web app, the meter is usually under settings, subscription, or a usage page. In a coding CLI, it is often a slash command. In Grok Build that command is <code>/usage</code>. Inside a session it shows the account allowance and this session's context and token totals. <code>/usage manage</code> opens billing. From a shell, <code>grok usage</code> plus a session id shows per-turn totals for a saved session.</p>
+  <p>Many products also speak up on their own, at a few percentages and again when you hit a cap. That hint names a clock. The settings page or <code>/usage</code> is where you see the rest of the clocks.</p>
+
+  <h3>The repair rule</h3>
+  <p>After any day, the target for what is left is the remaining percent divided by the days left in the window, counting today if today is not finished.</p>
+  <p>A weekly even pace starts near one seventh, about 14% a day. If the first day uses 20%, 80% is left for six days, about 13% a day. If the first day uses 8%, 92% is left for six days, about 15% a day. A light day gives the later days room. A heavy day borrows from them.</p>
+  <p>Spend-down is the same rule on the last stretch of the window. The days left shrink toward one, so the target becomes "what is left, before the reset."</p>
+
+  <h3>A spend-down window</h3>
+  <p>One real window: 32% of a weekly SuperGrok allowance is used, so 68% is left. The reset is 26 September 2026 at 11:51 AM. The plan is to put that 68% into useful work before the reset, rather than save it. Saving it past 11:51 AM throws it away.</p>
+  <p>The session that does this work is already long, and its effort is high. Each further high turn sends the whole thread again and then does a lot of hidden reasoning. The 68% will cover fewer turns than the same 68% in a new short chat. That is acceptable while the turns need the thread. It is waste when the turn is only a confirmation.</p>
+  <table>
+    <thead>
+      <tr><th>The next turn</th><th>Set</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>A new piece that has to fit several earlier decisions</td>
+        <td>high</td>
+      </tr>
+      <tr>
+        <td>Revise one page whose outline is already agreed</td>
+        <td>medium</td>
+      </tr>
+      <tr>
+        <td>Report a meter reading, confirm a choice, or change a few words</td>
+        <td>low</td>
+      </tr>
+      <tr>
+        <td>Extra High</td>
+        <td>Not in this window. A spend-down is not a reason to try it.</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>A shorter clock can still pause you at 50% of the weekly meter. If that pause ends before the weekly reset, continue. If it would outlast the reset, the weekly leftover expires during the pause.</p>
+
+  <h3>Suggested exercise</h3>
+  <p>Run <code>/usage</code> and note the weekly percent. Set the next turn with the table above. Run <code>/usage</code> again. The gap is what that effort cost on a thread of this length. Copy the prompt if you want another model to classify the two readings.</p>
+  <pre class="prompt">Weekly allowance reading 1: [percent and reset time]
+Weekly allowance reading 2, after one turn: [percent]
+The turn's effort was: [low, medium, or high]
+The chat was: [new, or already long]
+
+Say how many percentage points that turn used. Say whether the next turn of the same kind should stay at that effort or drop one step.</pre>
+
+  <h3>Check</h3>
+  <p>Four choices each. Skip this if you already know the page.</p>
+  <form class="quiz">
+    <fieldset data-answer="b">
+      <legend>1. 68% is left and the window resets tomorrow morning. Spend-down means which plan?</legend>
+      <label><input type="radio" name="q1" value="a"> Keep it for the week after the reset</label>
+      <label><input type="radio" name="q1" value="b"> Use it on useful work before the reset</label>
+      <label><input type="radio" name="q1" value="c"> Switch to Extra High so one turn empties it</label>
+      <label><input type="radio" name="q1" value="d"> Stop checking until a cap message appears</label>
+    </fieldset>
+    <fieldset data-answer="a">
+      <legend>2. An even weekly pace starts near which daily amount?</legend>
+      <label><input type="radio" name="q2" value="a"> About 14%, one seventh</label>
+      <label><input type="radio" name="q2" value="b"> 32%</label>
+      <label><input type="radio" name="q2" value="c"> 68%</label>
+      <label><input type="radio" name="q2" value="d"> 1%</label>
+    </fieldset>
+    <fieldset data-answer="c">
+      <legend>3. The first day used 20% of a weekly window. The repaired target for each of the other six days is about which amount?</legend>
+      <label><input type="radio" name="q3" value="a"> 20%</label>
+      <label><input type="radio" name="q3" value="b"> 14%</label>
+      <label><input type="radio" name="q3" value="c"> 13%, because 80 divided by 6 is about 13</label>
+      <label><input type="radio" name="q3" value="d"> 7%</label>
+    </fieldset>
+    <fieldset data-answer="c">
+      <legend>4. This session is already long and set to high. A follow-up that only reports the new usage percent should be which setting?</legend>
+      <label><input type="radio" name="q4" value="a"> Extra High, because the meter matters</label>
+      <label><input type="radio" name="q4" value="b"> High, because a long thread should stay on high</label>
+      <label><input type="radio" name="q4" value="c"> Low</label>
+      <label><input type="radio" name="q4" value="d"> A new paid model</label>
+    </fieldset>
+    <button type="submit">Check answers</button>
+  </form>
+</article>

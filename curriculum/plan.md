@@ -9,8 +9,11 @@ The course is filled in around whatever page is active. Pages may land in the mi
 | U1.E.1 | using models | middle | Effort: low, medium, high, and Extra High, against reasoning tokens |
 | U1.B.1 | using models | middle, after E.1 | One-off requests versus continuing a thread |
 | U1.B.2 | using models | middle, after B.1 | Cap clocks (hours, next day, week, month), web chat versus coding CLI, free before paid high effort |
+| U1.B.3 | using models | middle, after B.2 | Pace one window: spend down before reset, or about 1/7 per day and repair the rest |
 
-Review B.1 first. B.2 is the companion page. More product-specific quota tables can be added later as their own pages when a number is worth keeping. The pattern on B.2 is the stable part. Exact quotas go stale.
+The page under review is B.3. B.1 and B.2 are the pages it assumes.
+
+Do not push this repo to GitHub until one strand is a coherent run of several segments and a review says it is ready. Local pages can still be added.
 
 ## Earlier holes, for a learner with little background
 
@@ -26,7 +29,7 @@ Markus can skip a hole he already has.
 
 | id | would add |
 | --- | --- |
-| U1.B.3 | A short, dated note for one product's current quotas, only when someone hits a real pause and pastes the message. |
+| U1.B.4 | A short, dated note for one product's current quotas, only when someone hits a real pause and pastes the message. |
 
 ## Subject outline
 

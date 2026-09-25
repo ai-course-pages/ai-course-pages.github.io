@@ -95,7 +95,7 @@
   function renderHome() {
     var progress = loadProgress();
     var lede = h("p", "lede", "Every item is open. Trying one does not unlock or block another. A rewrite bumps the iteration, and tries from older iterations stay on the row without counting as current.");
-    var rule = h("p", "rule", "The page under test is U1.B.1, one-off messages versus threads. U1.B.2 is the next page, on caps and free versus paid. Prompts meant to forward have a Copy button. The quiz is a first-reading check. Skip it if you already know the page.");
+    var rule = h("p", "rule", "The page under test is U1.B.3, how to spend a usage window. U1.B.1 and U1.B.2 are the pages before it. Prompts meant to forward have a Copy button. The quiz is a first-reading check. Skip it if you already know the page.");
     app.appendChild(lede);
     app.appendChild(rule);
 
