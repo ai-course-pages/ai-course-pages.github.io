@@ -28,7 +28,9 @@ The middle order stays: effort, one-off versus thread, clocks, pacing, CLI hando
 
 Each section uses the same frame. `{id}.0` is a welcome shorter than the course greeting: a recap for someone coming from earlier sections, and an "assumes at least" line for someone taking the section alone. `{id}.9` is a close: what this stage is enough for, practice on a real case, and permission to continue, to pick another section, or to wait. Middles keep their own ids.
 
-When U1 is accepted as coherent, practice the S.1 handoff in a new CLI session. Coherence still gates a GitHub push.
+When U1 is accepted as coherent, practice the S.1 handoff in a new CLI session. The filled prompt is `iteration/HANDOFF.md`. Coherence still gates a GitHub push.
+
+Page generation, segment kinds, and when a server host is warranted are in `curriculum/structure.md`. Shared buttons and quizzes stay in `js/app.js`.
 
 Do not push this repo to GitHub until one strand is a coherent run of several segments and a review says it is ready. Local pages can still be added.
 

@@ -192,14 +192,25 @@
     return li;
   }
 
+  var copyTimer = null;
+
+  function markCopied(copy) {
+    var all = document.querySelectorAll("button.copy");
+    Array.prototype.forEach.call(all, function (btn) { btn.textContent = "Copy"; });
+    copy.textContent = "Copied";
+    if (copyTimer) clearTimeout(copyTimer);
+    copyTimer = setTimeout(function () {
+      if (copy.textContent === "Copied") copy.textContent = "Copy";
+    }, 2000);
+  }
+
   function bindCopy(slot) {
     var blocks = slot.querySelectorAll("pre.prompt");
     Array.prototype.forEach.call(blocks, function (pre) {
       var copy = button("Copy", function () {
         var text = pre.textContent.replace(/\s+$/, "");
-        var mark = function () { copy.textContent = "Copied"; };
         if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(text).then(mark, function () { selectPrompt(pre, copy); });
+          navigator.clipboard.writeText(text).then(function () { markCopied(copy); }, function () { selectPrompt(pre, copy); });
         } else {
           selectPrompt(pre, copy);
         }
@@ -217,7 +228,7 @@
     selection.addRange(range);
     try {
       document.execCommand("copy");
-      copy.textContent = "Copied";
+      markCopied(copy);
     } catch (err) {
       copy.textContent = "Select the prompt";
     }
