@@ -127,6 +127,7 @@ footer { margin-top: 2rem; font-size: 0.9rem; }
 .lesson th, .lesson td { border: 1px solid var(--line); padding: 0.35rem 0.5rem; text-align: left; vertical-align: top; }
 .lesson code, .lesson pre { font-family: Consolas, "Cascadia Mono", monospace; font-size: 0.86em; }
 .lesson pre { white-space: pre-wrap; background: var(--bg); border: 1px solid var(--line); padding: 0.6rem 0.75rem; }
+button.copy { margin: 0.5rem 0 0.15rem; font-size: 0.9rem; }
 .lesson .earlier { background: #f3ead2; padding: 0.6rem 0.75rem; }
 .quiz { margin-top: 0.5rem; }
 .quiz fieldset { border: 1px solid var(--line); margin: 0.7rem 0; padding: 0.5rem 0.8rem 0.7rem; }

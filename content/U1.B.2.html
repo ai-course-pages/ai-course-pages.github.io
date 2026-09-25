@@ -1,0 +1,79 @@
+<article class="lesson">
+  <h2>The clocks on a token budget</h2>
+  <p>A product rarely has one bucket of use. It has several clocks. You can be paused by a short clock while a longer one still has room. The exact numbers change. The kinds of clock stay useful.</p>
+  <p>Read <a href="#/item/U1.B.1">U1.B.1</a> if one-off messages and threads are still fuzzy. This page uses that difference.</p>
+
+  <h3>Four clocks</h3>
+  <table>
+    <thead>
+      <tr><th>Clock</th><th>How to plan</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>A few hours</td>
+        <td>A burst cap. After a run of messages it can pause you, then clear later the same day.</td>
+      </tr>
+      <tr>
+        <td>About a day</td>
+        <td>Often described as 24 hours. In practice it commonly returns sometime the next day, not on a minute you can time. Plan on "tomorrow," and treat the exact hour as loose.</td>
+      </tr>
+      <tr>
+        <td>A week</td>
+        <td>A larger allowance. Common on paid plans. A few-hour pause can still stop you in the middle of a week that has room left.</td>
+      </tr>
+      <tr>
+        <td>A month</td>
+        <td>The widest ordinary clock. Also common. Hitting it means the shorter clocks are not your problem anymore.</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>One product can run two or three of these at once. A message that says you are paused is about one clock. Read it for the duration, and for whether it mentions chat, files, or both.</p>
+
+  <h3>A web chat and a coding CLI</h3>
+  <p>A web chat is built around a box and a transcript. You notice a pause because the page says so. A single question, then a stop, is a normal shape. Attachments and heavy processing are often a separate counter from ordinary chat.</p>
+  <p>A coding CLI is built around a session. The thread stays open. File reads and command output stay in it. Each step resends that pile, so the same weekly or daily clock moves faster than it does when you ask a few questions in a browser. A long CLI thread is the habit from the previous page, pointed at a clock.</p>
+
+  <h3>Free, then paid</h3>
+  <p>Use a free model to learn the shape of a task, and to try low and medium effort. Move to a paid model when the free cap, the free quality, or a missing tool is what blocks the work. High effort, and Extra High, on a paid model are the expensive end. A free pass or a low-effort pass should come first, so you are not buying a large reasoning pile for a task you have not yet made clear.</p>
+  <p>One current illustration is ChatGPT. Ordinary chat can be used without paying. Attachments are capped on their own. After a few files, or after the product has processed a lot of data, that cap can pause you until sometime the next day, even while a plain chat message would still go through. Other products draw this line in other places. The pattern to keep is: chat, files, and heavy processing can be different clocks. The numbers will change, so trust the pause message in front of you over a remembered quota.</p>
+
+  <h3>Suggested exercise</h3>
+  <p>When a product pauses you, copy this prompt, paste the message it showed you under the last line, and send it. If you are not paused, skip the exercise and say which of the four clocks you have actually seen.</p>
+  <pre class="prompt">Classify this limit message. Say which clock it sounds like: a few hours, sometime the next day, weekly, or monthly. Say whether it is about chat, attachments, or both. If the message does not say, answer "not stated."
+
+[paste the message here]</pre>
+
+  <h3>Check</h3>
+  <p>Four choices each. Skip this if you already know the page.</p>
+  <form class="quiz">
+    <fieldset data-answer="b">
+      <legend>1. A cap on the order of a few hours is which of these?</legend>
+      <label><input type="radio" name="q1" value="a"> A pause that always lasts until next month</label>
+      <label><input type="radio" name="q1" value="b"> A burst cap that can clear later the same day</label>
+      <label><input type="radio" name="q1" value="c"> Proof that the account is out of money</label>
+      <label><input type="radio" name="q1" value="d"> A sign that effort has been set to low</label>
+    </fieldset>
+    <fieldset data-answer="c">
+      <legend>2. A cap described as 24 hours is safest to plan as which of these?</legend>
+      <label><input type="radio" name="q2" value="a"> An exact minute, 24 hours after the first message</label>
+      <label><input type="radio" name="q2" value="b"> The end of the calendar week</label>
+      <label><input type="radio" name="q2" value="c"> Sometime the next day, with the exact hour treated as loose</label>
+      <label><input type="radio" name="q2" value="d"> Never, because daily caps are only for paid plans</label>
+    </fieldset>
+    <fieldset data-answer="a">
+      <legend>3. High effort on a paid model fits which moment?</legend>
+      <label><input type="radio" name="q3" value="a"> After a free or ordinary pass has shown the task is clear</label>
+      <label><input type="radio" name="q3" value="b"> As the first try, so the paid model can invent the task</label>
+      <label><input type="radio" name="q3" value="c"> Only on the monthly clock, never on a weekday</label>
+      <label><input type="radio" name="q3" value="d"> Whenever a web page looks nicer than a CLI</label>
+    </fieldset>
+    <fieldset data-answer="d">
+      <legend>4. Why does a coding CLI often reach a cap sooner than a short web chat?</legend>
+      <label><input type="radio" name="q4" value="a"> CLI models cannot use low effort</label>
+      <label><input type="radio" name="q4" value="b"> Web chats hide weekly caps</label>
+      <label><input type="radio" name="q4" value="c"> Attachments are free in a browser and billed in a CLI</label>
+      <label><input type="radio" name="q4" value="d"> Each CLI step resends a long thread, including tool output</label>
+    </fieldset>
+    <button type="submit">Check answers</button>
+  </form>
+</article>

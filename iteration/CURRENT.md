@@ -1,13 +1,13 @@
 ---
 iteration: 1
-under_test: U1.E.1
-published: [L1.C.1, U1.E.1]
+under_test: U1.B.1
+published: [L1.C.1, U1.E.1, U1.B.1, U1.B.2]
 ---
 
-The page under test is `U1.E.1` (effort and token spend), a mid-course element in the "using models" strand.
+Review `U1.B.1` first: one-off messages versus a continued thread.
 
-The quiz at the bottom is a first-reading check. Skip it when the page is already familiar. The suggested exercises are the part to answer in the working chat.
+`U1.B.2` is the companion: cap clocks (a few hours, sometime the next day, weekly, monthly), web chat versus a coding CLI, and free use before high effort on a paid model. Open it after B.1, or skip it if B.1 already needs a rewrite.
 
-Earlier holes for a learner with little background are `U0.1`, `U0.2`, and `U0.3` in `curriculum/plan.md`. They are notes, not locks.
+Prompts to forward use a Copy button. The quiz can be skipped.
 
-After the exercises, say what you could follow, what got in the way, and what seems reasonable to learn or revisit next.
+Earlier holes remain `U0.1`, `U0.2`, and `U0.3` in `curriculum/plan.md`.

@@ -95,7 +95,7 @@
   function renderHome() {
     var progress = loadProgress();
     var lede = h("p", "lede", "Every item is open. Trying one does not unlock or block another. A rewrite bumps the iteration, and tries from older iterations stay on the row without counting as current.");
-    var rule = h("p", "rule", "The page under test is U1.E.1, a mid-course element. The quiz at the bottom is a first-reading check. If you already know the page, skip the quiz and say what you want to learn or revisit. Other rows stay open.");
+    var rule = h("p", "rule", "The page under test is U1.B.1, one-off messages versus threads. U1.B.2 is the next page, on caps and free versus paid. Prompts meant to forward have a Copy button. The quiz is a first-reading check. Skip it if you already know the page.");
     app.appendChild(lede);
     app.appendChild(rule);
 
@@ -160,6 +160,7 @@
         return response.text();
       }).then(function (html) {
         slot.innerHTML = html;
+        bindCopy(slot);
         bindQuiz(slot);
       }).catch(function () {
         slot.textContent = "This item is marked published, and content/" + item.id + ".html is missing.";
@@ -189,6 +190,37 @@
     var li = h("li");
     li.appendChild(link);
     return li;
+  }
+
+  function bindCopy(slot) {
+    var blocks = slot.querySelectorAll("pre.prompt");
+    Array.prototype.forEach.call(blocks, function (pre) {
+      var copy = button("Copy", function () {
+        var text = pre.textContent.replace(/\s+$/, "");
+        var mark = function () { copy.textContent = "Copied"; };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(mark, function () { selectPrompt(pre, copy); });
+        } else {
+          selectPrompt(pre, copy);
+        }
+      });
+      copy.className = "copy";
+      pre.parentNode.insertBefore(copy, pre);
+    });
+  }
+
+  function selectPrompt(pre, copy) {
+    var range = document.createRange();
+    range.selectNodeContents(pre);
+    var selection = window.getSelection();
+    selection.removeAllRanges();
+    selection.addRange(range);
+    try {
+      document.execCommand("copy");
+      copy.textContent = "Copied";
+    } catch (err) {
+      copy.textContent = "Select the prompt";
+    }
   }
 
   function bindQuiz(slot) {

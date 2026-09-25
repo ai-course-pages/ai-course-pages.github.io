@@ -1,0 +1,76 @@
+<article class="lesson">
+  <h2>One message, or the same thread</h2>
+  <p>A token budget is the amount of text a product will count before it pauses you or charges you. Two habits spend that budget in different ways: sending one request on its own, and continuing in a thread.</p>
+
+  <h3>If these words are new</h3>
+  <p class="earlier">This page sits after the effort page. A learner with little background would want these earlier ideas. They can stay unwritten. You can keep going.</p>
+  <ul>
+    <li><strong>U0.1</strong> A model reads a prompt and writes a reply.</li>
+    <li><strong>U0.2</strong> Input, hidden reasoning, and the reply are counted apart.</li>
+    <li><strong>U1.E.1</strong> Effort allows more or less hidden reasoning. It does not change which model answers.</li>
+  </ul>
+
+  <h3>A one-off request</h3>
+  <p>A one-off request is a new chat. The input is that message, plus whatever instructions the product always attaches. The reply, and any hidden reasoning, are counted once. The next topic can be a new chat too. The old reply is not sent again.</p>
+
+  <h3>Continuing a thread</h3>
+  <p>A thread is the same chat. Each new message is counted together with the earlier turns the product still keeps. That includes your messages, the model's replies, and, in a coding session, a lot of tool output. The input pile grows as the thread grows. The same short question costs more on turn twenty than it would have in a fresh chat.</p>
+  <p>Some products shorten or summarize older turns. The thread can still cost more than a new chat, and a summary can drop a detail you still needed. When a later answer ignores an early instruction, check whether that instruction is still in the thread before you raise effort.</p>
+
+  <h3>Which habit fits</h3>
+  <ul>
+    <li><strong>Continue</strong> when the next step uses the last answer, a file already in the chat, or a decision you just made.</li>
+    <li><strong>Start a new chat</strong> when the question stands alone, the topic has changed, or the thread is long and full of side paths.</li>
+  </ul>
+  <p>Effort applies to each turn. High effort in a long thread pays for a large input and a large pile of reasoning. That is a poor place to try Extra High for the first time. Learn low, medium, and high on short chats first. The effort page is <a href="#/item/U1.E.1">U1.E.1</a>.</p>
+  <p>The clocks on the budget, free and paid plans, and the difference between a web chat and a coding CLI are the next page, <a href="#/item/U1.B.2">U1.B.2</a>.</p>
+
+  <h3>Suggested exercises to try</h3>
+  <p>Copy each prompt. Send the first in a new chat. Send the second in that same chat. Send the third in a different new chat. Then say which reply actually needed the earlier turn.</p>
+  <ol>
+    <li>
+      <pre class="prompt">Define a token in one sentence.</pre>
+    </li>
+    <li>
+      <pre class="prompt">Using only that definition, say whether a long thread increases the input tokens of the next message. One sentence.</pre>
+    </li>
+    <li>
+      <pre class="prompt">Does a long thread increase the input tokens of the next message? Answer in one sentence.</pre>
+    </li>
+  </ol>
+  <p>The second prompt is a follow-up. The third is a one-off of the same question. Medium is enough for all three. High adds reasoning tokens the question does not need.</p>
+
+  <h3>Check</h3>
+  <p>Four choices each. Skip this if you already know the page.</p>
+  <form class="quiz">
+    <fieldset data-answer="b">
+      <legend>1. On the next turn of the same chat, the input count includes which of these?</legend>
+      <label><input type="radio" name="q1" value="a"> Only the new sentence</label>
+      <label><input type="radio" name="q1" value="b"> The new sentence plus the earlier turns the product still keeps</label>
+      <label><input type="radio" name="q1" value="c"> Only the hidden reasoning from yesterday</label>
+      <label><input type="radio" name="q1" value="d"> A fixed price, whatever the thread length</label>
+    </fieldset>
+    <fieldset data-answer="c">
+      <legend>2. A new chat is the better fit when which of these is true?</legend>
+      <label><input type="radio" name="q2" value="a"> The next step uses the file you just uploaded</label>
+      <label><input type="radio" name="q2" value="b"> You want the model to remember the last answer</label>
+      <label><input type="radio" name="q2" value="c"> The question stands alone, or the thread has become long and off topic</label>
+      <label><input type="radio" name="q2" value="d"> You want Extra High to be cheaper</label>
+    </fieldset>
+    <fieldset data-answer="a">
+      <legend>3. High effort on a long thread spends which of these?</legend>
+      <label><input type="radio" name="q3" value="a"> A large input plus a large reasoning pile, on that turn</label>
+      <label><input type="radio" name="q3" value="b"> Only the new sentence, because effort replaces the thread</label>
+      <label><input type="radio" name="q3" value="c"> Nothing, because high effort is free in a thread</label>
+      <label><input type="radio" name="q3" value="d"> The weekly cap only, never the input tokens</label>
+    </fieldset>
+    <fieldset data-answer="d">
+      <legend>4. A product that summarizes older turns still leaves you with which expectation?</legend>
+      <label><input type="radio" name="q4" value="a"> The thread now costs the same as a fresh chat</label>
+      <label><input type="radio" name="q4" value="b"> Every early instruction is guaranteed to remain</label>
+      <label><input type="radio" name="q4" value="c"> Effort is turned off</label>
+      <label><input type="radio" name="q4" value="d"> The thread can still cost more than a new chat, and a detail can be dropped</label>
+    </fieldset>
+    <button type="submit">Check answers</button>
+  </form>
+</article>

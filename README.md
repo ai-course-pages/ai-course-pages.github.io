@@ -67,4 +67,4 @@ From this folder:
 python -m http.server 8765
 ```
 
-Open `http://127.0.0.1:8765/#/item/U1.E.1`. That is the page under test. The outline is the page without the hash. The quiz can be skipped when the page is already familiar.
+Open `http://127.0.0.1:8765/#/item/U1.B.1`. That is the page under test. `U1.B.2` is the companion. The outline is the page without the hash. Prompts to forward have a Copy button. The quiz can be skipped when the page is already familiar.

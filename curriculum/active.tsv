@@ -1,2 +1,4 @@
 id	track	place	text
 U1.E.1	concept	mid	Choose low, medium, or high effort by how many tokens the hidden work is worth.
+U1.B.1	concept	mid	See how a one-off message and a continued thread spend input tokens differently.
+U1.B.2	concept	mid	Read the clocks on a usage cap, and when a free model should come before a paid high-effort run.
