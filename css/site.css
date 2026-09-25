@@ -107,6 +107,33 @@ button.primary { background: var(--accent); color: #fff; border-color: var(--acc
 
 footer { margin-top: 2rem; font-size: 0.9rem; }
 
+.lesson h2 { margin-top: 0; }
+.lesson h3 { font-size: 1.05rem; margin: 1.2rem 0 0.3rem; }
+.lesson p, .lesson li { margin: 0.4rem 0; }
+.lesson ul { padding-left: 1.2rem; }
+.lesson .def {
+  margin: 0.8rem 0;
+  padding-left: 0.8rem;
+  border-left: 3px solid var(--accent);
+}
+.lesson details {
+  margin: 0.7rem 0;
+  padding: 0.5rem 0.7rem;
+  background: var(--bg);
+  border: 1px solid var(--line);
+}
+.lesson summary { cursor: pointer; }
+.lesson table { border-collapse: collapse; width: 100%; font-size: 0.92rem; margin: 0.6rem 0 1rem; }
+.lesson th, .lesson td { border: 1px solid var(--line); padding: 0.35rem 0.5rem; text-align: left; vertical-align: top; }
+.lesson code { font-family: Consolas, "Cascadia Mono", monospace; font-size: 0.86em; }
+.lesson .earlier { background: #f3ead2; padding: 0.6rem 0.75rem; }
+.quiz { margin-top: 0.5rem; }
+.quiz fieldset { border: 1px solid var(--line); margin: 0.7rem 0; padding: 0.5rem 0.8rem 0.7rem; }
+.quiz legend { padding: 0 0.3rem; }
+.quiz label { display: block; margin: 0.25rem 0; }
+.quiz button { margin-top: 0.4rem; }
+.qresult, .quiz-score { color: var(--muted); }
+
 @media (max-width: 640px) {
   .row-top, header.site { flex-direction: column; }
   .status { white-space: normal; }

@@ -48,8 +48,11 @@
   }
 
   function itemById(id) {
-    for (var i = 0; i < CATALOG.items.length; i++) {
-      if (CATALOG.items[i].id === id) return CATALOG.items[i];
+    var lists = [CATALOG.items, CATALOG.active || []];
+    for (var n = 0; n < lists.length; n++) {
+      for (var i = 0; i < lists[n].length; i++) {
+        if (lists[n][i].id === id) return lists[n][i];
+      }
     }
     return null;
   }
@@ -92,7 +95,7 @@
   function renderHome() {
     var progress = loadProgress();
     var lede = h("p", "lede", "Every item is open. Trying one does not unlock or block another. A rewrite bumps the iteration, and tries from older iterations stay on the row without counting as current.");
-    var rule = h("p", "rule", "This iteration publishes the outline only. Open an item to read its syllabus line. The lesson body is written after you describe what you could follow and what seems reasonable to learn next.");
+    var rule = h("p", "rule", "The page under test is U1.E.1, a mid-course element. The quiz at the bottom is a first-reading check. If you already know the page, skip the quiz and say what you want to learn or revisit. Other rows stay open.");
     app.appendChild(lede);
     app.appendChild(rule);
 
@@ -104,6 +107,16 @@
     var outlineStatus = statusOf("outline", progress);
     app.appendChild(h("p", "meta status " + outlineStatus.kind, "Outline: " + outlineStatus.label));
 
+    if (CATALOG.active && CATALOG.active.length) {
+      app.appendChild(h("h2", null, "Active"));
+      app.appendChild(h("p", "meta", "These pages can sit in the middle of a strand. Earlier pages they depend on may not be written yet. Nothing here is locked."));
+      var activeList = h("ol", "items");
+      CATALOG.active.forEach(function (item) {
+        activeList.appendChild(rowFor(item, progress));
+      });
+      app.appendChild(activeList);
+    }
+
     CATALOG.levels.forEach(function (level) {
       var title = level.title + " · " + level.points + " points · " + level.code;
       app.appendChild(h("h2", null, title));
@@ -112,18 +125,7 @@
       }
       var list = h("ol", "items");
       CATALOG.items.filter(function (item) { return item.level === level.id; }).forEach(function (item) {
-        var status = statusOf(item.id, progress);
-        var link = h("a", "row");
-        link.href = "#/item/" + item.id;
-        var top = h("div", "row-top");
-        top.appendChild(h("span", "id", item.id + " · " + item.track));
-        var badge = h("span", "status " + status.kind, isPublished(item.id) ? "lesson is up · " + status.label : status.label);
-        top.appendChild(badge);
-        link.appendChild(top);
-        link.appendChild(h("span", null, item.text));
-        var li = h("li");
-        li.appendChild(link);
-        list.appendChild(li);
+        list.appendChild(rowFor(item, progress));
       });
       app.appendChild(list);
     });
@@ -142,8 +144,11 @@
     var status = statusOf(item.id, progress);
     app.appendChild(h("h2", null, item.id));
     app.appendChild(h("p", "item-body", item.text));
-    app.appendChild(h("p", "meta", "Track: " + item.track + ". Bind: " + item.bind + "."));
-    app.appendChild(h("p", "meta", "Ability: " + abilityText(item.ability)));
+    var metaBits = "Track: " + (item.track || "concept") + ".";
+    if (item.place) metaBits += " Place: " + item.place + ".";
+    if (item.bind) metaBits += " Bind: " + item.bind + ".";
+    app.appendChild(h("p", "meta", metaBits));
+    if (item.ability) app.appendChild(h("p", "meta", "Ability: " + abilityText(item.ability)));
     if (item.deepens) app.appendChild(h("p", "meta", "Extends: " + item.deepens + "."));
     app.appendChild(h("p", "meta status " + status.kind, status.label));
 
@@ -155,6 +160,7 @@
         return response.text();
       }).then(function (html) {
         slot.innerHTML = html;
+        bindQuiz(slot);
       }).catch(function () {
         slot.textContent = "This item is marked published, and content/" + item.id + ".html is missing.";
       });
@@ -168,6 +174,54 @@
     actions.appendChild(button("Copy experience note", function () { copyNote(item.id); }));
     actions.appendChild(button("Reset tried marks", resetProgress));
     app.appendChild(actions);
+  }
+
+  function rowFor(item, progress) {
+    var status = statusOf(item.id, progress);
+    var link = h("a", "row");
+    link.href = "#/item/" + item.id;
+    var top = h("div", "row-top");
+    top.appendChild(h("span", "id", item.id + " · " + item.track));
+    var badge = h("span", "status " + status.kind, isPublished(item.id) ? "lesson is up · " + status.label : status.label);
+    top.appendChild(badge);
+    link.appendChild(top);
+    link.appendChild(h("span", null, item.text));
+    var li = h("li");
+    li.appendChild(link);
+    return li;
+  }
+
+  function bindQuiz(slot) {
+    var form = slot.querySelector("form.quiz");
+    if (!form) return;
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      var questions = form.querySelectorAll("fieldset");
+      var correct = 0;
+      Array.prototype.forEach.call(questions, function (question) {
+        var chosen = question.querySelector("input:checked");
+        var want = question.getAttribute("data-answer");
+        var result = question.querySelector(".qresult");
+        if (!result) {
+          result = h("p", "qresult", "");
+          question.appendChild(result);
+        }
+        if (chosen && chosen.value === want) {
+          correct += 1;
+          result.textContent = "Matches the page.";
+        } else {
+          var answer = question.querySelector('input[value="' + want + '"]');
+          var label = answer ? answer.parentNode.textContent.trim() : want;
+          result.textContent = "The page's answer is: " + label;
+        }
+      });
+      var summary = form.querySelector(".quiz-score");
+      if (!summary) {
+        summary = h("p", "quiz-score", "");
+        form.appendChild(summary);
+      }
+      summary.textContent = correct + " of " + questions.length + " match. The score locks nothing. If you already knew this, skip the quiz next time.";
+    });
   }
 
   function button(label, onClick, className) {

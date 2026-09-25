@@ -1,0 +1,135 @@
+<article class="lesson">
+  <h2>Effort and how many tokens it spends</h2>
+  <p>Some models do hidden work before they write the reply you see. <strong>Effort</strong> is the setting that allows more or less of that hidden work. The model stays the same. A higher effort spends more reasoning tokens, so the same question costs more and usually takes longer.</p>
+  <p>This course practices three settings: <strong>low</strong>, <strong>medium</strong>, and <strong>high</strong>. A fourth name, <strong>xhigh</strong> (Extra High), is here so you can recognize it. Leave Extra High, and any step above it, until low, medium, and high already feel familiar. Those higher settings spend many tokens, including on an ordinary question.</p>
+
+  <h3>If these words are new</h3>
+  <p class="earlier">This page sits in the middle of a strand. A learner with little background would want three earlier ideas. They are not written yet, and you can keep going without them.</p>
+  <ul>
+    <li><strong>U0.1</strong> A model reads a prompt and writes a reply.</li>
+    <li><strong>U0.2</strong> A token is a chunk of text the product counts. Input, the hidden reasoning, and the reply are counted apart.</li>
+    <li><strong>U0.3</strong> Effort is a setting. It does not swap in a different model.</li>
+  </ul>
+
+  <h3>What the tokens are paying for</h3>
+  <p>A reply has three piles of tokens.</p>
+  <ul>
+    <li><strong>Input.</strong> Your message, instructions, and any source text you attached.</li>
+    <li><strong>Reasoning.</strong> Hidden work before the reply. Effort is the knob on this pile.</li>
+    <li><strong>Output.</strong> The reply you read.</li>
+  </ul>
+  <p>A long reply can come from low effort. A short reply can come from high effort. The setting changes the hidden work. It does not set the length of the answer.</p>
+  <p>Raising effort is a poor fix for a vague question. Clean the question first. High effort on a vague question buys a thorough treatment of the vagueness.</p>
+
+  <h3>The four names</h3>
+  <table>
+    <thead>
+      <tr><th>Effort</th><th>What you are buying</th><th>In this course</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>low</td>
+        <td>A little hidden work. Fits one clear step when the wording is already clean.</td>
+        <td>Use</td>
+      </tr>
+      <tr>
+        <td>medium</td>
+        <td>Enough hidden work for a normal task: a few constraints, a table, a passage you want kept intact.</td>
+        <td>Use</td>
+      </tr>
+      <tr>
+        <td>high</td>
+        <td>A lot of hidden work. Fits several parts, a conflict in the instructions, or a messy source.</td>
+        <td>Use</td>
+      </tr>
+      <tr>
+        <td>xhigh, Extra High</td>
+        <td>More hidden work than high. Some products stop here. Some offer a further step, often called max. The bill grows quickly.</td>
+        <td>Wait</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>Products use these names, or they use a number (a thinking budget) that you can line up with the same four steps. A product may also offer <em>minimal</em> or <em>none</em>, below low. This course does not drill those.</p>
+
+  <h3>How the names line up</h3>
+  <table>
+    <thead>
+      <tr><th>This course</th><th>Grok</th><th>Elsewhere, in short</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>low</td>
+        <td><code>reasoning.effort: "low"</code></td>
+        <td>Often the same word: low. A thinking budget, when that is the control, is a small one.</td>
+      </tr>
+      <tr>
+        <td>medium</td>
+        <td><code>"medium"</code></td>
+        <td>Often medium. Where a product has no medium, it lands on the neighbor it does have.</td>
+      </tr>
+      <tr>
+        <td>high</td>
+        <td><code>"high"</code>. On current Grok reasoning models this is the default when the field is omitted.</td>
+        <td>Often high. Omitting the setting is not the same as choosing low.</td>
+      </tr>
+      <tr>
+        <td>xhigh, Extra High</td>
+        <td><code>"xhigh"</code> on grok-4.6 and later, including grok-4.7. grok-4.5 treats <code>"xhigh"</code> as high.</td>
+        <td>Newer Claude models use xhigh, and some add max above it. Gemini often has no separate xhigh and snaps that request up to high.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>On Grok</h3>
+  <p>For grok-4.7 and grok-4.6 the values are <code>low</code>, <code>medium</code>, <code>high</code>, and <code>xhigh</code>. Reasoning stays on. You choose how much. If you leave the field unset, the call runs at high. grok-4.5 has no xhigh. On the multi-agent model, the same field selects how many agents take part, which is a different meaning. Keep that model off this comparison.</p>
+  <p>For the work in this course, set low, medium, or high on purpose. Extra High is a later experiment, after those three are familiar.</p>
+
+  <h3>Suggested exercises to try</h3>
+  <p>Answer these in this thread. For each one, pick low, medium, or high, and say what a higher setting would mostly add to the token bill. If your client lets you set effort on a message, you can also send exercise 1 twice, once at low and once at high, and compare the wait and the reply.</p>
+  <ol>
+    <li>
+      <p>Prompt: "Define a token in one sentence."</p>
+    </li>
+    <li>
+      <p>Prompt: "Turn the note below into a table with columns id and rule. Keep every id. Do not add a row." Then a short note that already contains three ids and three rules.</p>
+    </li>
+    <li>
+      <p>Prompt: two paragraphs that disagree. The first says "include the glossary." The second says "leave the glossary out." Ask for one list of terms. What should the model notice before it writes?</p>
+    </li>
+  </ol>
+  <p>Exercise 1 is the low case. Exercise 2 is the medium case. Exercise 3 is the high case. Extra High on exercise 1 spends reasoning tokens on a question that was already one clean step.</p>
+
+  <h3>Check</h3>
+  <p>Four choices each. This check is for a first reading. It locks nothing. If you already know the page, skip it.</p>
+  <form class="quiz">
+    <fieldset data-answer="b">
+      <legend>1. Raising effort changes which of these?</legend>
+      <label><input type="radio" name="q1" value="a"> Which model answers</label>
+      <label><input type="radio" name="q1" value="b"> How much hidden reasoning the same model may spend before the reply</label>
+      <label><input type="radio" name="q1" value="c"> The length the reply is required to have</label>
+      <label><input type="radio" name="q1" value="d"> Whether input tokens are counted</label>
+    </fieldset>
+    <fieldset data-answer="a">
+      <legend>2. Which settings does this course want you to practice?</legend>
+      <label><input type="radio" name="q2" value="a"> low, medium, and high</label>
+      <label><input type="radio" name="q2" value="b"> Extra High only</label>
+      <label><input type="radio" name="q2" value="c"> Whatever the product uses when you leave the setting unset</label>
+      <label><input type="radio" name="q2" value="d"> max, where the product has it</label>
+    </fieldset>
+    <fieldset data-answer="c">
+      <legend>3. Extra High is which of these?</legend>
+      <label><input type="radio" name="q3" value="a"> The everyday setting for this course</label>
+      <label><input type="radio" name="q3" value="b"> A cheaper way to get a shorter reply</label>
+      <label><input type="radio" name="q3" value="c"> A higher step some products offer. It spends many tokens. Try it after low, medium, and high are familiar.</label>
+      <label><input type="radio" name="q3" value="d"> A different model</label>
+    </fieldset>
+    <fieldset data-answer="a">
+      <legend>4. A one-sentence definition, with the wording already clean, fits which setting?</legend>
+      <label><input type="radio" name="q4" value="a"> low</label>
+      <label><input type="radio" name="q4" value="b"> Extra High, because definitions are always hard</label>
+      <label><input type="radio" name="q4" value="c"> high, because every first page is high</label>
+      <label><input type="radio" name="q4" value="d"> medium, because one sentence still has two constraints to reconcile</label>
+    </fieldset>
+    <button type="submit">Check answers</button>
+  </form>
+</article>

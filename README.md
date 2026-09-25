@@ -1,26 +1,33 @@
 # Artificial Intelligence course pages
 
-Local skeleton for an unofficial course. It is not wired to a GitHub account.
+Local course for [ai-course-pages/ai-course-pages.github.io](https://github.com/ai-course-pages/ai-course-pages.github.io). The public site will be `https://ai-course-pages.github.io/`.
 
-The existing account `MarkusIsaksson1982` already publishes `MarkusIsaksson1982.github.io`. Leave that account alone. This folder waits for a **new** GitHub account, then becomes that account's user site.
+This machine's `gh` login is `MarkusIsaksson1982`. Leave that login alone. Pushes to the course repo use a separate token.
 
-## Where it will appear
+## Credentials
 
-GitHub serves a user site only from a public repository named `{username}.github.io`, at `https://{username}.github.io/` (the host is lowercased). This folder can keep its local name. The **remote** repository must use the new username.
+Put the token in a file outside this repo:
 
-1. Create the new GitHub account.
-2. Create a public repository named exactly `{username}.github.io`.
-3. Set `githubUser` in `js/config.js` to that username.
-4. This machine's `gh` login is the old account. Push with the new account's credentials so the remote is not created under `MarkusIsaksson1982`.
-5. From this folder:
+`C:\Users\mjisa\.config\ai-course-pages\github.env`
 
 ```
-git remote add origin git@github.com:{username}/{username}.github.io.git
-git push -u origin main
+GITHUB_TOKEN=github_pat_or_ghp_value
 ```
 
-6. In the new repo: Settings → Pages → branch `main`, folder `/ (root)`.
-7. Open `https://{username}.github.io/`.
+A fine-grained token is enough: resource owner `ai-course-pages`, only `ai-course-pages.github.io`, Contents read and write. A classic token needs the `repo` scope and must belong to a user who can push there. Do not paste the token into chat.
+
+Agents that already inject an environment variable can set `AI_COURSE_GITHUB_TOKEN` instead. That variable wins over the file. It is separate from `GITHUB_TOKEN` and from the `gh` keyring, so the other account stays the default.
+
+Check, then push:
+
+```
+powershell -File tools\course-github.ps1 -Action check
+powershell -File tools\course-github.ps1 -Action push
+```
+
+`check` prints the login the token belongs to. It does not print the token.
+
+In the new repo: Settings → Pages → branch `main`, folder `/ (root)`.
 
 `.nojekyll` is present so Pages serves these files as plain static files.
 
@@ -37,6 +44,8 @@ Add a free dynamic host (Vercel hobby, or similar) only when a lesson needs a se
 3. The next change is based on that note. It may be the next syllabus row, a later row, or a rewrite of a row you already tried.
 4. A rewrite bumps `iteration` in `js/config.js` and sets the same number in `iteration/CURRENT.md`. Old tries remain visible and are labeled with the iteration they came from. They do not count as tries of the rewritten section.
 5. Lesson HTML is added one file at a time in `content/{id}.html`, and that id is listed in `published` in `js/config.js`.
+6. A quiz at the bottom of a page is a first-reading check. It can be clicked through without learning, so an iteration does not wait on it. Suggested exercises in the working chat are what the next change follows.
+7. A page may sit in the middle of a strand. `curriculum/plan.md` records what a learner with little background would have met earlier. Those notes are not locks.
 
 Syllabus source is `curriculum/`. Regenerate the outline data after editing it:
 
@@ -58,4 +67,4 @@ From this folder:
 python -m http.server 8765
 ```
 
-Open `http://127.0.0.1:8765/`. The first thing to try is the outline itself.
+Open `http://127.0.0.1:8765/#/item/U1.E.1`. That is the page under test. The outline is the page without the hash. The quiz can be skipped when the page is already familiar.

@@ -42,5 +42,8 @@ window.CATALOG = {
     { id: "L2.D.3", level: "L2", track: "discuss", ability: "A5", bind: "at-least", deepens: "L1.D.5", text: "Opportunities and consequences of AI use in one selected field, across democratic, ethical, social, economic, environmental, and security aspects." },
     { id: "L2.D.4", level: "L2", track: "discuss", ability: "A5", bind: "exact", deepens: "", text: "Risk assessment of AI use in various situations." },
     { id: "L2.D.5", level: "L2", track: "discuss", ability: "A5;A1", bind: "at-least", deepens: "L1.C.2;L1.D.4", text: "Weaknesses in machine learning: transparency; logical explanations of results based on the dataset; data selection; data quality." },
+  ],
+  active: [
+    { id: "U1.E.1", track: "concept", place: "mid", text: "Choose low, medium, or high effort by how many tokens the hidden work is worth." },
   ]
 };
