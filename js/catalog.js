@@ -44,11 +44,13 @@ window.CATALOG = {
     { id: "L2.D.5", level: "L2", track: "discuss", ability: "A5;A1", bind: "at-least", deepens: "L1.C.2;L1.D.4", text: "Weaknesses in machine learning: transparency; logical explanations of results based on the dataset; data selection; data quality." },
   ],
   active: [
+    { id: "U1.0", track: "concept", place: "open", text: "A welcome to this section, a recap of the planned opening, and the background a standalone reader is assumed to have." },
     { id: "U1.E.1", track: "concept", place: "mid", text: "Choose low, medium, or high effort by how many tokens the hidden work is worth." },
     { id: "U1.B.1", track: "concept", place: "mid", text: "See how a one-off message and a continued thread spend input tokens differently." },
     { id: "U1.B.2", track: "concept", place: "mid", text: "Read the clocks on a usage cap, and when a free model should come before a paid high-effort run." },
     { id: "U1.B.3", track: "concept", place: "mid", text: "Pace a usage window: spend it down before reset, or spread it and repair the later days." },
     { id: "U1.S.1", track: "concept", place: "mid", text: "Decide the scope of a CLI coding session, and what to pass when opening a new one." },
     { id: "U1.S.2", track: "concept", place: "mid", text: "Export a web thread into a seeding prompt, a file, or both, and open the next thread with See: and the file name." },
+    { id: "U1.9", track: "concept", place: "close", text: "Mark this stage complete, practice on a real case, and choose what to do next." },
   ]
 };
