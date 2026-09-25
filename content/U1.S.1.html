@@ -1,0 +1,75 @@
+<article class="lesson">
+  <h2>When a coding session should end</h2>
+  <p>A coding CLI session is a thread that also runs tools. It gets more expensive the same way any long thread does: later steps resend the earlier ones. Two further choices are how large one automated request may be, and when the next job deserves a new session.</p>
+
+  <h3>If these words are new</h3>
+  <p class="earlier">This page uses the thread and the usage window. A learner with little background would want these first.</p>
+  <ul>
+    <li><strong>U1.B.1</strong> A follow-up resends the turns the product still keeps. A new chat does not.</li>
+    <li><strong>U1.B.3</strong> High effort is for a turn that must fit several earlier decisions. A check-in can be low.</li>
+  </ul>
+
+  <h3>A turn cap is a scope, not a token cap</h3>
+  <p>Some automated runs accept a maximum number of turns. A turn is one step: the agent thinks, uses a tool, and continues. The cap says how far that single request may go before it stops and shows you the result.</p>
+  <ul>
+    <li>A small cap fits a known edit. You want it to stop even if it has more ideas.</li>
+    <li>A larger cap fits a task that must touch several files before there is anything to read.</li>
+  </ul>
+  <p>Hitting the cap is a stop. Read the files it wrote, then decide whether the next instruction belongs in that same session or in a new one. An interactive chat often has no such cap. The weekly usage meter is a different limit. A turn cap can fire while plenty of the weekly allowance remains.</p>
+
+  <h3>When to open a new session</h3>
+  <p>Open a new session when the durable result is already in files and the chat is mostly the trail that produced them. The clearest case is a section of several segments that holds together at this stage. The drafting thread has done its job. Carrying it forward makes every later step reread the dead ends.</p>
+  <p>Also open a new session when the next job is a different task, even in the same project, or when an automated run stopped at its turn cap and the next instruction is a new job.</p>
+  <p>Stay in the session when the next step needs an error, a diff, or a decision that exists only in the thread, or when the section is not coherent yet. Coherence is the test. A pile of segments is not enough.</p>
+
+  <h3>What the new session needs</h3>
+  <p>Pass paths, plus a short brief. Do not paste the old transcript.</p>
+  <ul>
+    <li><strong>Project folder.</strong> The directory the agent should read.</li>
+    <li><strong>Entry point.</strong> The file a reader opens first, such as the page under test or the README.</li>
+    <li><strong>Task artifact.</strong> The plan, the current segment, or a note of what was decided. One path for the task, not the whole history.</li>
+  </ul>
+  <p>The new session reads those files. The old session can stay on disk. It does not have to be open.</p>
+
+  <h3>Suggested exercise</h3>
+  <p>Copy this, fill the brackets from this course, and send it as the first message of a new session when you next judge a section coherent. Until then, keep working here.</p>
+  <pre class="prompt">Project folder: [path]
+Entry point: [path of the page to open first]
+Task artifact: [path of the plan or the note of what was decided]
+Task: [one or two sentences]
+Do not assume any chat history before this message. Read those paths first.</pre>
+
+  <h3>Check</h3>
+  <p>Four choices each. Skip this if you already know the page.</p>
+  <form class="quiz">
+    <fieldset data-answer="b">
+      <legend>1. A maximum number of turns on one automated request limits which of these?</legend>
+      <label><input type="radio" name="q1" value="a"> The weekly usage meter</label>
+      <label><input type="radio" name="q1" value="b"> How many steps that request may take before it stops</label>
+      <label><input type="radio" name="q1" value="c"> Which model answers</label>
+      <label><input type="radio" name="q1" value="d"> Whether the project folder can be read</label>
+    </fieldset>
+    <fieldset data-answer="c">
+      <legend>2. A strong point to open a new coding session is which of these?</legend>
+      <label><input type="radio" name="q2" value="a"> The first time a tool runs</label>
+      <label><input type="radio" name="q2" value="b"> Any pause in typing</label>
+      <label><input type="radio" name="q2" value="c"> A section of several segments that holds together at this stage</label>
+      <label><input type="radio" name="q2" value="d"> Every third message, whatever the task</label>
+    </fieldset>
+    <fieldset data-answer="a">
+      <legend>3. The handoff into that new session should be which of these?</legend>
+      <label><input type="radio" name="q3" value="a"> Paths to the project, an entry point, and the task artifact, plus a short brief</label>
+      <label><input type="radio" name="q3" value="b"> The full transcript, so nothing is lost</label>
+      <label><input type="radio" name="q3" value="c"> Only the weekly usage percent</label>
+      <label><input type="radio" name="q3" value="d"> A higher effort setting and no paths</label>
+    </fieldset>
+    <fieldset data-answer="d">
+      <legend>4. Stay in the current session when which of these is true?</legend>
+      <label><input type="radio" name="q4" value="a"> The section is coherent and the next task is new</label>
+      <label><input type="radio" name="q4" value="b"> The chat is mostly rejected drafts</label>
+      <label><input type="radio" name="q4" value="c"> The turn cap already stopped a finished job</label>
+      <label><input type="radio" name="q4" value="d"> The next step needs an error or a decision that exists only in the thread</label>
+    </fieldset>
+    <button type="submit">Check answers</button>
+  </form>
+</article>

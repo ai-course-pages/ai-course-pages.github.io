@@ -48,5 +48,6 @@ window.CATALOG = {
     { id: "U1.B.1", track: "concept", place: "mid", text: "See how a one-off message and a continued thread spend input tokens differently." },
     { id: "U1.B.2", track: "concept", place: "mid", text: "Read the clocks on a usage cap, and when a free model should come before a paid high-effort run." },
     { id: "U1.B.3", track: "concept", place: "mid", text: "Pace a usage window: spend it down before reset, or spread it and repair the later days." },
+    { id: "U1.S.1", track: "concept", place: "mid", text: "Decide the scope of a CLI coding session, and what to pass when opening a new one." },
   ]
 };

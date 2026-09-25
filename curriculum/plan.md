@@ -10,8 +10,9 @@ The course is filled in around whatever page is active. Pages may land in the mi
 | U1.B.1 | using models | middle, after E.1 | One-off requests versus continuing a thread |
 | U1.B.2 | using models | middle, after B.1 | Cap clocks (hours, next day, week, month), web chat versus coding CLI, free before paid high effort |
 | U1.B.3 | using models | middle, after B.2 | Pace one window: spend down before reset, or about 1/7 per day and repair the rest |
+| U1.S.1 | using models | middle, after B.3 | Turn caps, when to open a new CLI session, and which paths to pass across |
 
-The page under review is B.3. B.1 and B.2 are the pages it assumes.
+The page under review is S.1. It assumes B.1 and B.3. A coherent section is the preferred point to open a new session, and the same test still gates a GitHub push.
 
 Do not push this repo to GitHub until one strand is a coherent run of several segments and a review says it is ready. Local pages can still be added.
 
