@@ -2,7 +2,7 @@
 iteration: 1
 under_test: U1 paused
 published: [L1.C.1, U1.0, U1.E.1, U1.B.1, U1.B.2, U1.B.3, U1.S.1, U1.S.2, U1.9]
-github: hold until asked
+github: push at handoff, section leave, or a session whose new work is fit to publish
 ---
 
 U1 is coherent enough to leave. Resume from `iteration/HANDOFF.md`.

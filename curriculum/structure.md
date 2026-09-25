@@ -12,6 +12,8 @@ Generate pages from data when any of these becomes true:
 
 Until then, keep writing `content/{id}.html` and listing the segment in `curriculum/active.tsv`. The outline script `tools/build_catalog.py` stays the only generator.
 
+Push `main` when a session hands off, when a section is coherent enough to leave, or when the work finished in a Grok Build session is fit to be the live site. A half-written segment stays local.
+
 The first generator can run at build time and still publish on GitHub Pages. It reads segment records and writes HTML. Quizzes and Copy buttons stay in `app.js`.
 
 Vercel, or any other app host, waits until a feature needs a server. The likely one is checking a learner's command or code. Checking whether a prompt "worked" against a model is not that feature. A turn cap, an effort setting, and a usage story stay human-checked.

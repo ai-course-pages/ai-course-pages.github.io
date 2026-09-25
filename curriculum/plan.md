@@ -28,7 +28,9 @@ The middle order stays: effort, one-off versus thread, clocks, pacing, CLI hando
 
 Each section uses the same frame. `{id}.0` is a welcome shorter than the course greeting: a recap for someone coming from earlier sections, and an "assumes at least" line for someone taking the section alone. `{id}.9` is a close: what this stage is enough for, practice on a real case, and permission to continue, to pick another section, or to wait. Middles keep their own ids.
 
-When U1 is accepted as coherent, practice the S.1 handoff in a new CLI session. The filled prompt is `iteration/HANDOFF.md`. Coherence still gates a GitHub push.
+When U1 is accepted as coherent, practice the S.1 handoff in a new CLI session. The filled prompt is `iteration/HANDOFF.md`.
+
+Push `main` live at a handoff to a new session, and when a section is coherent enough to leave. At the end of a Grok Build session, decide whether the new work is fit to publish. Mid-draft work stays local.
 
 Page generation, segment kinds, and when a server host is warranted are in `curriculum/structure.md`. Shared buttons and quizzes stay in `js/app.js`.
 
