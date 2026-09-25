@@ -42,6 +42,19 @@ $env:GIT_CONFIG_KEY_1 = "http.extraheader"
 $env:GIT_CONFIG_VALUE_1 = "AUTHORIZATION: bearer $token"
 try {
   git push -u origin main
+  if ($LASTEXITCODE -ne 0) { throw "git push failed" }
 } finally {
   Remove-Item Env:GIT_CONFIG_COUNT, Env:GIT_CONFIG_KEY_0, Env:GIT_CONFIG_VALUE_0, Env:GIT_CONFIG_KEY_1, Env:GIT_CONFIG_VALUE_1 -ErrorAction SilentlyContinue
+}
+$body = '{"source":{"branch":"main","path":"/"}}'
+try {
+  Invoke-RestMethod -Method Post -Headers $headers -Uri "https://api.github.com/repos/ai-course-pages/ai-course-pages.github.io/pages" -Body $body -ContentType "application/json" | Out-Null
+  Write-Output "pages: enabled"
+} catch {
+  $status = $_.Exception.Response.StatusCode.value__
+  if ($status -eq 409) {
+    Write-Output "pages: already enabled"
+  } else {
+    Write-Output ("pages: not changed (" + $status + ")")
+  }
 }

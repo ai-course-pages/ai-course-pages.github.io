@@ -91,13 +91,24 @@
       <p>Prompt: "Define a token in one sentence."</p>
     </li>
     <li>
-      <p>Prompt: "Turn the note below into a table with columns id and rule. Keep every id. Do not add a row." Then a short note that already contains three ids and three rules.</p>
+      <p>Send this as one message. The source has to be in the message.</p>
+      <pre>Turn the note below into a table with columns id and rule. Keep every id. Do not add a row.
+
+U0.1 — A model reads a prompt and writes a reply.
+U0.2 — Input, hidden reasoning, and the reply are counted apart.
+U0.3 — Effort is a setting, not a different model.</pre>
     </li>
     <li>
-      <p>Prompt: two paragraphs that disagree. The first says "include the glossary." The second says "leave the glossary out." Ask for one list of terms. What should the model notice before it writes?</p>
+      <p>Send this as one message. What should the model notice before it writes?</p>
+      <pre>Include the glossary. Use the terms effort, token, and model.
+
+Leave the glossary out. Reply with one list of terms and no glossary section.
+
+Produce one list of terms.</pre>
     </li>
   </ol>
-  <p>Exercise 1 is the low case. Exercise 2 is the medium case. Exercise 3 is the high case. Extra High on exercise 1 spends reasoning tokens on a question that was already one clean step.</p>
+  <p>Exercise 1 is the low case. Exercise 2 is the medium case: the source is in the message, and the constraints are to keep every id and add no row. Exercise 3 is the high case: the message contains two instructions that disagree, and the useful work is noticing that before writing. Extra High on exercise 1 spends reasoning tokens on a question that was already one clean step.</p>
+  <p>A first draft of exercise 2 said "the note below" and did not include a note. The model answered by asking for the note. Raising effort does not supply a source that was left out of the message.</p>
 
   <h3>Check</h3>
   <p>Four choices each. This check is for a first reading. It locks nothing. If you already know the page, skip it.</p>
