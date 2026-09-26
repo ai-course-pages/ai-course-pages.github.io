@@ -21,6 +21,38 @@ body {
 
 a { color: var(--accent); }
 
+.site-nav { display: flex; flex-wrap: wrap; gap: 0.9rem; margin-top: 0.35rem; }
+.site-nav a { font-size: 0.95rem; }
+
+a.term {
+  color: inherit;
+  text-decoration: underline dotted;
+  text-underline-offset: 0.18em;
+  position: relative;
+}
+a.term .tip {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: calc(100% + 0.3rem);
+  z-index: 5;
+  width: max-content;
+  max-width: 18rem;
+  padding: 0.45rem 0.6rem;
+  background: var(--ink);
+  color: var(--paper);
+  font: 400 0.82rem/1.35 "Segoe UI", Georgia, serif;
+  text-decoration: none;
+  white-space: normal;
+}
+a.term:hover .tip,
+a.term:focus .tip,
+a.term:focus-within .tip { display: block; }
+
+.glossary-entry { scroll-margin-top: 1rem; border-top: 1px solid var(--line); margin-top: 0.9rem; padding-top: 0.7rem; }
+.glossary-entry h3 { margin: 0 0 0.3rem; font-size: 1.05rem; }
+.stub-note { color: var(--muted); }
+
 .wrap {
   max-width: 44rem;
   margin: 0 auto;
@@ -139,4 +171,5 @@ button.copy { margin: 0.5rem 0 0.15rem; font-size: 0.9rem; }
 @media (max-width: 640px) {
   .row-top, header.site { flex-direction: column; }
   .status { white-space: normal; }
+  a.term .tip { max-width: 14rem; }
 }

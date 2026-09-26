@@ -5,6 +5,8 @@ The live site is [https://ai-course-pages.github.io/](https://ai-course-pages.gi
 ## Live pages
 
 - [Outline](https://ai-course-pages.github.io/)
+- [Glossary](https://ai-course-pages.github.io/#/glossary)
+- [R.1](https://ai-course-pages.github.io/#/item/R.1) File types
 - [L1.C.1](https://ai-course-pages.github.io/#/item/L1.C.1) What AI means in this course
 - [U1.0](https://ai-course-pages.github.io/#/item/U1.0) Welcome
 - [U1.E.1](https://ai-course-pages.github.io/#/item/U1.E.1) Effort
@@ -65,7 +67,7 @@ Add a free dynamic host (Vercel hobby, or similar) only when a lesson needs a se
 6. A quiz at the bottom of a page is a first-reading check. It can be clicked through without learning, so an iteration does not wait on it. Suggested exercises in the working chat are what the next change follows.
 7. A page may sit in the middle of a strand. `curriculum/plan.md` records what a learner with little background would have met earlier. Those notes are not locks.
 
-Syllabus source is `curriculum/`. Regenerate the outline data after editing it:
+Syllabus source is `curriculum/`. The learner glossary is `curriculum/glossary.tsv`. `curriculum/terms.tsv` is the subject-language list, a separate file. Regenerate the outline and the glossary data after editing them:
 
 ```
 python tools/build_catalog.py

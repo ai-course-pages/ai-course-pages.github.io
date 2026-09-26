@@ -69,3 +69,4 @@ L1 and L2 are the artificial-intelligence subject. They are a separate strand. L
 - The bottom quiz has three or four choices. It is a first-reading check. An iteration does not wait on it.
 - Suggested exercises are what the next change follows.
 - If the reader already knows the page, they name what to learn or revisit.
+- A glossary-worthy word, where the page is teaching it, is a dotted link to `curriculum/glossary.tsv`. The check is `python tools/lint_glossary.py`. Add or stub new entries near the end of a session that introduced them. See `curriculum/structure.md`.

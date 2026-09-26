@@ -10,13 +10,25 @@ Generate pages from data when any of these becomes true:
 - The outline grows nests: section, then block, then segment, then optional steps.
 - A workshop or lab needs shared chrome (instructions, a code seed, a list of steps) that must change in one place.
 
-Until then, keep writing `content/{id}.html` and listing the segment in `curriculum/active.tsv`. The outline script `tools/build_catalog.py` stays the only generator.
+Until then, keep writing `content/{id}.html` and listing the segment in `curriculum/active.tsv`. The outline script `tools/build_catalog.py` stays the only generator. It also writes `js/glossary.js` from `curriculum/glossary.tsv`. That table is the learner glossary. `curriculum/terms.tsv` is the subject-language list and is not the glossary. Lesson HTML stays hand-written.
 
 Push `main` when a session hands off, when a section is coherent enough to leave, or when the work finished in a Grok Build session is fit to be the live site. A half-written segment stays local.
 
 The first generator can run at build time and still publish on GitHub Pages. It reads segment records and writes HTML. Quizzes and Copy buttons stay in `app.js`.
 
 Vercel, or any other app host, waits until a feature needs a server. The likely one is checking a learner's command or code. Checking whether a prompt "worked" against a model is not that feature. A turn cap, an effort setting, and a usage story stay human-checked.
+
+## Glossary
+
+The glossary page is shared, so one table feeds the page and the dotted words on lessons. Mark a word where a page is teaching it:
+
+```html
+<a class="term" data-term="yaml" href="/#/glossary/yaml" target="_blank" rel="noopener">YAML</a>
+```
+
+The short definition is the `brief` column. The link opens that entry in a new tab. Repeats of a word on the same page can stay plain. `python tools/lint_glossary.py` lists those repeats, and it fails if a mark names a missing entry or if the file-type list and its entries disagree.
+
+Extend the glossary near the end of a session that introduced words, where one pass is cheaper than defining each word in the middle of the edit. A session can also be asked to do that pass at the close. A thin entry is a stub: `stub` is `yes`, and the page says a fuller definition is expected later. File types are the group that links both ways. The entry `file-types` lists Markdown, JSON, YAML, and the others. Each of those lists `file-types` as what it is part of. The course page for the group is `R.1`. Lesson pages stay hand-written. Generating them from data waits for a second section, real nesting, or a workshop.
 
 ## Shape, beside a large public curriculum
 

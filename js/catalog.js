@@ -55,5 +55,8 @@ window.CATALOG = {
     { id: "U1.K.1", track: "concept", place: "mid", text: "Pack a repeated procedure as a SKILL.md, and find a skill the product wrote." },
     { id: "U1.K.2", track: "concept", place: "mid", text: "Once an internal skill is in view, add a few external ones that match repeated work." },
     { id: "U1.9", track: "concept", place: "close", text: "Mark this stage complete, practice on a real case, and choose what to do next." },
+  ],
+  reference: [
+    { id: "R.1", track: "reference", place: "reference", text: "What a file type is, with Markdown, JSON, YAML, plain text, zip, and a stub for Python." },
   ]
 };

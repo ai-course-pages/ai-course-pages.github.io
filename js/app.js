@@ -48,7 +48,7 @@
   }
 
   function itemById(id) {
-    var lists = [CATALOG.items, CATALOG.active || []];
+    var lists = [CATALOG.items, CATALOG.active || [], CATALOG.reference || []];
     for (var n = 0; n < lists.length; n++) {
       for (var i = 0; i < lists[n].length; i++) {
         if (lists[n][i].id === id) return lists[n][i];
@@ -73,9 +73,23 @@
 
   function parseRoute() {
     var hash = location.hash.replace(/^#/, "");
+    var glossary = /^\/glossary(?:\/([A-Za-z0-9-]+))?$/.exec(hash);
+    if (glossary) return { name: "glossary", id: glossary[1] || "" };
     var match = /^\/item\/([A-Za-z0-9.]+)$/.exec(hash);
     if (match) return { name: "item", id: match[1] };
     return { name: "home" };
+  }
+
+  function glossaryEntries() {
+    return (window.GLOSSARY && GLOSSARY.entries) || [];
+  }
+
+  function glossaryById(id) {
+    var list = glossaryEntries();
+    for (var i = 0; i < list.length; i++) {
+      if (list[i].id === id) return list[i];
+    }
+    return null;
   }
 
   function h(tag, className, text) {
@@ -89,15 +103,17 @@
     app.textContent = "";
     var route = parseRoute();
     if (route.name === "item") renderItem(route.id);
+    else if (route.name === "glossary") renderGlossary(route.id);
     else renderHome();
   }
 
   function renderHome() {
     var progress = loadProgress();
     var lede = h("p", "lede", "Every item is open. Trying one does not unlock or block another. A rewrite bumps the iteration, and tries from older iterations stay on the row without counting as current.");
-    var rule = h("p", "rule", "This section runs from the welcome, U1.0, through the close, U1.9. The working pages stay in the order effort, thread, caps, pacing, CLI handoff, web seed, compression or compaction, then two pages on skills. Prompts meant to forward have a Copy button. The quiz is a first-reading check. Skip it if you already know the page.");
+    var rule = h("p", "rule", "This section runs from the welcome, U1.0, through the close, U1.9. The working pages stay in the order effort, thread, caps, pacing, CLI handoff, web seed, compression or compaction, then two pages on skills. A dotted underline is a glossary word. Prompts meant to forward have a Copy button. The quiz is a first-reading check. Skip it if you already know the page.");
     app.appendChild(lede);
     app.appendChild(rule);
+    renderReference();
 
     var actions = h("div", "actions");
     actions.appendChild(button("I looked through the outline", function () { markTried("outline"); }, "primary"));
@@ -160,6 +176,7 @@
         return response.text();
       }).then(function (html) {
         slot.innerHTML = html;
+        bindTerms(slot);
         bindCopy(slot);
         bindQuiz(slot);
       }).catch(function () {
@@ -175,6 +192,137 @@
     actions.appendChild(button("Copy experience note", function () { copyNote(item.id); }));
     actions.appendChild(button("Reset tried marks", resetProgress));
     app.appendChild(actions);
+  }
+
+  function renderReference() {
+    app.appendChild(h("h2", null, "Reference"));
+    app.appendChild(h("p", "meta", "The glossary is for the whole course and is expected to grow. A dotted underline on a lesson shows a short definition. The link opens that entry in a new tab."));
+    var list = h("ol", "items");
+    list.appendChild(refRow("/#/glossary", "Glossary", "Words for the whole course. File types link to their own entries, and each of those links back."));
+    (CATALOG.reference || []).forEach(function (item) {
+      list.appendChild(refRow("/#/item/" + item.id, item.id, item.text));
+    });
+    app.appendChild(list);
+  }
+
+  function refRow(href, idText, blurb) {
+    var link = h("a", "row");
+    link.href = href;
+    var top = h("div", "row-top");
+    top.appendChild(h("span", "id", idText));
+    link.appendChild(top);
+    link.appendChild(h("span", null, blurb));
+    var li = h("li");
+    li.appendChild(link);
+    return li;
+  }
+
+  function renderGlossary(selectedId) {
+    var back = h("a", "back", "Back to the outline");
+    back.href = "/#/";
+    app.appendChild(back);
+    app.appendChild(h("h2", null, "Glossary"));
+    var note = h("p", "rule", "This glossary is under ongoing development. This page in particular is expected to undergo noticeable revision and expansion. A short definition also appears when you point at a dotted word on a lesson. That link opens the entry in a new tab, so the lesson stays put.");
+    app.appendChild(note);
+    var entries = glossaryEntries();
+    if (!entries.length) {
+      app.appendChild(h("p", null, "The glossary data is missing. js/glossary.js is generated from curriculum/glossary.tsv."));
+      return;
+    }
+    if (selectedId && !glossaryById(selectedId)) {
+      app.appendChild(h("p", "meta", "No glossary entry " + selectedId + "."));
+    }
+    var groups = [
+      ["using", "Using a model"],
+      ["files", "File types"],
+      ["subject", "The subject"]
+    ];
+    var index = h("div", "glossary-index");
+    groups.forEach(function (group) {
+      var inGroup = entries.filter(function (entry) { return entry.group === group[0]; });
+      inGroup.sort(function (a, b) { return a.term.localeCompare(b.term); });
+      if (!inGroup.length) return;
+      index.appendChild(h("h3", null, group[1]));
+      var links = h("p", "meta");
+      inGroup.forEach(function (entry, n) {
+        if (n) links.appendChild(document.createTextNode(" · "));
+        var link = h("a", null, entry.term);
+        link.href = "/#/glossary/" + entry.id;
+        links.appendChild(link);
+      });
+      index.appendChild(links);
+    });
+    app.appendChild(index);
+    groups.forEach(function (group) {
+      var inGroup = entries.filter(function (entry) { return entry.group === group[0]; });
+      inGroup.sort(function (a, b) { return a.term.localeCompare(b.term); });
+      if (!inGroup.length) return;
+      app.appendChild(h("h2", null, group[1]));
+      inGroup.forEach(function (entry) {
+        app.appendChild(glossaryArticle(entry));
+      });
+    });
+    if (selectedId) {
+      var target = document.getElementById(selectedId);
+      if (target && target.scrollIntoView) target.scrollIntoView();
+    }
+  }
+
+  function glossaryArticle(entry) {
+    var article = h("article", "glossary-entry");
+    article.id = entry.id;
+    var title = h("h3", null, entry.term);
+    if (entry.stub) title.appendChild(h("span", "meta", " · stub"));
+    article.appendChild(title);
+    article.appendChild(h("p", null, entry.brief));
+    if (entry.body) article.appendChild(h("p", null, entry.body));
+    if (entry.stub) {
+      article.appendChild(h("p", "stub-note", "This entry is intentionally a stub for now. A more encompassing definition is expected later."));
+    }
+    if (entry.see) {
+      var parent = glossaryById(entry.see);
+      var see = h("p", "meta");
+      see.appendChild(document.createTextNode("Part of "));
+      var seeLink = h("a", null, parent ? parent.term : entry.see);
+      seeLink.href = "/#/glossary/" + entry.see;
+      see.appendChild(seeLink);
+      see.appendChild(document.createTextNode("."));
+      article.appendChild(see);
+    }
+    if (entry.also && entry.also.length) {
+      var also = h("p", "meta");
+      also.appendChild(document.createTextNode(entry.id === "file-types" ? "File types in this list: " : "See also: "));
+      entry.also.forEach(function (id, n) {
+        if (n) also.appendChild(document.createTextNode(", "));
+        var other = glossaryById(id);
+        var link = h("a", null, other ? other.term : id);
+        link.href = "/#/glossary/" + id;
+        also.appendChild(link);
+      });
+      also.appendChild(document.createTextNode("."));
+      article.appendChild(also);
+    }
+    if (entry.page) {
+      var page = h("p", "meta");
+      page.appendChild(document.createTextNode("Course page: "));
+      var pageLink = h("a", null, entry.page);
+      pageLink.href = "/#/item/" + entry.page;
+      page.appendChild(pageLink);
+      page.appendChild(document.createTextNode("."));
+      article.appendChild(page);
+    }
+    return article;
+  }
+
+  function bindTerms(root) {
+    var nodes = root.querySelectorAll("a.term[data-term]");
+    Array.prototype.forEach.call(nodes, function (node) {
+      if (node.querySelector(".tip")) return;
+      var entry = glossaryById(node.getAttribute("data-term"));
+      if (!entry) return;
+      var tip = h("span", "tip", entry.brief + " Opens the glossary in a new tab.");
+      node.appendChild(tip);
+    });
   }
 
   function rowFor(item, progress) {

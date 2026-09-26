@@ -12,4 +12,4 @@ Task: The using-models section U1 runs U1.0 welcome, U1.E.1 effort, U1.B.1 one-o
 Do not assume any chat history before this message. Read those paths first.
 ```
 
-This publish revises U1.S.3 so the product compresses or compacts on its own, and it pairs U1.K.1 with U1.K.2 on where an internal skill can be found. Local `main` matches `origin/main` after that push.
+The learner glossary is `curriculum/glossary.tsv`, rendered at `#/glossary`. File types are the page `R.1`. `python tools/lint_glossary.py` lists unmarked occurrences. Extend the glossary near the end of a session that introduces words. `curriculum/terms.tsv` is the subject-language list, not the glossary.
