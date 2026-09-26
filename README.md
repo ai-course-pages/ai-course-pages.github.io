@@ -13,7 +13,7 @@ The live site is [https://ai-course-pages.github.io/](https://ai-course-pages.gi
 - [U1.B.3](https://ai-course-pages.github.io/#/item/U1.B.3) How to pace one window
 - [U1.S.1](https://ai-course-pages.github.io/#/item/U1.S.1) When a coding session should end
 - [U1.S.2](https://ai-course-pages.github.io/#/item/U1.S.2) Export a web thread into a seed
-- [U1.S.3](https://ai-course-pages.github.io/#/item/U1.S.3) Compress a thread you are staying in
+- [U1.S.3](https://ai-course-pages.github.io/#/item/U1.S.3) Compress or compact a thread you are staying in
 - [U1.K.1](https://ai-course-pages.github.io/#/item/U1.K.1) Pack a skill you will use again
 - [U1.K.2](https://ai-course-pages.github.io/#/item/U1.K.2) A few skills, and the ones already there
 - [U1.9](https://ai-course-pages.github.io/#/item/U1.9) Close
