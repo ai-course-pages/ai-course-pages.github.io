@@ -34,7 +34,7 @@ Push `main` live at a handoff to a new session, and when a section is coherent e
 
 Page generation, segment kinds, and when a server host is warranted are in `curriculum/structure.md`. Shared buttons and quizzes stay in `js/app.js`.
 
-Do not push this repo to GitHub until one strand is a coherent run of several segments and a review says it is ready. Local pages can still be added.
+U1 is that coherent run, and it is already on `main`. A later page can still be drafted locally. It goes live with the next handoff, when its section is coherent enough to leave, or when the session that finished it decides the work is fit to publish.
 
 ## Earlier holes, for a learner with little background
 

@@ -12,4 +12,4 @@ Task: The using-models section U1 is paused in a coherent state for this stage. 
 Do not assume any chat history before this message. Read those paths first.
 ```
 
-Local `main` is ahead of `origin/main`. The last push did not include the welcome, the close, the pacing page, the session pages, or this note.
+Local `main` matches `origin/main`. That publish already includes the welcome, the close, the pacing page, the session pages, and this note. Nothing further is waiting for this pause.
