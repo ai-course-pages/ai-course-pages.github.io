@@ -1,0 +1,62 @@
+<article class="lesson">
+  <h2>Pack a skill you will use again</h2>
+  <p>A skill is a procedure written so a later chat can follow it without the transcript that produced it. A seed, from <a href="/#/item/U1.S.2">U1.S.2</a>, carries one job's decisions. A compression, from <a href="/#/item/U1.S.3">U1.S.3</a>, shortens the thread you are in. A skill carries a way of working you expect to repeat.</p>
+
+  <h3>If these words are new</h3>
+  <p class="earlier">You can take this page once you can leave a chat with a short seed. The packing format below is the part that is new.</p>
+
+  <h3>SKILL.md</h3>
+  <p>The file many products know how to ingest is named <code>SKILL.md</code>. In the smallest case that file is the whole skill. The product reads it, and the procedure is available. Some contexts are built around that single file.</p>
+  <p>A skill can also arrive as a bundle. Beside <code>SKILL.md</code>, or in subfolders, you may find a short frontmatter block, often YAML. The block may be general, or it may be aimed at one model or one environment. You may also find reference notes, such as a README, other Markdown or plain-text files, and sometimes helper scripts. The bundle may be that folder, or a zip of it. Read <code>SKILL.md</code> first. Open a companion when the task needs a detail that was kept out of the standing rules.</p>
+
+  <h3>When it applies</h3>
+  <p>A skill should say when to use it and when not to, or it should name a trigger. That line keeps the procedure on the work it was written for. Without it, the skill can attach to a nearby task, and the chat spends tokens on the wrong steps.</p>
+
+  <h3>Keep the standing rules short</h3>
+  <p>Put the rules you want on every use in the short file. Put a long reference in a companion: a small frontmatter block when the extra facts are short, or a separate note when they are a page. The companion is read when the task needs it. A skill that pastes the whole reference into every turn spends like a thread that resends its dead ends.</p>
+  <p>Prefer that split when you have the choice. A short standing file plus a companion you can open is easier to carry to another product than one long file that assumes last year's chat window.</p>
+  <p>A product may notice a repeated procedure and suggest saving it as a skill. Treat that as a hint. Save it when you expect the procedure again. Leave it when the thread was a one-off.</p>
+
+  <h3>Suggested exercise</h3>
+  <p>After a procedure you would want again, paste this. You are asking for a draft you can read.</p>
+  <pre class="prompt">Turn the procedure we just used into a skill I can reuse in a later chat.
+
+Write one SKILL.md. Include when to use it and when not to.
+Keep the standing rules short. If a detail is long, name it as a companion note instead of pasting it into the standing rules.
+Do not invent a second skill for the same job.</pre>
+  <p>The next page, <a href="/#/item/U1.K.2">U1.K.2</a>, is about skills already inside the product, and how many external ones are worth adding.</p>
+
+  <h3>Check</h3>
+  <p>Four choices each. Skip this if you already know the page.</p>
+  <form class="quiz">
+    <fieldset data-answer="b">
+      <legend>1. SKILL.md is which of these?</legend>
+      <label><input type="radio" name="q1" value="a"> The weekly usage meter</label>
+      <label><input type="radio" name="q1" value="b"> The usual file a product ingests as a skill</label>
+      <label><input type="radio" name="q1" value="c"> A full transcript</label>
+      <label><input type="radio" name="q1" value="d"> A turn cap</label>
+    </fieldset>
+    <fieldset data-answer="a">
+      <legend>2. Besides that file, a bundle might include which of these?</legend>
+      <label><input type="radio" name="q2" value="a"> Frontmatter, reference notes, or helper scripts, beside the file or in subfolders, sometimes packed as a zip</label>
+      <label><input type="radio" name="q2" value="b"> A different model, swapped in by the file name</label>
+      <label><input type="radio" name="q2" value="c"> The entire old thread, required on every turn</label>
+      <label><input type="radio" name="q2" value="d"> The weekly reset time</label>
+    </fieldset>
+    <fieldset data-answer="c">
+      <legend>3. Why say when to use the skill and when not to?</legend>
+      <label><input type="radio" name="q3" value="a"> So effort becomes Extra High</label>
+      <label><input type="radio" name="q3" value="b"> So the weekly clock resets</label>
+      <label><input type="radio" name="q3" value="c"> So the procedure stays on the work it was written for</label>
+      <label><input type="radio" name="q3" value="d"> So the file can be empty</label>
+    </fieldset>
+    <fieldset data-answer="d">
+      <legend>4. Where should a long reference live?</legend>
+      <label><input type="radio" name="q4" value="a"> Pasted into the standing rules on every turn</label>
+      <label><input type="radio" name="q4" value="b"> In the usage meter</label>
+      <label><input type="radio" name="q4" value="c"> Nowhere. A skill is only allowed to be one line</label>
+      <label><input type="radio" name="q4" value="d"> In a companion, read when the task needs it</label>
+    </fieldset>
+    <button type="submit">Check answers</button>
+  </form>
+</article>

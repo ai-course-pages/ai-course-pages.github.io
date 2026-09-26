@@ -95,7 +95,7 @@
   function renderHome() {
     var progress = loadProgress();
     var lede = h("p", "lede", "Every item is open. Trying one does not unlock or block another. A rewrite bumps the iteration, and tries from older iterations stay on the row without counting as current.");
-    var rule = h("p", "rule", "This section runs from the welcome, U1.0, through the close, U1.9. The working pages stay in the order effort, thread, caps, pacing, then the two handoffs. Prompts meant to forward have a Copy button. The quiz is a first-reading check. Skip it if you already know the page.");
+    var rule = h("p", "rule", "This section runs from the welcome, U1.0, through the close, U1.9. The working pages stay in the order effort, thread, caps, pacing, CLI handoff, web seed, compression, then two pages on skills. Prompts meant to forward have a Copy button. The quiz is a first-reading check. Skip it if you already know the page.");
     app.appendChild(lede);
     app.appendChild(rule);
 
@@ -134,7 +134,7 @@
   function renderItem(id) {
     var item = itemById(id);
     var back = h("a", "back", "Back to the outline");
-    back.href = "#/";
+    back.href = "/#/";
     app.appendChild(back);
     if (!item) {
       app.appendChild(h("h2", null, "No item " + id));
@@ -180,7 +180,7 @@
   function rowFor(item, progress) {
     var status = statusOf(item.id, progress);
     var link = h("a", "row");
-    link.href = "#/item/" + item.id;
+    link.href = "/#/item/" + item.id;
     var top = h("div", "row-top");
     top.appendChild(h("span", "id", item.id + " · " + item.track));
     var badge = h("span", "status " + status.kind, isPublished(item.id) ? "lesson is up · " + status.label : status.label);

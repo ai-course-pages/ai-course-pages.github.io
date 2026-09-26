@@ -1,6 +1,24 @@
 # Artificial Intelligence course pages
 
-Local course for [ai-course-pages/ai-course-pages.github.io](https://github.com/ai-course-pages/ai-course-pages.github.io). The public site will be `https://ai-course-pages.github.io/`.
+The live site is [https://ai-course-pages.github.io/](https://ai-course-pages.github.io/). Each link opens that page there.
+
+## Live pages
+
+- [Outline](https://ai-course-pages.github.io/)
+- [L1.C.1](https://ai-course-pages.github.io/#/item/L1.C.1) What AI means in this course
+- [U1.0](https://ai-course-pages.github.io/#/item/U1.0) Welcome
+- [U1.E.1](https://ai-course-pages.github.io/#/item/U1.E.1) Effort
+- [U1.B.1](https://ai-course-pages.github.io/#/item/U1.B.1) One message, or the same thread
+- [U1.B.2](https://ai-course-pages.github.io/#/item/U1.B.2) The clocks on a budget
+- [U1.B.3](https://ai-course-pages.github.io/#/item/U1.B.3) How to pace one window
+- [U1.S.1](https://ai-course-pages.github.io/#/item/U1.S.1) When a coding session should end
+- [U1.S.2](https://ai-course-pages.github.io/#/item/U1.S.2) Export a web thread into a seed
+- [U1.S.3](https://ai-course-pages.github.io/#/item/U1.S.3) Compress a thread you are staying in
+- [U1.K.1](https://ai-course-pages.github.io/#/item/U1.K.1) Pack a skill you will use again
+- [U1.K.2](https://ai-course-pages.github.io/#/item/U1.K.2) A few skills, and the ones already there
+- [U1.9](https://ai-course-pages.github.io/#/item/U1.9) Close
+
+Work on the course from the repo [ai-course-pages/ai-course-pages.github.io](https://github.com/ai-course-pages/ai-course-pages.github.io).
 
 This machine's `gh` login is `MarkusIsaksson1982`. Leave that login alone. Pushes to the course repo use a separate token.
 
@@ -67,4 +85,4 @@ From this folder:
 python -m http.server 8765
 ```
 
-Open `http://127.0.0.1:8765/#/item/U1.B.1`. That is the page under test. `U1.B.2` is the companion. The outline is the page without the hash. Prompts to forward have a Copy button. The quiz can be skipped when the page is already familiar.
+Open `http://127.0.0.1:8765/#/item/U1.S.3`. That is the page under test. `U1.K.1` and `U1.K.2` follow it. The outline is the page without the hash. Prompts to forward have a Copy button. The quiz can be skipped when the page is already familiar.

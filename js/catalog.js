@@ -49,8 +49,11 @@ window.CATALOG = {
     { id: "U1.B.1", track: "concept", place: "mid", text: "See how a one-off message and a continued thread spend input tokens differently." },
     { id: "U1.B.2", track: "concept", place: "mid", text: "Read the clocks on a usage cap, and when a free model should come before a paid high-effort run." },
     { id: "U1.B.3", track: "concept", place: "mid", text: "Pace a usage window: spend it down before reset, or spread it and repair the later days." },
-    { id: "U1.S.1", track: "concept", place: "mid", text: "Decide the scope of a CLI coding session, and what to pass when opening a new one." },
+    { id: "U1.S.1", track: "concept", place: "mid", text: "Decide the scope of a CLI coding session, including which folder it may use, and what to pass when opening a new one." },
     { id: "U1.S.2", track: "concept", place: "mid", text: "Export a web thread into a seeding prompt, a file, or both, and open the next thread with See: and the file name." },
+    { id: "U1.S.3", track: "concept", place: "mid", text: "Compress a thread you are staying in, so later turns resend the decisions and the open task." },
+    { id: "U1.K.1", track: "concept", place: "mid", text: "Pack a repeated procedure as a SKILL.md, with when it applies and short standing rules." },
+    { id: "U1.K.2", track: "concept", place: "mid", text: "Prefer skills already loaded, and add a few external ones that match repeated work." },
     { id: "U1.9", track: "concept", place: "close", text: "Mark this stage complete, practice on a real case, and choose what to do next." },
   ]
 };

@@ -29,7 +29,7 @@ Kinds we can use, and what we use now:
 | Kind | What it is | Now |
 | --- | --- | --- |
 | theory | Essay, with a short quiz at the bottom | U1 working pages |
-| review | A reading summary of one block. No new task | Not separate. U1.9 names the skills |
+| review | A reading summary of one block. No new task | Not separate. U1.9 names what this stage covers |
 | quiz | A longer check, on the order of 10 or 20 questions, with no lesson around it | Not built. One per section, later, still in the browser |
 | workshop | Steps that fill in a seed and could be checked | Not now |
 | lab | A task with stories and described checks | Not now. Prompt practice stays a human exercise |

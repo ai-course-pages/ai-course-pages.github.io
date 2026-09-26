@@ -11,11 +11,14 @@ The course is filled in around whatever page is active. Pages may land in the mi
 | U1.B.1 | using models | middle, after E.1 | One-off requests versus continuing a thread |
 | U1.B.2 | using models | middle, after B.1 | Cap clocks (hours, next day, week, month), web chat versus coding CLI, free before paid high effort |
 | U1.B.3 | using models | middle, after B.2 | Pace one window: spend down before reset, or about 1/7 per day and repair the rest |
-| U1.S.1 | using models | middle, after B.3 | Turn caps, when to open a new CLI session, and which paths to pass across |
+| U1.S.1 | using models | middle, after B.3 | Turn caps, when to open a new CLI session, which folder that session may use, and which paths to pass across |
 | U1.S.2 | using models | middle, after S.1 | Export a web thread into a seed prompt and/or a file. Open the next thread with See: and the file name |
+| U1.S.3 | using models | middle, after S.2 | Compress a thread you are staying in. Keep decisions and the open task. The product may offer this under its own name |
+| U1.K.1 | using models | middle, after S.3 | Pack a repeated procedure as SKILL.md. Say when it applies. Keep standing rules short. Companion files may be included |
+| U1.K.2 | using models | middle, after K.1 | Internal skills versus a few external ones. A dual setup spends twice and can disagree. A portable skill can be a better import than an old same-family one |
 | U1.9 | using models | close | Completion for this stage, practice on a real case, lead toward the subject strand or a pause |
 
-The middle order stays: effort, one-off versus thread, clocks, pacing, CLI handoff, web seed. No further working pages are needed to make this section hold together at this stage.
+The middle order stays: effort, one-off versus thread, clocks, pacing, CLI handoff, web seed, compression, packing a skill, then whose skill to load. Folder grants stay on S.1. They are the scope of a CLI session, not a desktop permission tour.
 
 ## Preliminary course around this section
 
@@ -51,6 +54,9 @@ Markus can skip a hole he already has.
 | id | would add |
 | --- | --- |
 | U1.B.4 | A short, dated note for one product's current quotas, only when someone hits a real pause and pastes the message. |
+| later | A dated comparison of which products share one skill-file standard. K.2 states the direction and stops. |
+| later | A page for folder prompts in a desktop app. S.1 covers the CLI grant. |
+| later | A workshop that assembles a skill bundle. K.1 names companions, frontmatter, scripts, and zip packing, and stops. |
 
 ## Subject outline
 

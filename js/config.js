@@ -3,7 +3,7 @@ window.SITE = {
   courseId: "ARTI",
   title: "Artificial Intelligence",
   githubUser: "ai-course-pages",
-  iteration: 1,
-  published: ["L1.C.1", "U1.0", "U1.E.1", "U1.B.1", "U1.B.2", "U1.B.3", "U1.S.1", "U1.S.2", "U1.9"],
+  iteration: 2,
+  published: ["L1.C.1", "U1.0", "U1.E.1", "U1.B.1", "U1.B.2", "U1.B.3", "U1.S.1", "U1.S.2", "U1.S.3", "U1.K.1", "U1.K.2", "U1.9"],
   host: "github-pages"
 };
