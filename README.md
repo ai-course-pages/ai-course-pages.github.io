@@ -6,7 +6,11 @@ The live site is [https://ai-course-pages.github.io/](https://ai-course-pages.gi
 
 - [Outline](https://ai-course-pages.github.io/)
 - [Glossary](https://ai-course-pages.github.io/#/glossary)
+- [Tools and models](https://ai-course-pages.github.io/#/tools)
 - [R.1](https://ai-course-pages.github.io/#/item/R.1) File types
+- [X.1](https://ai-course-pages.github.io/#/item/X.1) Web models
+- [X.2](https://ai-course-pages.github.io/#/item/X.2) Desktop UI
+- [X.3](https://ai-course-pages.github.io/#/item/X.3) CLI harnesses
 - [L1.C.1](https://ai-course-pages.github.io/#/item/L1.C.1) What AI means in this course
 - [U1.0](https://ai-course-pages.github.io/#/item/U1.0) Welcome
 - [U1.E.1](https://ai-course-pages.github.io/#/item/U1.E.1) Effort

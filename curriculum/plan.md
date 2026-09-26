@@ -57,6 +57,7 @@ Markus can skip a hole he already has.
 | later | A dated comparison of which products share one skill-file standard. K.2 states the direction and stops. |
 | later | A page for folder prompts in a desktop app. S.1 covers the CLI grant. |
 | later | A workshop that assembles a skill bundle. K.1 names companions, frontmatter, scripts, and zip packing, and stops. |
+| later | A page for more specialized AI tools. Further models may be a subsection of that page (other models, specialized tools, and a possible later split) or a page of their own. The tools landing names the choice and does not build it. |
 
 ## Subject outline
 

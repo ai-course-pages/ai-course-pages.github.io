@@ -30,6 +30,10 @@ The short definition is the `brief` column. The link opens that entry in a new t
 
 Extend the glossary near the end of a session that introduced words, where one pass is cheaper than defining each word in the middle of the edit. A session can also be asked to do that pass at the close. A thin entry is a stub: `stub` is `yes`, and the page says a fuller definition is expected later. File types are the group that links both ways. The entry `file-types` lists Markdown, JSON, YAML, and the others. Each of those lists `file-types` as what it is part of. The course page for the group is `R.1`. Lesson pages stay hand-written. Generating them from data waits for a second section, real nesting, or a workshop.
 
+## Freshness marks
+
+`curriculum/freshness.tsv` stores `added` and `updated` as calendar dates. The outline compares them with the browser's local date. `js/config.js` holds `updatedDays` (1) and `newDays` (7). A listing is new while that many dates have passed, counting today as 0. It is updated when the update date is later than the added date and still inside the update window. While both are true, the row shows both marks. The same-day first publish shows only new. Change the two numbers in config to retune the windows. Record a new date in the tsv when a page's text changes, or when a listing is added.
+
 ## Shape, beside a large public curriculum
 
 A useful scale reference is six teaching sections plus a final examination of the whole curriculum. This course does not open six empty sections to match that count. A section is added when its topic is real.

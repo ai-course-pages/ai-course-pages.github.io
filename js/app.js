@@ -48,7 +48,7 @@
   }
 
   function itemById(id) {
-    var lists = [CATALOG.items, CATALOG.active || [], CATALOG.reference || []];
+    var lists = [CATALOG.items, CATALOG.active || [], CATALOG.reference || [], CATALOG.tools || []];
     for (var n = 0; n < lists.length; n++) {
       for (var i = 0; i < lists[n].length; i++) {
         if (lists[n][i].id === id) return lists[n][i];
@@ -75,6 +75,7 @@
     var hash = location.hash.replace(/^#/, "");
     var glossary = /^\/glossary(?:\/([A-Za-z0-9-]+))?$/.exec(hash);
     if (glossary) return { name: "glossary", id: glossary[1] || "" };
+    if (hash === "/tools") return { name: "tools", id: "" };
     var match = /^\/item\/([A-Za-z0-9.]+)$/.exec(hash);
     if (match) return { name: "item", id: match[1] };
     return { name: "home" };
@@ -104,6 +105,7 @@
     var route = parseRoute();
     if (route.name === "item") renderItem(route.id);
     else if (route.name === "glossary") renderGlossary(route.id);
+    else if (route.name === "tools") renderTools();
     else renderHome();
   }
 
@@ -113,7 +115,6 @@
     var rule = h("p", "rule", "This section runs from the welcome, U1.0, through the close, U1.9. The working pages stay in the order effort, thread, caps, pacing, CLI handoff, web seed, compression or compaction, then two pages on skills. A dotted underline is a glossary word. Prompts meant to forward have a Copy button. The quiz is a first-reading check. Skip it if you already know the page.");
     app.appendChild(lede);
     app.appendChild(rule);
-    renderReference();
 
     var actions = h("div", "actions");
     actions.appendChild(button("I looked through the outline", function () { markTried("outline"); }, "primary"));
@@ -132,6 +133,8 @@
       });
       app.appendChild(activeList);
     }
+
+    renderReference();
 
     CATALOG.levels.forEach(function (level) {
       var title = level.title + " · " + level.points + " points · " + level.code;
@@ -158,7 +161,10 @@
     }
     var progress = loadProgress();
     var status = statusOf(item.id, progress);
-    app.appendChild(h("h2", null, item.id));
+    var heading = h("h2", null, item.id);
+    var itemMarks = freshnessMarks(item.id);
+    if (itemMarks) heading.appendChild(itemMarks);
+    app.appendChild(heading);
     app.appendChild(h("p", "item-body", item.text));
     var metaBits = "Track: " + (item.track || "concept") + ".";
     if (item.place) metaBits += " Place: " + item.place + ".";
@@ -194,22 +200,60 @@
     app.appendChild(actions);
   }
 
+  function daysPassed(iso) {
+    if (!iso) return null;
+    var parts = iso.split("-");
+    if (parts.length !== 3) return null;
+    var then = Date.UTC(+parts[0], +parts[1] - 1, +parts[2]) / 86400000;
+    var now = new Date();
+    var today = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()) / 86400000;
+    return today - then;
+  }
+
+  function freshnessOf(id) {
+    var row = (CATALOG.freshness || {})[id];
+    if (!row) return [];
+    var limits = SITE.freshness || { updatedDays: 1, newDays: 7, whileNew: "both" };
+    var sinceAdded = daysPassed(row.added);
+    var sinceUpdated = daysPassed(row.updated);
+    var marks = [];
+    var isNew = sinceAdded !== null && sinceAdded >= 0 && sinceAdded <= limits.newDays;
+    var isUpdated = sinceUpdated !== null && sinceUpdated >= 0 && sinceUpdated <= limits.updatedDays && row.updated !== row.added;
+    if (isNew) marks.push("new");
+    if (isUpdated && (limits.whileNew === "both" || !isNew)) marks.push("updated");
+    return marks;
+  }
+
+  function freshnessMarks(id) {
+    var kinds = freshnessOf(id);
+    if (!kinds.length) return null;
+    var wrap = h("span", "marks");
+    kinds.forEach(function (kind) {
+      wrap.appendChild(h("span", "mark " + kind, kind));
+    });
+    return wrap;
+  }
+
   function renderReference() {
     app.appendChild(h("h2", null, "Reference"));
-    app.appendChild(h("p", "meta", "The glossary is for the whole course and is expected to grow. A dotted underline on a lesson shows a short definition. The link opens that entry in a new tab."));
+    app.appendChild(h("p", "meta", "The glossary is for the whole course and is expected to grow. A dotted underline on a lesson shows a short definition. The link opens that entry in a new tab. New means the listing is still inside its first 7 days. Updated means a later edit within 1 day. A page can show both."));
     var list = h("ol", "items");
-    list.appendChild(refRow("/#/glossary", "Glossary", "Words for the whole course. File types link to their own entries, and each of those links back."));
+    list.appendChild(refRow("/#/glossary", "glossary", "Glossary", "Words for the whole course. File types link to their own entries, and each of those links back."));
+    list.appendChild(refRow("/#/tools", "tools", "Tools and models", "A section landing for web chats, desktop apps, and terminal CLIs. The three pages are tabulated there."));
     (CATALOG.reference || []).forEach(function (item) {
-      list.appendChild(refRow("/#/item/" + item.id, item.id, item.text));
+      list.appendChild(refRow("/#/item/" + item.id, item.id, item.id, item.text));
     });
     app.appendChild(list);
   }
 
-  function refRow(href, idText, blurb) {
+  function refRow(href, freshId, idText, blurb) {
     var link = h("a", "row");
     link.href = href;
     var top = h("div", "row-top");
-    top.appendChild(h("span", "id", idText));
+    var label = h("span", "id", idText);
+    var marks = freshnessMarks(freshId);
+    if (marks) label.appendChild(marks);
+    top.appendChild(label);
     link.appendChild(top);
     link.appendChild(h("span", null, blurb));
     var li = h("li");
@@ -217,11 +261,52 @@
     return li;
   }
 
+  function renderTools() {
+    var back = h("a", "back", "Back to the outline");
+    back.href = "/#/";
+    app.appendChild(back);
+    var title = h("h2", null, "Tools and models");
+    var marks = freshnessMarks("tools");
+    if (marks) title.appendChild(marks);
+    app.appendChild(title);
+    var intro = h("p", null, "");
+    intro.appendChild(document.createTextNode("This is a section landing for "));
+    var harness = h("a", "term", "harnesses");
+    harness.setAttribute("data-term", "harness");
+    harness.href = "/#/glossary/harness";
+    harness.target = "_blank";
+    harness.rel = "noopener";
+    intro.appendChild(harness);
+    intro.appendChild(document.createTextNode(": the program you use to work with a model. It is not the course outline. The groups below are the three lists. Each row opens that page."));
+    app.appendChild(intro);
+    bindTerms(intro);
+    var groups = [
+      ["web", "Web models"],
+      ["desktop", "Desktop UI"],
+      ["cli", "CLI"]
+    ];
+    groups.forEach(function (group) {
+      var rows = (CATALOG.tools || []).filter(function (item) { return item.group === group[0]; });
+      if (!rows.length) return;
+      app.appendChild(h("h3", null, group[1]));
+      var list = h("ol", "items");
+      rows.forEach(function (item) {
+        list.appendChild(refRow("/#/item/" + item.id, item.id, item.id + " · " + item.title, item.text));
+      });
+      app.appendChild(list);
+    });
+    app.appendChild(h("h3", null, "Not decided yet"));
+    app.appendChild(h("p", null, "A further page for more specialized tools is planned. Further models may become a part of that page, under other models and specialized tools, or they may get a page of their own. A collection page could split them again later. None of those pages exist yet."));
+  }
+
   function renderGlossary(selectedId) {
     var back = h("a", "back", "Back to the outline");
     back.href = "/#/";
     app.appendChild(back);
-    app.appendChild(h("h2", null, "Glossary"));
+    var glossTitle = h("h2", null, "Glossary");
+    var glossMarks = freshnessMarks("glossary");
+    if (glossMarks) glossTitle.appendChild(glossMarks);
+    app.appendChild(glossTitle);
     var note = h("p", "rule", "This glossary is under ongoing development. This page in particular is expected to undergo noticeable revision and expansion. A short definition also appears when you point at a dotted word on a lesson. That link opens the entry in a new tab, so the lesson stays put.");
     app.appendChild(note);
     var entries = glossaryEntries();
@@ -330,7 +415,10 @@
     var link = h("a", "row");
     link.href = "/#/item/" + item.id;
     var top = h("div", "row-top");
-    top.appendChild(h("span", "id", item.id + " · " + item.track));
+    var label = h("span", "id", item.id + " · " + item.track);
+    var marks = freshnessMarks(item.id);
+    if (marks) label.appendChild(marks);
+    top.appendChild(label);
     var badge = h("span", "status " + status.kind, isPublished(item.id) ? "lesson is up · " + status.label : status.label);
     top.appendChild(badge);
     link.appendChild(top);

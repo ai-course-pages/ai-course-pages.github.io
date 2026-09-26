@@ -120,6 +120,17 @@ ol.items a.row:hover { border-color: var(--accent); }
 .status { font-size: 0.85rem; color: var(--muted); white-space: nowrap; }
 .status.tried { color: var(--tried); }
 .status.stale { color: var(--stale); }
+.marks { display: inline-flex; gap: 0.3rem; margin-left: 0.45rem; vertical-align: middle; }
+.mark {
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  padding: 0 0.4rem;
+}
+.mark.new { color: var(--accent); }
+.mark.updated { color: var(--stale); }
 
 button, .back {
   font: inherit;

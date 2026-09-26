@@ -58,5 +58,30 @@ window.CATALOG = {
   ],
   reference: [
     { id: "R.1", track: "reference", place: "reference", text: "What a file type is, with Markdown, JSON, YAML, plain text, zip, and a stub for Python." },
-  ]
+  ],
+  tools: [
+    { id: "X.1", group: "web", title: "Web models", track: "reference", place: "web", text: "Grok, ChatGPT, Claude, and Gemini as multi-purpose web chats." },
+    { id: "X.2", group: "desktop", title: "Desktop UI", track: "reference", place: "desktop", text: "Grok Bot, the ChatGPT and Claude desktop apps, and Google Antigravity." },
+    { id: "X.3", group: "cli", title: "CLI", track: "reference", place: "cli", text: "Grok Build, Codex, Claude Code, and OpenCode." },
+  ],
+  freshness: {
+    "L1.C.1": { added: "2026-09-25", updated: "2026-09-26" },
+    "R.1": { added: "2026-09-26", updated: "2026-09-26" },
+    "U1.0": { added: "2026-09-25", updated: "2026-09-26" },
+    "U1.9": { added: "2026-09-25", updated: "2026-09-26" },
+    "U1.B.1": { added: "2026-09-25", updated: "2026-09-26" },
+    "U1.B.2": { added: "2026-09-25", updated: "2026-09-26" },
+    "U1.B.3": { added: "2026-09-25", updated: "2026-09-26" },
+    "U1.E.1": { added: "2026-09-25", updated: "2026-09-26" },
+    "U1.K.1": { added: "2026-09-26", updated: "2026-09-26" },
+    "U1.K.2": { added: "2026-09-26", updated: "2026-09-26" },
+    "U1.S.1": { added: "2026-09-25", updated: "2026-09-26" },
+    "U1.S.2": { added: "2026-09-25", updated: "2026-09-26" },
+    "U1.S.3": { added: "2026-09-26", updated: "2026-09-26" },
+    "glossary": { added: "2026-09-26", updated: "2026-09-26" },
+    "tools": { added: "2026-09-26", updated: "2026-09-26" },
+    "X.1": { added: "2026-09-26", updated: "2026-09-26" },
+    "X.2": { added: "2026-09-26", updated: "2026-09-26" },
+    "X.3": { added: "2026-09-26", updated: "2026-09-26" },
+  }
 };
