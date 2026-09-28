@@ -54,7 +54,7 @@ The dogfood entry for data selection, for one decision tree, and for the problem
 | U1.S.1, U1.S.2 | Plugin | A problem-solving page may point here when the learner is leaving a coding session or a web thread. |
 | U1.S.3 | Plugin | Compression is a product habit. `L2.D.5` is a subject point about explaining a result from the data. They link across. They stay different pages. |
 | U1.K.1, U1.K.2 | Plugin | Packing a skill stays in the plugin. File types stay in Reference. |
-| `R.1`, `R.2`, glossary, X.1–X.3 | Reference | Used from either course and from the plugin. `R.2` is the methods stub. |
+| `R.1`, `R.2`, `R.3`, glossary, X.1–X.3 | Reference | Used from either course and from the plugin. `R.2` is the methods stub. `R.3` collects the HTML, JavaScript, and Python orientations. |
 | L1.C.1 | Start of ARTI1000X | The next page to deepen, then leave as one segment. |
 
 The earlier holes U0.1, U0.2, and U0.3 fold into this map. The mainstream sentences live on `L1.C.4.4`. The operational versions stay on U1.E.1 and U1.B.1. A separate opening course is not added for them.

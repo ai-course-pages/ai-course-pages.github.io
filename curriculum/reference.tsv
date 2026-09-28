@@ -1,3 +1,7 @@
 id	track	place	text
 R.1	reference	reference	What a file type is, with Markdown, JSON, YAML, plain text, zip, and a stub for Python.
 R.2	reference	reference	A stub for methods and algorithms. The first entry is how this course chooses its data and whether a piece becomes a stub, a table, or a static page.
+R.3	reference	reference	A parent for HTML, JavaScript, and Python. Each subpage starts a minimal introduction and ends with outward links.
+R.3.1	reference	reference	HTML. The first step is written. The rest of the mini introduction is an outline.
+R.3.2	reference	reference	JavaScript. The first step is written. The rest of the mini introduction is an outline.
+R.3.3	reference	reference	Python. The first step is written. The rest of the mini introduction is an outline.

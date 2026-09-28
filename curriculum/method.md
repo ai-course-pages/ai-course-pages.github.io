@@ -54,3 +54,12 @@ A lesson opens that link in a new tab when `R.2` actually summarizes the subset 
 ```
 
 The uses in `L1.C.4` are not that subset yet. They stay on the waiting list until those pages exist.
+
+## Applied when the language pages were added
+
+| Piece | Easy to say | Shared frame | Result | Where it went |
+| --- | --- | --- | --- | --- |
+| The languages parent | yes | no | static in role, drawn with the children so the list cannot drift | `content/R.3.html` |
+| HTML, JavaScript, and Python orientations | yes | yes | table, and the lesson bodies are generated because the frame repeats | `curriculum/languages.tsv` |
+
+A lesson that only mentions a language keeps one sentence and opens `R.3.1`, `R.3.2`, or `R.3.3` in a new tab. `R.1`, `R.2`, and `U1.K.1` do that. The mini introduction itself stays on the language page: a first step, an outline of the rest, then Wikipedia and freeCodeCamp.

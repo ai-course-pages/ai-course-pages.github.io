@@ -24,6 +24,7 @@ Attach only the files for the task. `map.md` is the join key for every task.
 | A Swedish source string or an alias | any | `terms.tsv` for that lookup |
 | Where the plugin and Reference sit beside the two main courses | medium | `map.md` + `courses.md` + `plan.md` |
 | Whether a new piece is a stub, a table, or a static page | low | `method.md` + `content/R.2.html` |
+| A language orientation | low | `languages.tsv` + `content/R.3.html` |
 | Segment kinds, summaries, examinations, pictures, and clips | medium | `assignments.md` + `courses.md` |
 
 # Rules

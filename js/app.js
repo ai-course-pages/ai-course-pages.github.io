@@ -320,6 +320,7 @@
     var groups = [
       ["using", "Using a model"],
       ["files", "File types"],
+      ["languages", "Languages"],
       ["subject", "The subject"]
     ];
     var index = h("div", "glossary-index");
