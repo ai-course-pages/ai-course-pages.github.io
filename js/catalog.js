@@ -58,6 +58,7 @@ window.CATALOG = {
   ],
   reference: [
     { id: "R.1", track: "reference", place: "reference", text: "What a file type is, with Markdown, JSON, YAML, plain text, zip, and a stub for Python." },
+    { id: "R.2", track: "reference", place: "reference", text: "A stub for methods and algorithms. The first entry is how this course chooses its data and whether a piece becomes a stub, a table, or a static page." },
   ],
   tools: [
     { id: "X.1", group: "web", title: "Web models", track: "reference", place: "web", text: "Grok, ChatGPT, Claude, and Gemini as multi-purpose web chats." },
@@ -78,7 +79,8 @@ window.CATALOG = {
     "U1.S.1": { added: "2026-09-25", updated: "2026-09-26" },
     "U1.S.2": { added: "2026-09-25", updated: "2026-09-26" },
     "U1.S.3": { added: "2026-09-26", updated: "2026-09-26" },
-    "glossary": { added: "2026-09-26", updated: "2026-09-26" },
+    "glossary": { added: "2026-09-26", updated: "2026-09-28" },
+    "R.2": { added: "2026-09-28", updated: "2026-09-28" },
     "tools": { added: "2026-09-26", updated: "2026-09-26" },
     "X.1": { added: "2026-09-26", updated: "2026-09-26" },
     "X.2": { added: "2026-09-26", updated: "2026-09-26" },

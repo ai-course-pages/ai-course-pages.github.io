@@ -10,7 +10,7 @@ Generate pages from data when any of these becomes true:
 - The outline grows nests: section, then block, then segment, then optional steps.
 - A workshop or lab needs shared chrome (instructions, a code seed, a list of steps) that must change in one place.
 
-Until then, keep writing `content/{id}.html` and listing the segment in `curriculum/active.tsv`. The outline script `tools/build_catalog.py` stays the only generator. It also writes `js/glossary.js` from `curriculum/glossary.tsv`. That table is the learner glossary. `curriculum/terms.tsv` is the subject-language list and is not the glossary. Lesson HTML stays hand-written.
+Until then, keep writing `content/{id}.html` and listing the segment in `curriculum/active.tsv`. The choice for a new piece is the tree in `curriculum/method.md` and on `R.2`: a repeated listing is drawn from a table now, and a lesson body stays hand-written until a second lesson would copy the same frame. The outline script `tools/build_catalog.py` stays the only generator. It also writes `js/glossary.js` from `curriculum/glossary.tsv`. That table is the learner glossary. `curriculum/terms.tsv` is the subject-language list and is not the glossary. Lesson HTML stays hand-written.
 
 Push `main` when a session hands off, when a section is coherent enough to leave, or when the work finished in a Grok Build session is fit to be the live site. A half-written segment stays local.
 

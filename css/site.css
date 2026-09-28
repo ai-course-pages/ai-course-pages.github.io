@@ -168,6 +168,9 @@ footer { margin-top: 2rem; font-size: 0.9rem; }
 .lesson summary { cursor: pointer; }
 .lesson table { border-collapse: collapse; width: 100%; font-size: 0.92rem; margin: 0.6rem 0 1rem; }
 .lesson th, .lesson td { border: 1px solid var(--line); padding: 0.35rem 0.5rem; text-align: left; vertical-align: top; }
+.lesson figure { margin: 1rem 0; }
+.lesson figure svg { width: 100%; height: auto; display: block; }
+.lesson figcaption { font-size: 0.92rem; margin-top: 0.4rem; }
 .lesson code, .lesson pre { font-family: Consolas, "Cascadia Mono", monospace; font-size: 0.86em; }
 .lesson pre { white-space: pre-wrap; background: var(--bg); border: 1px solid var(--line); padding: 0.6rem 0.75rem; }
 button.copy { margin: 0.5rem 0 0.15rem; font-size: 0.9rem; }

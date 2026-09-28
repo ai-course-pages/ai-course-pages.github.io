@@ -1,0 +1,115 @@
+<article class="lesson">
+  <h2>Methods and algorithms</h2>
+  <p>This page is a stub with one worked example. It will grow as ARTI1000X, ARTI2000X, and later sections add methods that are easy to say. A fuller account of prediction, robotics, computer vision, and generative AI waits until those pages exist. What is here now is the procedure this course is using to choose its own material and its own pages.</p>
+
+  <h3>Three piles of <a class="term" data-term="data" href="/#/glossary/data" target="_blank" rel="noopener">data</a></h3>
+  <p>Data is the material a result is drawn from. While this course is being written, three piles count, and mixing them makes the result harder to check.</p>
+  <ol>
+    <li><strong>What a person points at.</strong> In a prompt, that is the files and the passages they name. Choosing those is human data selection.</li>
+    <li><strong>What the course already holds.</strong> The lessons, the tables, and the plans are data too. They are read directly.</li>
+    <li><strong>What the assistant opens next.</strong> That selection follows the person's instructions, the program's rules, and the settings in use. It is a second selection.</li>
+  </ol>
+  <p>An outside source joins the third pile when the person asks for it. A page that can name its three piles is easier to reopen later and widen.</p>
+
+  <h3>One <a class="term" data-term="decision-tree" href="/#/glossary/decision-tree" target="_blank" rel="noopener">decision tree</a></h3>
+  <p>An <a class="term" data-term="algorithm" href="/#/glossary/algorithm" target="_blank" rel="noopener">algorithm</a> here is a procedure that can be followed the same way each time. This one decides what to do with a course piece. Ask it once per piece. A list of many rows, and the paragraph that explains them, are two pieces.</p>
+  <figure>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 380" role="img" width="100%">
+      <title>Decision tree for a course piece</title>
+      <desc>Start with whether the idea is easy to say in one or two sentences. If it is not, the result is a stub. If it is, ask whether many items share one frame. If they do, the result is a table. If they do not, the result is a static page.</desc>
+      <rect width="680" height="380" fill="#f4f1ea"/>
+      <rect x="190" y="24" width="300" height="72" fill="#f7f4ee" stroke="#1f3a5f"/>
+      <text x="340" y="52" text-anchor="middle" fill="#1f3a5f" font-family="Georgia, serif" font-size="16">Easy to say in one</text>
+      <text x="340" y="74" text-anchor="middle" fill="#1f3a5f" font-family="Georgia, serif" font-size="16">or two sentences?</text>
+      <line x1="250" y1="96" x2="120" y2="150" stroke="#9a3412"/>
+      <line x1="430" y1="96" x2="340" y2="168" stroke="#1f3a5f"/>
+      <text x="150" y="128" fill="#9a3412" font-family="Georgia, serif" font-size="14">no</text>
+      <text x="400" y="140" fill="#1f3a5f" font-family="Georgia, serif" font-size="14">yes</text>
+      <rect x="36" y="150" width="150" height="52" fill="#f7f4ee" stroke="#9a3412" stroke-width="2"/>
+      <text x="111" y="182" text-anchor="middle" fill="#9a3412" font-family="Georgia, serif" font-size="18">Stub</text>
+      <rect x="190" y="168" width="300" height="72" fill="#f7f4ee" stroke="#1f3a5f"/>
+      <text x="340" y="196" text-anchor="middle" fill="#1f3a5f" font-family="Georgia, serif" font-size="16">Many items share</text>
+      <text x="340" y="218" text-anchor="middle" fill="#1f3a5f" font-family="Georgia, serif" font-size="16">one frame?</text>
+      <line x1="280" y1="240" x2="170" y2="300" stroke="#1f3a5f"/>
+      <line x1="400" y1="240" x2="510" y2="300" stroke="#243024"/>
+      <text x="200" y="278" fill="#1f3a5f" font-family="Georgia, serif" font-size="14">yes</text>
+      <text x="450" y="278" fill="#243024" font-family="Georgia, serif" font-size="14">no</text>
+      <rect x="70" y="300" width="200" height="52" fill="#f7f4ee" stroke="#1f3a5f" stroke-width="2"/>
+      <text x="170" y="332" text-anchor="middle" fill="#1f3a5f" font-family="Georgia, serif" font-size="18">Table</text>
+      <rect x="410" y="300" width="200" height="52" fill="#f7f4ee" stroke="#243024" stroke-width="2"/>
+      <text x="510" y="332" text-anchor="middle" fill="#243024" font-family="Georgia, serif" font-size="18">Static page</text>
+    </svg>
+    <figcaption>Start with whether the idea is easy to say in one or two sentences. If it is not, leave a stub. If it is, ask whether many items share one frame. Shared frames become a table. A single clear idea becomes a static page.</figcaption>
+  </figure>
+  <p>The same steps in a form a person can follow by hand:</p>
+  <pre>if the idea is not easy to say in one or two sentences:
+    leave a stub
+else if many items share one frame:
+    keep the items in a table and draw the listing from the table
+    if a second lesson would copy the same frame:
+        generate those lesson bodies from the table
+    else:
+        write the lesson body as one static page
+else:
+    write one static page</pre>
+  <p>A short program answers the first two questions. It is the same procedure, small enough to check by hand. The inner step, generating lesson bodies, stays in the prose until a second lesson would copy a frame.</p>
+  <pre>def choose(easy_to_say, many_share_a_frame):
+    if not easy_to_say:
+        return "stub"
+    if many_share_a_frame:
+        return "table"
+    return "static"</pre>
+  <p>This page is the static result. The idea fits in a few sentences, and the page is the first of its kind. The line for this page on the outline is the table result: reference rows share one frame, and they live in a table the outline draws. A summary of the four uses in the concept block is the stub result. Those uses are listed below, and they are not summarized here yet.</p>
+
+  <h3>Five steps, used on this page</h3>
+  <p>Building a page with an assistant is one case of problem solving. The steps are ordinary. They are the ones that produced this page, in a coding session with Grok.</p>
+  <ol>
+    <li>Say the problem in one sentence.</li>
+    <li>Name the three piles of data.</li>
+    <li>Pick a procedure you can say aloud.</li>
+    <li>Leave a result the next session can open.</li>
+    <li>Leave a stub where a wider scope will go.</li>
+  </ol>
+  <p>The sentence for this page was: choose the data and the page form so a newcomer can repeat the idea. The wider scope is the waiting list.</p>
+
+  <h3>Waiting for later pages</h3>
+  <p>When a lesson has a subset this page can summarize, the lesson links here and opens this page in a new tab. The line will name that subset. None of these four is ready for that line yet.</p>
+  <table>
+    <thead>
+      <tr><th>Use</th><th>On this page now</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Prediction</td><td>Waiting</td></tr>
+      <tr><td>Robotics</td><td>Waiting</td></tr>
+      <tr><td>Computer vision</td><td>Waiting</td></tr>
+      <tr><td>Generative AI</td><td>Waiting</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Check</h3>
+  <p>Skip this if you already know the page.</p>
+  <form class="quiz">
+    <fieldset data-answer="a">
+      <legend>1. The files a person names in a prompt belong to which pile?</legend>
+      <label><input type="radio" name="q1" value="a"> What a person points at</label>
+      <label><input type="radio" name="q1" value="b"> A summary of robotics</label>
+      <label><input type="radio" name="q1" value="c"> The weekly usage clock</label>
+      <label><input type="radio" name="q1" value="d"> A second copy of a lesson frame</label>
+    </fieldset>
+    <fieldset data-answer="c">
+      <legend>2. Many items that share one frame are kept where?</legend>
+      <label><input type="radio" name="q2" value="a"> Only inside a quiz</label>
+      <label><input type="radio" name="q2" value="b"> In a new model</label>
+      <label><input type="radio" name="q2" value="c"> In a table the listing is drawn from</label>
+      <label><input type="radio" name="q2" value="d"> In the waiting list for generative AI</label>
+    </fieldset>
+    <fieldset data-answer="b">
+      <legend>3. An idea that is not yet easy to say in one or two sentences becomes which result?</legend>
+      <label><input type="radio" name="q3" value="a"> A generated set of lesson bodies</label>
+      <label><input type="radio" name="q3" value="b"> A stub</label>
+      <label><input type="radio" name="q3" value="c"> A static page that covers every use</label>
+      <label><input type="radio" name="q3" value="d"> A second assistant</label>
+    </fieldset>
+    <button type="submit">Check answers</button>
+  </form>
+</article>

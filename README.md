@@ -8,6 +8,7 @@ The live site is [https://ai-course-pages.github.io/](https://ai-course-pages.gi
 - [Glossary](https://ai-course-pages.github.io/#/glossary)
 - [Tools and models](https://ai-course-pages.github.io/#/tools)
 - [R.1](https://ai-course-pages.github.io/#/item/R.1) File types
+- [R.2](https://ai-course-pages.github.io/#/item/R.2) Methods and algorithms
 - [X.1](https://ai-course-pages.github.io/#/item/X.1) Web models
 - [X.2](https://ai-course-pages.github.io/#/item/X.2) Desktop UI
 - [X.3](https://ai-course-pages.github.io/#/item/X.3) CLI harnesses
@@ -26,7 +27,7 @@ The live site is [https://ai-course-pages.github.io/](https://ai-course-pages.gi
 
 Work on the course from the repo [ai-course-pages/ai-course-pages.github.io](https://github.com/ai-course-pages/ai-course-pages.github.io).
 
-ARTI1000X and ARTI2000X are the two main courses. The using-models pages are an optional plugin. The glossary, file types, and the tools map are reference for every course. The fit is `curriculum/courses.md`. Segment kinds are `curriculum/assignments.md`.
+ARTI1000X and ARTI2000X are the two main courses. The using-models pages are an optional plugin. The glossary, file types, the methods stub, and the tools map are reference for every course. The fit is `curriculum/courses.md`. Segment kinds are `curriculum/assignments.md`. The working rule for a new page is `curriculum/method.md`.
 
 This machine's `gh` login is `MarkusIsaksson1982`. Leave that login alone. Pushes to the course repo use a separate token.
 
@@ -93,4 +94,4 @@ From this folder:
 python -m http.server 8765
 ```
 
-Open `http://127.0.0.1:8765/#/item/L1.C.1`. That is the subject page where the next writing starts. The outline is the page without the hash. Prompts meant to forward have a Copy button. The quiz can be skipped when the page is already familiar.
+Open `http://127.0.0.1:8765/#/item/R.2`. That is the methods stub under test. Subject writing still resumes at `L1.C.1`. The outline is the page without the hash. Prompts meant to forward have a Copy button. The quiz can be skipped when the page is already familiar.

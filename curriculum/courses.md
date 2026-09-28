@@ -41,6 +41,8 @@ Tools-page continuation stays paused until it comes up in its own pass. The open
 
 Child rows stay in this file until a session is writing that child. Adding them to `level1.md` would list them on the outline. Lesson HTML stays hand-written. See `curriculum/structure.md`.
 
+The dogfood entry for data selection, for one decision tree, and for the problem-solving steps is `R.2`, with the working card in `curriculum/method.md`. Subject writing still resumes at `L1.C.1`. `R.2` holds only the procedure that is already easy to say. `L1.C.2`, `L1.C.6`, and `L1.X.1` stay the mainstream pages and link to `R.2` when they are written.
+
 ## Where the pages we already have sit
 
 | Pages | Role | What the main courses keep from them |
@@ -52,7 +54,7 @@ Child rows stay in this file until a session is writing that child. Adding them 
 | U1.S.1, U1.S.2 | Plugin | A problem-solving page may point here when the learner is leaving a coding session or a web thread. |
 | U1.S.3 | Plugin | Compression is a product habit. `L2.D.5` is a subject point about explaining a result from the data. They link across. They stay different pages. |
 | U1.K.1, U1.K.2 | Plugin | Packing a skill stays in the plugin. File types stay in Reference. |
-| `R.1`, glossary, X.1–X.3 | Reference | Used from either course and from the plugin. |
+| `R.1`, `R.2`, glossary, X.1–X.3 | Reference | Used from either course and from the plugin. `R.2` is the methods stub. |
 | L1.C.1 | Start of ARTI1000X | The next page to deepen, then leave as one segment. |
 
 The earlier holes U0.1, U0.2, and U0.3 fold into this map. The mainstream sentences live on `L1.C.4.4`. The operational versions stay on U1.E.1 and U1.B.1. A separate opening course is not added for them.
@@ -64,11 +66,11 @@ The earlier holes U0.1, U0.2, and U0.3 fold into this map. The mainstream senten
 | Id | Pages | Kind of page | Why this grain |
 | --- | --- | --- | --- |
 | L1.C.1 | One page. Already drafted. | Reading | The definition and the labels for later pages: human intelligence, data, application, technique, algorithm, machine learning. A diagram can show those labels around the definition. |
-| L1.C.2 | L1.C.2.1 data, L1.C.2.2 quality, L1.C.2.3 selection, L1.C.2.9 summary | Reading, then a summary | Exact outcome, three jobs. Quality and selection each get a short exercise. |
+| L1.C.2 | L1.C.2.1 data, L1.C.2.2 quality, L1.C.2.3 selection, L1.C.2.9 summary | Reading, then a summary | Exact outcome, three jobs. Quality and selection each get a short exercise. The three piles on `R.2` are the early selection example from building this course. |
 | L1.C.3 | One page | Reading | Driving forces as one argument. A diagram can show the forces. Split only if a draft turns into two arguments. |
 | L1.C.4 | L1.C.4.1 prediction, L1.C.4.2 robotics, L1.C.4.3 computer vision, L1.C.4.4 generative AI, L1.C.4.9 summary | Reading | At-least list of four uses. `L1.C.4.4` says what generative AI refers to here: a system that produces text, an image, or something similar from a prompt. It names the plugin for effort, threads, clocks, handoff, compression, and skills. |
 | L1.C.5 | L1.C.5.1 search, L1.C.5.2 classification, L1.C.5.3 object recognition, L1.C.5.9 summary | Reading | At-least list of three techniques. Object recognition stays a technique. Computer vision stays a use, on L1.C.4.3. |
-| L1.C.6 | L1.C.6.1 decision trees, L1.C.6.2 regression, L1.C.6.3 supervised learning, L1.C.6.4 unsupervised learning, L1.C.6.9 summary | Reading | At-least list of four methods. Supervised and unsupervised share one side-by-side diagram. |
+| L1.C.6 | L1.C.6.1 decision trees, L1.C.6.2 regression, L1.C.6.3 supervised learning, L1.C.6.4 unsupervised learning, L1.C.6.9 summary | Reading | At-least list of four methods. Supervised and unsupervised share one side-by-side diagram. The first decision tree, the page-or-table choice, is the worked example on `R.2`. |
 | L1.C.9 | One page, later | Summary of L1.C.1 through L1.C.6 | No new ideas. |
 | L1.C.Q | One page, later | Examination of the concept block | About 16 questions. Relations across parents, such as how selection changes a prediction, and how a use differs from a technique. |
 
@@ -82,7 +84,7 @@ Same close pattern: `.9` summarizes the letter, `.Q` is the examination. Substep
 
 | Parent | Planned grain | Practical kind | Close |
 | --- | --- | --- | --- |
-| L1.X.1 | One reading page for the process. A workshop later if the process is taught as ordered steps. | Reading, then workshop | Covered by L1.X.9 |
+| L1.X.1 | One reading page for the process. A workshop later if the process is taught as ordered steps. The five steps this course is already using are on `R.2`. | Reading, then workshop | Covered by L1.X.9 |
 | L1.X.2 | One small lab for each listed example: classification, object recognition, prediction, natural language processing, basic machine learning, game agents. Bind is at-least, so each listed example is covered, and each lab stands alone. | Lab | L1.X.2.9 summary |
 | L1.X.3 | One reading page on principles, plus one lab that applies machine learning or robotics. | Reading and lab | Covered by L1.X.9 |
 | L1.X.4 | A workshop: prepare data, train, check. The steps follow one another. | Workshop | Covered by L1.X.9 |

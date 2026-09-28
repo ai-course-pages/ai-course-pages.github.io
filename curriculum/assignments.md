@@ -46,7 +46,7 @@ A page's three-question or four-question quiz stays a first-reading check. It is
 
 ## Pictures and clips
 
-Lesson HTML can include an SVG directly. The course site does not load a chart library. Curriculum notes on GitHub can use a mermaid block, as `courses.md` does for the course map. A chart inside a lesson is an SVG until a designed picture replaces it.
+Lesson HTML can include an SVG directly. The course site does not load a chart library. Curriculum notes on GitHub can use a mermaid block, as `courses.md` does for the course map. A chart inside a lesson is an SVG until a designed picture replaces it. `R.2` carries the first live chart: the page-or-table decision tree.
 
 Pattern for a lesson, when that lesson is written:
 
