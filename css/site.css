@@ -23,6 +23,11 @@ a { color: var(--accent); }
 
 .site-nav { display: flex; flex-wrap: wrap; gap: 0.9rem; margin-top: 0.35rem; }
 .site-nav a { font-size: 0.95rem; }
+.grade-target { display: flex; flex-wrap: wrap; gap: 0.35rem; align-items: center; margin-top: 0.8rem; }
+.grade-target .grade-label { color: var(--muted); font-size: 0.95rem; margin-right: 0.25rem; }
+.span-chip { margin-left: 0.45rem; font-size: 0.72rem; letter-spacing: 0.03em; text-transform: uppercase; border: 1px solid var(--line); border-radius: 999px; padding: 0 0.4rem; color: var(--muted); }
+.grade-block { margin: 0.9rem 0; padding-left: 0.75rem; border-left: 3px solid var(--stale); }
+.grade-fallback { background: #f3ead2; padding: 0.6rem 0.75rem; }
 
 a.term {
   color: inherit;

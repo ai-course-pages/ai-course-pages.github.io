@@ -45,7 +45,7 @@ def write_glossary():
         also = ", ".join(js_string(part) for part in split_list(row.get("also", "")))
         stub = "true" if row.get("stub", "").strip().lower() == "yes" else "false"
         lines.append(
-            "    { id: %s, group: %s, term: %s, aliases: [%s], brief: %s, body: %s, stub: %s, see: %s, also: [%s], page: %s },"
+            "    { id: %s, group: %s, term: %s, aliases: [%s], brief: %s, body: %s, stub: %s, see: %s, also: [%s], page: %s, advanced: %s },"
             % (
                 js_string(row["id"]),
                 js_string(row["group"]),
@@ -57,6 +57,7 @@ def write_glossary():
                 js_string(row.get("see", "")),
                 also,
                 js_string(row.get("page", "")),
+                js_string(row.get("advanced", "")),
             )
         )
     lines.append("  ]")
@@ -321,6 +322,20 @@ def main():
                 js_string(row["id"]),
                 js_string(row.get("added", "")),
                 js_string(row.get("updated", "")),
+            )
+        )
+    lines.append("  },")
+    span_path = curriculum / "gradespan.tsv"
+    spans = table_rows(span_path, "id\tfloor\t") if span_path.exists() else []
+    lines.append("  gradespan: {")
+    for row in spans:
+        lines.append(
+            "    %s: { floor: %s, ceiling: %s, kind: %s },"
+            % (
+                js_string(row["id"]),
+                js_string(row.get("floor", "")),
+                js_string(row.get("ceiling", "")),
+                js_string(row.get("kind", "")),
             )
         )
     lines.append("  }")

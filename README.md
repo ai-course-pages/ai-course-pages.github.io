@@ -105,4 +105,4 @@ From this folder:
 python -m http.server 8765
 ```
 
-Open `http://127.0.0.1:8765/#/item/L1.C.2`. That is the data group under test. `L1.C.5` and `L1.C.6` are first-pass drafts. The outline is the page without the hash. Prompts meant to forward have a Copy button. The quiz can be skipped when the page is already familiar.
+Open `http://127.0.0.1:8765/#/item/L1.C.2`. That is the data group under test. `L1.C.5` and `L1.C.6` are first-pass drafts. The header grade target is E, C, or A. The outline is the page without the hash. Prompts meant to forward have a Copy button. The quiz can be skipped when the page is already familiar.

@@ -100,7 +100,89 @@
     return node;
   }
 
+  var GRADE_RANK = { E: 0, D: 1, C: 2, B: 3, A: 4 };
+
+  function gradeTarget() {
+    var value = localStorage.getItem("arti-grade-target");
+    if (value === "E" || value === "C" || value === "A") return value;
+    return "E";
+  }
+
+  function spanOf(id) {
+    var row = (CATALOG.gradespan || {})[id];
+    if (row) return row;
+    var item = itemById(id);
+    if (item && item.level) return { floor: "E", ceiling: "E", kind: "layered" };
+    return { floor: "", ceiling: "", kind: "ungraded" };
+  }
+
+  function listedAtTarget(id) {
+    var span = spanOf(id);
+    if (span.kind === "ungraded") return true;
+    var floor = GRADE_RANK[span.floor];
+    if (floor == null) return true;
+    var target = gradeTarget();
+    if (target === "E") return floor <= GRADE_RANK.D;
+    if (target === "C") return floor <= GRADE_RANK.B;
+    return true;
+  }
+
+  function spanLabel(span) {
+    if (!span || span.kind === "ungraded") return "reference only";
+    if (!span.floor) return "reference only";
+    if (span.floor === span.ceiling) return span.floor;
+    return span.floor + "–" + span.ceiling;
+  }
+
+  function gradeLine(id) {
+    var span = spanOf(id);
+    if (span.kind === "ungraded") return "Reference only. This page is not a graded segment.";
+    if (span.kind === "span") return "Grade span " + span.floor + "–" + span.ceiling + ". The floor is the lowest target at which this page is worth the effort. The ceiling is how far the page is expected to push.";
+    return "Graded segment, currently " + span.floor + "–" + span.ceiling + ". A higher target adds text where that text exists.";
+  }
+
+  function mountGradeControl() {
+    var host = document.getElementById("grade-target");
+    if (!host) return;
+    host.textContent = "";
+    host.appendChild(h("span", "grade-label", "Grade target"));
+    ["E", "C", "A"].forEach(function (grade) {
+      var pressed = gradeTarget() === grade;
+      var control = button(grade, function () {
+        localStorage.setItem("arti-grade-target", grade);
+        render();
+      }, pressed ? "primary" : "");
+      control.setAttribute("aria-pressed", pressed ? "true" : "false");
+      host.appendChild(control);
+    });
+  }
+
+  function applyGrade(root, id) {
+    var target = gradeTarget();
+    var rank = GRADE_RANK[target];
+    var sawC = false;
+    var sawA = false;
+    Array.prototype.forEach.call(root.querySelectorAll("[data-grade]"), function (node) {
+      var grade = (node.getAttribute("data-grade") || "").toUpperCase();
+      if (grade === "C") sawC = true;
+      if (grade === "A") sawA = true;
+      var blockRank = GRADE_RANK[grade];
+      node.hidden = !(blockRank != null && blockRank <= rank);
+    });
+    var span = spanOf(id);
+    if (span.kind !== "layered" || target === "E") return;
+    var note = h("p", "grade-fallback");
+    if (!sawC && (target === "C" || target === "A")) {
+      note.textContent = "Only E-level content is currently available for this course segment. C- and A-level text is intended to be added later.";
+      root.appendChild(note);
+    } else if (target === "A" && !sawA) {
+      note.textContent = "C-level text is included above. A-level text for this segment is intended to be added later.";
+      root.appendChild(note);
+    }
+  }
+
   function render() {
+    mountGradeControl();
     app.textContent = "";
     var route = parseRoute();
     if (route.name === "item") renderItem(route.id);
@@ -115,6 +197,7 @@
     var rule = h("p", "rule", "This section runs from the welcome, U1.0, through the close, U1.9. The working pages stay in the order effort, thread, caps, pacing, CLI handoff, web seed, compression or compaction, then two pages on skills. A dotted underline is a glossary word. Prompts meant to forward have a Copy button. The quiz is a first-reading check. Skip it if you already know the page.");
     app.appendChild(lede);
     app.appendChild(rule);
+    app.appendChild(h("p", "rule", "Grade target is E, C, or A. On a course segment, a higher target adds text and a lower target hides it. On this outline, target E lists a floor of E or D. Target C also lists a floor of B. Target A lists every floor. Reference-only pages stay listed."));
 
     var actions = h("div", "actions");
     actions.appendChild(button("I looked through the outline", function () { markTried("outline"); }, "primary"));
@@ -124,30 +207,42 @@
     var outlineStatus = statusOf("outline", progress);
     app.appendChild(h("p", "meta status " + outlineStatus.kind, "Outline: " + outlineStatus.label));
 
+    var hiddenCount = 0;
     if (CATALOG.active && CATALOG.active.length) {
-      app.appendChild(h("h2", null, "Active"));
-      app.appendChild(h("p", "meta", "These pages can sit in the middle of a strand. Earlier pages they depend on may not be written yet. Nothing here is locked."));
-      var activeList = h("ol", "items");
-      CATALOG.active.forEach(function (item) {
-        activeList.appendChild(rowFor(item, progress));
-      });
-      app.appendChild(activeList);
+      var activeVisible = CATALOG.active.filter(function (item) { return listedAtTarget(item.id); });
+      hiddenCount += CATALOG.active.length - activeVisible.length;
+      if (activeVisible.length) {
+        app.appendChild(h("h2", null, "Active"));
+        app.appendChild(h("p", "meta", "These pages are a plugin beside the two main courses. Their grade span is judged page by page, and it starts above a pure E pass."));
+        var activeList = h("ol", "items");
+        activeVisible.forEach(function (item) {
+          activeList.appendChild(rowFor(item, progress));
+        });
+        app.appendChild(activeList);
+      }
     }
 
-    renderReference();
+    hiddenCount += renderReference();
 
     CATALOG.levels.forEach(function (level) {
+      var all = CATALOG.items.filter(function (item) { return item.level === level.id; });
+      var rows = all.filter(function (item) { return listedAtTarget(item.id); });
+      hiddenCount += all.length - rows.length;
+      if (!rows.length) return;
       var title = level.title + " · " + level.points + " points · " + level.code;
       app.appendChild(h("h2", null, title));
       if (level.requires) {
         app.appendChild(h("p", "meta", "Builds on " + level.requires + ". You can open these items before finishing " + level.requires + "."));
       }
       var list = h("ol", "items");
-      CATALOG.items.filter(function (item) { return item.level === level.id; }).forEach(function (item) {
+      rows.forEach(function (item) {
         list.appendChild(rowFor(item, progress));
       });
       app.appendChild(list);
     });
+    if (hiddenCount) {
+      app.appendChild(h("p", "meta", hiddenCount + (hiddenCount === 1 ? " listing is hidden" : " listings are hidden") + " at target " + gradeTarget() + ". Raise the target to list a higher floor."));
+    }
   }
 
   function renderItem(id) {
@@ -172,6 +267,7 @@
     app.appendChild(h("p", "meta", metaBits));
     if (item.ability) app.appendChild(h("p", "meta", "Ability: " + abilityText(item.ability)));
     if (item.deepens) app.appendChild(h("p", "meta", "Extends: " + item.deepens + "."));
+    app.appendChild(h("p", "meta", gradeLine(item.id)));
     app.appendChild(h("p", "meta status " + status.kind, status.label));
 
     var slot = h("div", "note");
@@ -185,11 +281,13 @@
         bindTerms(slot);
         bindCopy(slot);
         bindQuiz(slot);
+        applyGrade(slot, id);
       }).catch(function () {
         slot.textContent = "This item is marked published, and content/" + item.id + ".html is missing.";
       });
     } else {
       slot.textContent = "No lesson body in this iteration. The line above is the syllabus item. Say what you want to try, including an item further down the list.";
+      applyGrade(slot, id);
     }
     app.appendChild(slot);
 
@@ -236,14 +334,22 @@
 
   function renderReference() {
     app.appendChild(h("h2", null, "Reference"));
-    app.appendChild(h("p", "meta", "The glossary is for the whole course and is expected to grow. A dotted underline on a lesson shows a short definition. The link opens that entry in a new tab. New means the listing is still inside its first 7 days. Updated means a later edit within 1 day. A page can show both."));
+    app.appendChild(h("p", "meta", "The glossary follows the grade target: a short definition at E, a fuller wording at C, and a more technical line at A when one is written. A dotted underline on a lesson stays the short definition. Tools and models are reference only, not a graded segment. New means the listing is still inside its first 7 days. Updated means a later edit within 1 day. A page can show both."));
+    var hidden = 0;
     var list = h("ol", "items");
-    list.appendChild(refRow("/#/glossary", "glossary", "Glossary", "Words for the whole course. File types link to their own entries, and each of those links back."));
-    list.appendChild(refRow("/#/tools", "tools", "Tools and models", "A section landing for web chats, desktop apps, and terminal CLIs. The three pages are tabulated there."));
+    if (listedAtTarget("glossary")) list.appendChild(refRow("/#/glossary", "glossary", "Glossary", "Words for the whole course. The wording grows with the grade target."));
+    else hidden += 1;
+    if (listedAtTarget("tools")) list.appendChild(refRow("/#/tools", "tools", "Tools and models", "Web chats, desktop apps, and terminal CLIs. Reference only. A deeper look at one product belongs on that maker's own site."));
+    else hidden += 1;
     (CATALOG.reference || []).forEach(function (item) {
+      if (!listedAtTarget(item.id)) {
+        hidden += 1;
+        return;
+      }
       list.appendChild(refRow("/#/item/" + item.id, item.id, item.id, item.text));
     });
     app.appendChild(list);
+    return hidden;
   }
 
   function refRow(href, freshId, idText, blurb) {
@@ -253,6 +359,7 @@
     var label = h("span", "id", idText);
     var marks = freshnessMarks(freshId);
     if (marks) label.appendChild(marks);
+    label.appendChild(h("span", "span-chip", spanLabel(spanOf(freshId))));
     top.appendChild(label);
     link.appendChild(top);
     link.appendChild(h("span", null, blurb));
@@ -277,7 +384,7 @@
     harness.target = "_blank";
     harness.rel = "noopener";
     intro.appendChild(harness);
-    intro.appendChild(document.createTextNode(": the program you use to work with a model. It is not the course outline. The groups below are the three lists. Each row opens that page."));
+    intro.appendChild(document.createTextNode(": the program you use to work with a model. It is not the course outline. The groups below are the three lists. Each row opens that page. These pages are reference only, not a graded segment."));
     app.appendChild(intro);
     bindTerms(intro);
     var groups = [
@@ -361,7 +468,15 @@
     if (entry.stub) title.appendChild(h("span", "meta", " · stub"));
     article.appendChild(title);
     article.appendChild(h("p", null, entry.brief));
-    if (entry.body) article.appendChild(h("p", null, entry.body));
+    var target = gradeTarget();
+    if (target === "C" || target === "A") {
+      if (entry.body) article.appendChild(h("p", null, entry.body));
+      else article.appendChild(h("p", "grade-fallback", "C-level wording for this entry is intended to be added later."));
+    }
+    if (target === "A") {
+      if (entry.advanced) article.appendChild(h("p", null, entry.advanced));
+      else article.appendChild(h("p", "grade-fallback", "A more technical wording for this entry is intended to be added later."));
+    }
     if (entry.stub) {
       article.appendChild(h("p", "stub-note", "This entry is intentionally a stub for now. A more encompassing definition is expected later."));
     }
@@ -419,6 +534,7 @@
     var label = h("span", "id", item.id + " · " + item.track);
     var marks = freshnessMarks(item.id);
     if (marks) label.appendChild(marks);
+    label.appendChild(h("span", "span-chip", spanLabel(spanOf(item.id))));
     top.appendChild(label);
     var badge = h("span", "status " + status.kind, isPublished(item.id) ? "lesson is up · " + status.label : status.label);
     top.appendChild(badge);

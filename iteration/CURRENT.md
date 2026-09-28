@@ -7,7 +7,9 @@ github: push at handoff, section leave, or a session whose new work is fit to pu
 
 ARTI1000X and ARTI2000X are the two main courses. U1 is the first optional plugin, using a model. Reference (glossary, `R.1`, `R.2`, `#/tools`) is shared. The map is `curriculum/courses.md`. Kinds, examinations, and picture and clip placeholders are `curriculum/assignments.md`.
 
-`L1.C.2` through `L1.C.2.9` are the data group: what data is, quality, selection, and a summary. `L1.C.5` and `L1.C.6` are first-pass drafts on one page each. The next pass can split them. `R.2` remains the worked example of selection and of one decision tree. `R.3` collects the HTML, JavaScript, and Python stubs, generated from `curriculum/languages.tsv`. Follow `curriculum/method.md` before adding a page. Tools-page continuation is paused. A specialized-tools page is not built. Further models may join that page or get their own.
+`L1.C.2` through `L1.C.2.9` are the data group: what data is, quality, selection, and a summary. `L1.C.5` and `L1.C.6` are first-pass drafts on one page each. The next pass can split them. `R.2` remains the worked example of selection and of one decision tree. `R.3` collects the HTML, JavaScript, and Python stubs, generated from `curriculum/languages.tsv`. Follow `curriculum/method.md` before adding a page.
+
+The header grade target is E, C, or A, remembered in the browser. E is the default and the writing focus until ARTI1000X is a coherent set. Rules are `curriculum/grade-target.md`. Spans are `curriculum/gradespan.tsv`. C and A text on a segment is a `grade-block` in that page, not a new outline row. Tools-page continuation is paused. A specialized-tools page is not built. Further models may join that page or get their own.
 
 Outline marks use local calendar dates. New lasts 7 days. Updated lasts 1 day and can sit beside new when the edit is a later date. Windows are `freshness` in `js/config.js`. Dates are `curriculum/freshness.tsv`.
 

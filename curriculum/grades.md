@@ -7,6 +7,7 @@ difficulty: E, C, and A are quality of performance on the task named in the leve
 cell: student performance, subject omitted
 drift: G1 techniques (E) vs technologies (C, A); G2 confidently (C) vs with confidence (A); G4 applicable (E, C) vs pertaining (A); G5 reasoning (E) vs arguments (C, A)
 law_note: draft cited Education Act (2010:800) ch. 15 § 24 para 2 and ch. 20 § 37 para 2 for overall assessment and the closest grade; this course does not implement that act
+ui: curriculum/grade-target.md
 ---
 
 id	ability	E	C	A
