@@ -38,23 +38,26 @@ Extend the glossary near the end of a session that introduced words, where one p
 
 A useful scale reference is six teaching sections plus a final examination of the whole curriculum. This course does not open six empty sections to match that count. A section is added when its topic is real.
 
-Inside a section, a block can hold segments. A segment is the unit we edit. Optional steps under a segment come later, for a workshop. We do not start at that grain.
+Inside a section, a block can hold segments. A segment is the unit we edit. `curriculum/courses.md` plans substeps under some L1.C rows. Those child ids stay in that file until a session is writing the child. A workshop's smaller steps wait until that workshop is the page being written.
 
-Kinds we can use, and what we use now:
+Kinds are specified in `curriculum/assignments.md`. Short form:
 
 | Kind | What it is | Now |
 | --- | --- | --- |
-| theory | Essay, with a short quiz at the bottom | U1 working pages |
-| review | A reading summary of one block. No new task | Not separate. U1.9 names what this stage covers |
-| quiz | A longer check, on the order of 10 or 20 questions, with no lesson around it | Not built. One per section, later, still in the browser |
-| workshop | Steps that fill in a seed and could be checked | Not now |
-| lab | A task with stories and described checks | Not now. Prompt practice stays a human exercise |
-| certification | A larger task covering the section | Not now. U1.9's real-case practice is the stand-in |
+| reading | Essay, with a short exercise possible and a short quiz at the bottom | U1 working pages, and L1.C.1 |
+| clip | A short video with the same kind of exercise and quiz | Script stubs only. First stub is for L1.C.4.3 |
+| picture | An illustration or chart inside a page | One SVG placeholder, `curriculum/figures/L1.C.4.3.svg`. Further alt text is in `assignments.md` |
+| review | A summary of one nesting level. No new task | Planned as `.9` on a letter block and on a numbered parent that has substeps |
+| examination | A check of about 10 to 20 questions, scaled to that level | Planned as `.Q`. Not built |
+| workshop | A practical sequence. Each small step follows the previous one | Not built. Planned first for L1.X.4 |
+| lab | One self-contained practical assignment, larger than the short exercise on a reading page | Not built. Planned as the small labs under L1.X.2 |
+| discuss | A short written response | The syllabus track for L1.D and L2.D. Pages not built |
+| course close | What the stage is enough for, plus a real case or a next course | U1.9 for the plugin. L1.9 waits |
 
 CLI command composition is the sort of task that could be checked automatically later. Prompt practice is not.
 
-New theory segments can be inserted without a new platform. A workshop step can be revised later by editing that step's record. Neither requires an autotest runner at this stage.
+New reading segments can be inserted without a new platform. A workshop step can be revised later by editing that step's record. Neither requires an autotest runner at this stage.
 
 ## Section frame
 
-Every section uses `{id}.0` as a short welcome and `{id}.9` as a close. See `curriculum/plan.md` for where U1 sits among the planned opening and the artificial-intelligence subject.
+A course or a plugin uses `{id}.0` as a short welcome and `{id}.9` as a close: what this stage is enough for, practice on a real case, and permission to continue, to pick another section, or to wait. A letter block, and a numbered parent that has substeps, uses `.9` as a review of that level and `.Q` as a later examination. Roles are in `curriculum/courses.md`. Kinds are in `curriculum/assignments.md`.

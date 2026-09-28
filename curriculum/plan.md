@@ -2,6 +2,8 @@
 
 The course is filled in around whatever page is active. Pages may land in the middle of a strand. A page lists what a learner with little background would have met earlier. Those earlier pages can be unwritten. They are notes, not locks.
 
+ARTI1000X and ARTI2000X are the two main courses. The Active pages are the first optional plugin, using a model. Reference is shared by both courses and by the plugin. The fit, the L1.C substeps, and the authoring start are in `curriculum/courses.md`. Segment kinds, summaries, examinations, and picture and clip placeholders are in `curriculum/assignments.md`. Tools-page continuation stays paused.
+
 ## Active
 
 | id | strand | place | what it teaches |
@@ -24,12 +26,13 @@ The middle order stays: effort, one-off versus thread, clocks, pacing, CLI hando
 
 | place | section | status | what a reader meets |
 | --- | --- | --- | --- |
-| before U1 | course opening | not written | The long greeting. A model, a prompt, a reply. Input, hidden work, and the reply counted apart. A setting is not a new model. |
-| this section | U1, using a model | in review | U1.0 through U1.9 |
-| beside U1 | artificial intelligence subject | L1.C.1 drafted, rest syllabus only | What AI refers to. Not required before U1. |
-| after U1 | a real case | not a separate section yet | U1.9 sends the reader to the subject strand, to a job of their own, or to a pause |
+| main course | ARTI1000X | L1.C.1 drafted, rest planned in `courses.md` | The subject, written forward from L1.C.1. Stands on its own. |
+| main course | ARTI2000X | syllabus only | Recommended after ARTI1000X. Open before that course is finished. Each page will restate what it assumes. |
+| plugin | U1, using a model | in review | Optional sidequest. A fitting point is after L1.C.4, or after ARTI1000X. Also open beside either course. |
+| reference | glossary, R.1, tools | published | Valid for both main courses and for the plugin. |
+| folded in | U0.1, U0.2, U0.3 | not a separate course | Mainstream sentences on L1.C.4.4. Operational pages stay U1.E.1 and U1.B.1. |
 
-Each section uses the same frame. `{id}.0` is a welcome shorter than the course greeting: a recap for someone coming from earlier sections, and an "assumes at least" line for someone taking the section alone. `{id}.9` is a close: what this stage is enough for, practice on a real case, and permission to continue, to pick another section, or to wait. Middles keep their own ids.
+Each course and each plugin uses the same frame. `{id}.0` is a welcome shorter than the course greeting: a recap for someone coming from earlier sections, and an "assumes at least" line for someone taking the section alone. `{id}.9` is a close: what this stage is enough for, practice on a real case, and permission to continue, to pick another section, or to wait. A letter block and a numbered parent that has substeps use `.9` as a review of that level. Middles keep their own ids.
 
 When U1 is accepted as coherent, practice the S.1 handoff in a new CLI session. The filled prompt is `iteration/HANDOFF.md`.
 
@@ -41,7 +44,7 @@ U1 is that coherent run, and it is already on `main`. A later page can still be 
 
 ## Earlier holes, for a learner with little background
 
-Markus can skip a hole he already has.
+These three stay inside the plugin as operational pages. The mainstream sentences are planned on `L1.C.4.4`. A separate opening course is not added. Markus can skip a hole he already has.
 
 | id | would teach | wanted before |
 | --- | --- | --- |
@@ -61,7 +64,7 @@ Markus can skip a hole he already has.
 
 ## Subject outline
 
-L1 and L2 are the artificial-intelligence subject. They are a separate strand. L1.C.1 is a draft definition page.
+L1 is ARTI1000X and L2 is ARTI2000X. They are the two main courses. L1.C.1 is the draft definition page and the place the next subject writing starts. Substeps, the plugin relationship, and the ARTI2000X assumptions are in `curriculum/courses.md`.
 
 ## How a page is shaped
 

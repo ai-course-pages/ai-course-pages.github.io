@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img">
+  <title>Placeholder for a computer-vision illustration</title>
+  <desc>A wide outdoor scene with a horizon, a walking figure, a bicycle, and a marked region around the figure. The marked region is the part a vision system is treating as the object. The bicycle stays in the scene outside that region. This drawing stands in until an illustration is made.</desc>
+  <rect width="640" height="360" fill="#f4f1ea"/>
+  <rect x="24" y="24" width="592" height="312" fill="#e7f0e4" stroke="#6d7a68"/>
+  <rect x="24" y="210" width="592" height="126" fill="#d5d0c6"/>
+  <line x1="24" y1="210" x2="616" y2="210" stroke="#6d7a68"/>
+  <circle cx="470" cy="196" r="28" fill="#f7f4ee" stroke="#6d7a68"/>
+  <rect x="430" y="228" width="92" height="48" fill="none" stroke="#6d7a68"/>
+  <circle cx="448" cy="276" r="12" fill="none" stroke="#6d7a68"/>
+  <circle cx="504" cy="276" r="12" fill="none" stroke="#6d7a68"/>
+  <circle cx="188" cy="168" r="16" fill="#f7f4ee" stroke="#1f3a5f"/>
+  <path d="M188 186 L188 236 M188 200 L164 224 M188 200 L214 214 M188 236 L170 276 M188 236 L208 276" fill="none" stroke="#1f3a5f" stroke-width="3"/>
+  <rect x="132" y="132" width="112" height="160" fill="none" stroke="#9a3412" stroke-width="3" stroke-dasharray="7 5"/>
+  <text x="136" y="124" fill="#9a3412" font-family="Georgia, serif" font-size="16">region treated as the object</text>
+  <text x="40" y="48" fill="#243024" font-family="Georgia, serif" font-size="18">Placeholder</text>
+  <text x="40" y="316" fill="#243024" font-family="Georgia, serif" font-size="14">Scene. The figure is inside the marked region. The bicycle is not.</text>
+</svg>

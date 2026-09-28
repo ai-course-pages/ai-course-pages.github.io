@@ -22,6 +22,8 @@ Attach only the files for the task. `map.md` is the join key for every task.
 | About-page and pedagogy | medium | `map.md` + `aims.md` + the level file in play |
 | Both levels, lesson-to-grade alignment, wording drift | high | `map.md` + `aims.md` + `level1.md` + `level2.md` + `grades.md` |
 | A Swedish source string or an alias | any | `terms.tsv` for that lookup |
+| Where the plugin and Reference sit beside the two main courses | medium | `map.md` + `courses.md` + `plan.md` |
+| Segment kinds, summaries, examinations, pictures, and clips | medium | `assignments.md` + `courses.md` |
 
 # Rules
 

@@ -26,6 +26,8 @@ The live site is [https://ai-course-pages.github.io/](https://ai-course-pages.gi
 
 Work on the course from the repo [ai-course-pages/ai-course-pages.github.io](https://github.com/ai-course-pages/ai-course-pages.github.io).
 
+ARTI1000X and ARTI2000X are the two main courses. The using-models pages are an optional plugin. The glossary, file types, and the tools map are reference for every course. The fit is `curriculum/courses.md`. Segment kinds are `curriculum/assignments.md`.
+
 This machine's `gh` login is `MarkusIsaksson1982`. Leave that login alone. Pushes to the course repo use a separate token.
 
 ## Credentials
@@ -91,4 +93,4 @@ From this folder:
 python -m http.server 8765
 ```
 
-Open `http://127.0.0.1:8765/#/tools`. That is the section under test: the tools landing, then X.1, X.2, and X.3. The outline is the page without the hash. Prompts meant to forward have a Copy button. The quiz can be skipped when the page is already familiar.
+Open `http://127.0.0.1:8765/#/item/L1.C.1`. That is the subject page where the next writing starts. The outline is the page without the hash. Prompts meant to forward have a Copy button. The quiz can be skipped when the page is already familiar.
