@@ -1,0 +1,72 @@
+<article class="lesson">
+  <h2>Whether the data fits the use</h2>
+  <p class="earlier">What data is, for this course, is on <a href="/#/item/L1.C.2.1">L1.C.2.1</a>.</p>
+  <p><a class="term" data-term="data-quality" href="/#/glossary/data-quality" target="_blank" rel="noopener">Data quality</a> is whether the data fits the use you stated. A large pile can still be a poor fit. A small pile can be a good fit when it is the right information for that use.</p>
+  <p>The park app's use is one question: is the park busy this afternoon? Data fits that use when an afternoon reader could see, in it, something about how busy the park is then. Four common failures are enough to start with.</p>
+  <ul>
+    <li><strong>Missing.</strong> The entrance counts skip weekends, and the question is about a Saturday.</li>
+    <li><strong>Mismatched.</strong> The file is last winter's photos of the frozen pond, and the question is about a summer afternoon.</li>
+    <li><strong>Noisy.</strong> The posts are mostly jokes and arguments about a festival, and almost none of them say whether people are there.</li>
+    <li><strong>Too thin.</strong> One photo, from one minute, is all there is. It may be a true photo and still too little to say how the afternoon goes.</li>
+  </ul>
+
+  <h3>Fit and unfit, side by side</h3>
+  <figure>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 280" role="img" width="100%">
+      <title>Fit and unfit data for one use</title>
+      <desc>Two columns. The use is whether the park is busy this afternoon. The fit column holds hourly entrance counts from recent afternoons, and a few labeled examples of busy and quiet. The unfit column holds winter pond photos, weekend gaps in the counts, and posts that are jokes about a festival.</desc>
+      <rect width="680" height="280" fill="#f4f1ea"/>
+      <text x="340" y="28" text-anchor="middle" fill="#1f3a5f" font-family="Georgia, serif" font-size="16">Use: is the park busy this afternoon?</text>
+      <rect x="36" y="48" width="290" height="200" fill="#f7f4ee" stroke="#243024"/>
+      <text x="181" y="76" text-anchor="middle" fill="#243024" font-family="Georgia, serif" font-size="18">Fit</text>
+      <text x="52" y="112" fill="#243024" font-family="Georgia, serif" font-size="15">Hourly counts from recent afternoons</text>
+      <text x="52" y="142" fill="#243024" font-family="Georgia, serif" font-size="15">A few afternoons already labeled</text>
+      <text x="52" y="172" fill="#243024" font-family="Georgia, serif" font-size="15">busy or quiet</text>
+      <rect x="354" y="48" width="290" height="200" fill="#f7f4ee" stroke="#9a3412"/>
+      <text x="499" y="76" text-anchor="middle" fill="#9a3412" font-family="Georgia, serif" font-size="18">Unfit</text>
+      <text x="370" y="112" fill="#9a3412" font-family="Georgia, serif" font-size="15">Winter photos of the pond</text>
+      <text x="370" y="142" fill="#9a3412" font-family="Georgia, serif" font-size="15">Counts that skip weekends</text>
+      <text x="370" y="172" fill="#9a3412" font-family="Georgia, serif" font-size="15">Jokes about a festival</text>
+    </svg>
+    <figcaption>Two columns. The use is whether the park is busy this afternoon. Fit data speaks to that afternoon. Unfit data is about something else, is missing when it is needed, or is too tangled to read as an answer.</figcaption>
+  </figure>
+
+  <h3>Try it on one set</h3>
+  <p>A bakery wants to know how much bread to bake tomorrow, on a normal weekday. The only file on hand is a year of cake orders. Many Mondays are blank. The cakes are for weekend parties.</p>
+  <p>Say which of the four failures you see, and whether you would call the file fit for tomorrow's bread. The interesting answer names the use first, then the failure. "It is a year of real orders" can be true and still leave the file unfit for bread on a weekday.</p>
+  <p>Selection, which part of a fit pile to use, is the next page: <a href="/#/item/L1.C.2.3">L1.C.2.3</a>.</p>
+
+  <h3>Check</h3>
+  <p>Skip this if you already know the page.</p>
+  <form class="quiz">
+    <fieldset data-answer="c">
+      <legend>1. Data quality asks which question?</legend>
+      <label><input type="radio" name="q1" value="a"> How many files are in the folder</label>
+      <label><input type="radio" name="q1" value="b"> Which programming language stored the file</label>
+      <label><input type="radio" name="q1" value="c"> Does this data fit the stated use</label>
+      <label><input type="radio" name="q1" value="d"> Is the app's name memorable</label>
+    </fieldset>
+    <fieldset data-answer="a">
+      <legend>2. Weekend gaps, when the question is about Saturday, are which failure?</legend>
+      <label><input type="radio" name="q2" value="a"> Missing</label>
+      <label><input type="radio" name="q2" value="b"> A produced label</label>
+      <label><input type="radio" name="q2" value="c"> A decision tree</label>
+      <label><input type="radio" name="q2" value="d"> A good fit, because weekdays are present</label>
+    </fieldset>
+    <fieldset data-answer="b">
+      <legend>3. Winter pond photos, for a summer-afternoon question, are which failure?</legend>
+      <label><input type="radio" name="q3" value="a"> Too thin, because winter has many photos</label>
+      <label><input type="radio" name="q3" value="b"> Mismatched</label>
+      <label><input type="radio" name="q3" value="c"> The definition of data</label>
+      <label><input type="radio" name="q3" value="d"> Selection of a subset</label>
+    </fieldset>
+    <fieldset data-answer="d">
+      <legend>4. The cake-order file can be real and still fail quality because of which fact?</legend>
+      <label><input type="radio" name="q4" value="a"> Real records are always unfit</label>
+      <label><input type="radio" name="q4" value="b"> Cakes and bread are the same use</label>
+      <label><input type="radio" name="q4" value="c"> A year is too thin</label>
+      <label><input type="radio" name="q4" value="d"> The use is weekday bread, and the file is weekend cake orders, with blanks</label>
+    </fieldset>
+    <button type="submit">Check answers</button>
+  </form>
+</article>

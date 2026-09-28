@@ -33,15 +33,13 @@ The live outline still leads with Active, then Reference, then the two courses. 
 
 ## Where authoring starts
 
-Start at the beginning of ARTI1000X and write forward from `L1.C.1`.
-
-`L1.C.1` is the only subject page with a body. The syllabus order is the order a self-contained course can be read in. The middle of the concept block, `L1.C.4`, is where generative AI appears, so that page is the first sidequest door into the plugin. It is a pointer, written when the page is written, and it is not the place authoring starts. The end of ARTI1000X is law, ethics, and society. Those pages use the earlier concepts, so authoring does not start there and walk backward.
+Subject writing goes forward from `L1.C.1`. `L1.C.2` is written as a group. `L1.C.5` and `L1.C.6` are first-pass drafts on one page each. The next subject page in syllabus order is `L1.C.3`, driving forces. `L1.C.4` is where generative AI appears, so that page is the first sidequest door into the plugin. The end of ARTI1000X is law, ethics, and society. Those pages use the earlier concepts.
 
 Tools-page continuation stays paused until it comes up in its own pass. The open choice about further models stays on the tools landing.
 
-Child rows stay in this file until a session is writing that child. Adding them to `level1.md` would list them on the outline. Lesson HTML stays hand-written. See `curriculum/structure.md`.
+Child rows move into `level1.md` when a session is writing them. The L1.C.2 children are there. The planned children of L1.C.4, L1.C.5, and L1.C.6 stay in this file until that pass. Lesson HTML stays hand-written, except the language pages named in `curriculum/structure.md`.
 
-The dogfood entry for data selection, for one decision tree, and for the problem-solving steps is `R.2`, with the working card in `curriculum/method.md`. Subject writing still resumes at `L1.C.1`. `R.2` holds only the procedure that is already easy to say. `L1.C.2`, `L1.C.6`, and `L1.X.1` stay the mainstream pages and link to `R.2` when they are written.
+The dogfood entry for selection and for one decision tree remains `R.2`, with the working card in `curriculum/method.md`. `L1.C.2.3` and `L1.C.6` link there. `L1.X.1` is still unwritten. The five steps on `R.2` stay the process this course is using.
 
 ## Where the pages we already have sit
 
@@ -55,7 +53,7 @@ The dogfood entry for data selection, for one decision tree, and for the problem
 | U1.S.3 | Plugin | Compression is a product habit. `L2.D.5` is a subject point about explaining a result from the data. They link across. They stay different pages. |
 | U1.K.1, U1.K.2 | Plugin | Packing a skill stays in the plugin. File types stay in Reference. |
 | `R.1`, `R.2`, `R.3`, glossary, X.1–X.3 | Reference | Used from either course and from the plugin. `R.2` is the methods stub. `R.3` collects the HTML, JavaScript, and Python orientations. |
-| L1.C.1 | Start of ARTI1000X | The next page to deepen, then leave as one segment. |
+| L1.C.1 | Start of ARTI1000X | Definition page. It points at L1.C.2 for data. |
 
 The earlier holes U0.1, U0.2, and U0.3 fold into this map. The mainstream sentences live on `L1.C.4.4`. The operational versions stay on U1.E.1 and U1.B.1. A separate opening course is not added for them.
 
@@ -66,11 +64,11 @@ The earlier holes U0.1, U0.2, and U0.3 fold into this map. The mainstream senten
 | Id | Pages | Kind of page | Why this grain |
 | --- | --- | --- | --- |
 | L1.C.1 | One page. Already drafted. | Reading | The definition and the labels for later pages: human intelligence, data, application, technique, algorithm, machine learning. A diagram can show those labels around the definition. |
-| L1.C.2 | L1.C.2.1 data, L1.C.2.2 quality, L1.C.2.3 selection, L1.C.2.9 summary | Reading, then a summary | Exact outcome, three jobs. Quality and selection each get a short exercise. The three piles on `R.2` are the early selection example from building this course. |
+| L1.C.2 | L1.C.2.1 data, L1.C.2.2 quality, L1.C.2.3 selection, L1.C.2.9 summary | Reading, then a summary. Written. | Exact outcome, three jobs. Quality and selection each have a short exercise. The three piles on `R.2` are the selection example from building this course. |
 | L1.C.3 | One page | Reading | Driving forces as one argument. A diagram can show the forces. Split only if a draft turns into two arguments. |
 | L1.C.4 | L1.C.4.1 prediction, L1.C.4.2 robotics, L1.C.4.3 computer vision, L1.C.4.4 generative AI, L1.C.4.9 summary | Reading | At-least list of four uses. `L1.C.4.4` says what generative AI refers to here: a system that produces text, an image, or something similar from a prompt. It names the plugin for effort, threads, clocks, handoff, compression, and skills. |
-| L1.C.5 | L1.C.5.1 search, L1.C.5.2 classification, L1.C.5.3 object recognition, L1.C.5.9 summary | Reading | At-least list of three techniques. Object recognition stays a technique. Computer vision stays a use, on L1.C.4.3. |
-| L1.C.6 | L1.C.6.1 decision trees, L1.C.6.2 regression, L1.C.6.3 supervised learning, L1.C.6.4 unsupervised learning, L1.C.6.9 summary | Reading | At-least list of four methods. Supervised and unsupervised share one side-by-side diagram. The first decision tree, the page-or-table choice, is the worked example on `R.2`. |
+| L1.C.5 | One page for now: search, classification, object recognition. Split into L1.C.5.1, L1.C.5.2, L1.C.5.3, and L1.C.5.9 after review. | Reading, first pass | At-least list of three techniques. Object recognition stays a technique. Computer vision stays a use, on L1.C.4.3, still unwritten. |
+| L1.C.6 | One page for now: decision trees, regression, supervised learning, unsupervised learning. Split after review. | Reading, first pass | At-least list of four methods. Supervised and unsupervised share one diagram. The page-or-table tree on `R.2` is one decision-tree example. |
 | L1.C.9 | One page, later | Summary of L1.C.1 through L1.C.6 | No new ideas. |
 | L1.C.Q | One page, later | Examination of the concept block | About 16 questions. Relations across parents, such as how selection changes a prediction, and how a use differs from a technique. |
 
@@ -80,7 +78,7 @@ Pictures and the one clip stub for this block are listed in `assignments.md`.
 
 ## The rest of ARTI1000X
 
-Same close pattern: `.9` summarizes the letter, `.Q` is the examination. Substeps below are the planned grain. They are not outline rows yet.
+Same close pattern: `.9` summarizes the letter, `.Q` is the examination. The L1.C.2 substeps are outline rows. L1.C.5 and L1.C.6 are still one page each.
 
 | Parent | Planned grain | Practical kind | Close |
 | --- | --- | --- | --- |
@@ -93,7 +91,7 @@ Same close pattern: `.9` summarizes the letter, `.Q` is the examination. Substep
 | L1.D.1 through L1.D.5 | One discuss page each. A discuss page asks for a short written response. It is not a lab. | Discuss | L1.D.9 summarizes the five. |
 | L1.D.Q | Examination, about 12 questions, on comparison, law, ethics, and society. | Examination | Written after the D pages exist. |
 
-A course welcome `L1.0` and a course close `L1.9` wait until `L1.C.2` is in progress. `L1.C.1` is the start until then. `L1.9` can offer ARTI2000X, the using-models plugin, or a pause. That close is the course-level stand-in for a larger task. A whole-course examination waits until both the concept block and the exercise block exist.
+A course welcome `L1.0` and a course close `L1.9` can wait until `L1.C.3` is in progress. `L1.C.1` remains the start of the concept block. `L1.9` can offer ARTI2000X, the using-models plugin, or a pause. That close is the course-level stand-in for a larger task. A whole-course examination waits until both the concept block and the exercise block exist.
 
 ## ARTI2000X
 

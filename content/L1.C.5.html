@@ -1,0 +1,67 @@
+<article class="lesson">
+  <h2>Three techniques</h2>
+  <p class="earlier">This is a first full pass, still one page. A later pass can give search, classification, and object recognition a page each. Data, which these techniques work on, is <a href="/#/item/L1.C.2">L1.C.2</a>.</p>
+  <p>A technique here is a kind of method: a way of working that shows up in more than one app. The three for this page are the ones the course names in its first overview. A use, such as computer vision, is a place the technique shows up. The use pages are still ahead. This page stays with the technique.</p>
+
+  <h3><a class="term" data-term="search" href="/#/glossary/search" target="_blank" rel="noopener">Search</a></h3>
+  <p>Search looks through possibilities for one that meets a goal. The possibilities can be a list, or a set of steps from a start to a goal.</p>
+  <figure>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 200" role="img" width="100%">
+      <title>A small search from a start to a goal</title>
+      <desc>Five nodes. A start node connects to two middle nodes, and those connect toward a goal. One path is marked: start, the left middle node, the goal.</desc>
+      <rect width="680" height="200" fill="#f4f1ea"/>
+      <line x1="120" y1="100" x2="280" y2="50" stroke="#6d7a68"/>
+      <line x1="120" y1="100" x2="280" y2="150" stroke="#1f3a5f" stroke-width="3"/>
+      <line x1="280" y1="50" x2="460" y2="100" stroke="#6d7a68"/>
+      <line x1="280" y1="150" x2="460" y2="100" stroke="#1f3a5f" stroke-width="3"/>
+      <line x1="460" y1="100" x2="580" y2="100" stroke="#1f3a5f" stroke-width="3"/>
+      <circle cx="120" cy="100" r="28" fill="#f7f4ee" stroke="#1f3a5f" stroke-width="3"/>
+      <circle cx="280" cy="50" r="24" fill="#f7f4ee" stroke="#6d7a68"/>
+      <circle cx="280" cy="150" r="24" fill="#f7f4ee" stroke="#1f3a5f" stroke-width="3"/>
+      <circle cx="460" cy="100" r="24" fill="#f7f4ee" stroke="#1f3a5f" stroke-width="3"/>
+      <circle cx="580" cy="100" r="28" fill="#f7f4ee" stroke="#9a3412" stroke-width="3"/>
+      <text x="120" y="106" text-anchor="middle" fill="#1f3a5f" font-family="Georgia, serif" font-size="14">Start</text>
+      <text x="280" y="56" text-anchor="middle" fill="#243024" font-family="Georgia, serif" font-size="13">North</text>
+      <text x="280" y="156" text-anchor="middle" fill="#1f3a5f" font-family="Georgia, serif" font-size="13">Main</text>
+      <text x="460" y="106" text-anchor="middle" fill="#1f3a5f" font-family="Georgia, serif" font-size="13">Gate</text>
+      <text x="580" y="106" text-anchor="middle" fill="#9a3412" font-family="Georgia, serif" font-size="14">Goal</text>
+    </svg>
+    <figcaption>A small graph. Search keeps a start, some steps, and a goal. The marked path is one way through. Other paths are still in the graph.</figcaption>
+  </figure>
+  <p>In the park, search can mean finding a walking route from the north entrance to the playground, among the paths that exist. It can also mean looking through a list of past afternoons for the ones already labeled busy. The goal is stated first. The search then looks for a way to meet it.</p>
+
+  <h3><a class="term" data-term="classification" href="/#/glossary/classification" target="_blank" rel="noopener">Classification</a></h3>
+  <p>Classification puts items into named groups. The groups exist before the item arrives: busy or quiet, question or complaint, bird or not a bird. The system takes one item and assigns it to a group.</p>
+  <p>A photo of the main path, and the labels "busy" and "quiet", are a classification setup. The photo is the item. The two words are the groups. Quality still matters: if the photos are all from noon, the groups "busy" and "quiet" only learn noon.</p>
+
+  <h3><a class="term" data-term="object-recognition" href="/#/glossary/object-recognition" target="_blank" rel="noopener">Object recognition</a></h3>
+  <p>Object recognition assigns a region in a scene to a category. The scene can hold many things. The technique is about one region, and the category name attached to it: person, bicycle, bench.</p>
+  <p>A night photo of the path may contain lamps, two people, and a bicycle at the edge. Recognition, here, is marking the people and calling that region "person". The bicycle can stay in the photo and stay outside that region. The category is the extra step past merely marking a box. A later page on computer vision is the use. This paragraph is the technique.</p>
+
+  <h3>Check</h3>
+  <p>Skip this if you already know the page. Expect a fuller pass later, with one page for each technique.</p>
+  <form class="quiz">
+    <fieldset data-answer="b">
+      <legend>1. Looking for a way from a start to a goal is which technique?</legend>
+      <label><input type="radio" name="q1" value="a"> Classification</label>
+      <label><input type="radio" name="q1" value="b"> Search</label>
+      <label><input type="radio" name="q1" value="c"> Data selection</label>
+      <label><input type="radio" name="q1" value="d"> A file ending</label>
+    </fieldset>
+    <fieldset data-answer="c">
+      <legend>2. Assigning one photo to "busy" or "quiet" is which technique?</legend>
+      <label><input type="radio" name="q2" value="a"> Search, because the path is long</label>
+      <label><input type="radio" name="q2" value="b"> Object recognition, because the photo has an edge</label>
+      <label><input type="radio" name="q2" value="c"> Classification</label>
+      <label><input type="radio" name="q2" value="d"> Regression</label>
+    </fieldset>
+    <fieldset data-answer="a">
+      <legend>3. Calling a marked region in a scene "person" is which technique?</legend>
+      <label><input type="radio" name="q3" value="a"> Object recognition</label>
+      <label><input type="radio" name="q3" value="b"> The whole of computer vision, finished on this page</label>
+      <label><input type="radio" name="q3" value="c"> Quality</label>
+      <label><input type="radio" name="q3" value="d"> A usage window</label>
+    </fieldset>
+    <button type="submit">Check answers</button>
+  </form>
+</article>

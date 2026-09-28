@@ -12,6 +12,10 @@ ability: joins grades.md on this id
 id	track	ability	bind	deepens	text
 L1.C.1	concept	A1	exact		Definition of AI and key concepts in the field.
 L1.C.2	concept	A1	exact		The importance of data, data quality for AI, and data selection.
+L1.C.2.1	concept	A1	exact	L1.C.2	What counts as data: information an AI system is given or produces.
+L1.C.2.2	concept	A1	exact	L1.C.2	Data quality: whether that information fits the stated use.
+L1.C.2.3	concept	A1	exact	L1.C.2	Data selection: which part is used, and what that leaves out.
+L1.C.2.9	concept	A1	exact	L1.C.2	Summary of data, quality, and selection. No new idea.
 L1.C.3	concept	A1	exact		Driving forces behind the development of AI.
 L1.C.4	concept	A1	at-least		Overview of uses of AI, and the technologies and methods behind them: prediction; robotics; computer vision; generative AI.
 L1.C.5	concept	A1	at-least		Overview of AI techniques: search; classification; object recognition.

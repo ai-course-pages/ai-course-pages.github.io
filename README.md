@@ -17,6 +17,13 @@ The live site is [https://ai-course-pages.github.io/](https://ai-course-pages.gi
 - [X.2](https://ai-course-pages.github.io/#/item/X.2) Desktop UI
 - [X.3](https://ai-course-pages.github.io/#/item/X.3) CLI harnesses
 - [L1.C.1](https://ai-course-pages.github.io/#/item/L1.C.1) What AI means in this course
+- [L1.C.2](https://ai-course-pages.github.io/#/item/L1.C.2) Data, quality, and selection
+- [L1.C.2.1](https://ai-course-pages.github.io/#/item/L1.C.2.1) What counts as data
+- [L1.C.2.2](https://ai-course-pages.github.io/#/item/L1.C.2.2) Whether the data fits the use
+- [L1.C.2.3](https://ai-course-pages.github.io/#/item/L1.C.2.3) Which part is used
+- [L1.C.2.9](https://ai-course-pages.github.io/#/item/L1.C.2.9) Data, quality, and selection together
+- [L1.C.5](https://ai-course-pages.github.io/#/item/L1.C.5) Three techniques
+- [L1.C.6](https://ai-course-pages.github.io/#/item/L1.C.6) Four methods
 - [U1.0](https://ai-course-pages.github.io/#/item/U1.0) Welcome
 - [U1.E.1](https://ai-course-pages.github.io/#/item/U1.E.1) Effort
 - [U1.B.1](https://ai-course-pages.github.io/#/item/U1.B.1) One message, or the same thread
@@ -98,4 +105,4 @@ From this folder:
 python -m http.server 8765
 ```
 
-Open `http://127.0.0.1:8765/#/item/R.3`. That is the languages parent under test. The three orientations are R.3.1, R.3.2, and R.3.3. Subject writing still resumes at `L1.C.1`. The outline is the page without the hash. Prompts meant to forward have a Copy button. The quiz can be skipped when the page is already familiar.
+Open `http://127.0.0.1:8765/#/item/L1.C.2`. That is the data group under test. `L1.C.5` and `L1.C.6` are first-pass drafts. The outline is the page without the hash. Prompts meant to forward have a Copy button. The quiz can be skipped when the page is already familiar.
