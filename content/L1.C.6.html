@@ -4,7 +4,40 @@
   <p>An <a class="term" data-term="algorithm" href="/#/glossary/algorithm" target="_blank" rel="noopener">algorithm</a> is a procedure that can be followed the same way each time. The four names below are the methods this course introduces first. Machine learning, named on <a href="/#/item/L1.C.1">L1.C.1</a>, is the family that supervised and unsupervised learning belong to. It sits inside AI. It is not a second subject.</p>
 
   <h3>Decision trees</h3>
-  <p>A <a class="term" data-term="decision-tree" href="/#/glossary/decision-tree" target="_blank" rel="noopener">decision tree</a> is a series of questions. Each answer picks the next question, or an outcome. For the park posts, one tree could ask: is it about the park, is it about night, does it say whether people were there. Yes, yes, and yes leads to "use this post." Any no leads to "set it aside."</p>
+  <p>A <a class="term" data-term="decision-tree" href="/#/glossary/decision-tree" target="_blank" rel="noopener">decision tree</a> is a series of questions. Each answer picks the next question, or an outcome. For the park posts, one tree could ask whether a post is about the park, whether it describes this afternoon, and whether it says how busy the park was.</p>
+  <figure>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 310" role="img" width="100%">
+      <title>A decision tree for a park post</title>
+      <desc>Three questions form a path through a tree. A post not about the park is set aside. A park post not about this afternoon is also set aside. A post about this afternoon is checked for a busy or quiet observation, then used as an example.</desc>
+      <rect width="680" height="310" fill="#f4f1ea"/>
+      <rect x="232" y="20" width="216" height="48" fill="#f7f4ee" stroke="#1f3a5f" stroke-width="2"/>
+      <text x="340" y="50" text-anchor="middle" fill="#243024" font-family="Georgia, serif" font-size="16">About the park?</text>
+      <path d="M285 68 L170 112 M395 68 L510 112" fill="none" stroke="#6d7a68" stroke-width="2"/>
+      <text x="210" y="94" fill="#243024" font-family="Georgia, serif" font-size="14">Yes</text>
+      <text x="455" y="94" fill="#243024" font-family="Georgia, serif" font-size="14">No</text>
+      <rect x="435" y="112" width="150" height="44" fill="#f7f4ee" stroke="#9a3412" stroke-width="2"/>
+      <text x="510" y="140" text-anchor="middle" fill="#9a3412" font-family="Georgia, serif" font-size="15">Set aside</text>
+      <rect x="72" y="112" width="216" height="48" fill="#f7f4ee" stroke="#1f3a5f" stroke-width="2"/>
+      <text x="180" y="142" text-anchor="middle" fill="#243024" font-family="Georgia, serif" font-size="16">About this afternoon?</text>
+      <path d="M130 160 L95 205 M230 160 L365 205" fill="none" stroke="#6d7a68" stroke-width="2"/>
+      <text x="95" y="190" fill="#243024" font-family="Georgia, serif" font-size="14">No</text>
+      <text x="290" y="190" fill="#243024" font-family="Georgia, serif" font-size="14">Yes</text>
+      <rect x="20" y="205" width="150" height="44" fill="#f7f4ee" stroke="#9a3412" stroke-width="2"/>
+      <text x="95" y="233" text-anchor="middle" fill="#9a3412" font-family="Georgia, serif" font-size="15">Set aside</text>
+      <rect x="270" y="205" width="190" height="48" fill="#f7f4ee" stroke="#1f3a5f" stroke-width="2"/>
+      <text x="365" y="235" text-anchor="middle" fill="#243024" font-family="Georgia, serif" font-size="15">Says busy or quiet?</text>
+      <path d="M325 253 L260 278 M405 253 L490 278" fill="none" stroke="#6d7a68" stroke-width="2"/>
+      <text x="276" y="275" fill="#243024" font-family="Georgia, serif" font-size="14">No</text>
+      <text x="450" y="275" fill="#243024" font-family="Georgia, serif" font-size="14">Yes</text>
+      <text x="205" y="301" fill="#9a3412" font-family="Georgia, serif" font-size="15">Set aside</text>
+      <text x="470" y="301" fill="#1f3a5f" font-family="Georgia, serif" font-size="15">Use as an example</text>
+    </svg>
+    <figcaption>Each answer follows a branch to another question or an outcome.</figcaption>
+  </figure>
+  <p>For example, a post that says, “The park was quiet at 3pm,” passes all three questions. A post about a dog lost elsewhere does not pass the first question. A post about the park at night does not answer an afternoon question.</p>
+  <p><strong>Limit:</strong> The tree only checks the questions it was given. A post can pass all three and still be mistaken or out of date.</p>
+  <p><strong>Try it:</strong> A note says, “The park was busy yesterday afternoon.” Should this tree use it for today's question?</p>
+  <details><summary>Worked answer</summary><p>It passes the park and afternoon questions and says busy. The tree would use it as an example. It is still about yesterday, so it may not describe today. That is a limit of these questions.</p></details>
   <div class="grade-block" data-grade="c">
     <p class="meta">Shown from target C upward.</p>
     <p>The same shape is already in use for how this course adds a page: is the idea easy to say, and do many items share one frame. That tree, in prose and in a chart, is on <a href="/#/item/R.2" target="_blank" rel="noopener">Methods and algorithms</a>. It opens in a new tab. It is one example. The park questions above are the E account.</p>
@@ -12,6 +45,15 @@
 
   <h3><a class="term" data-term="regression" href="/#/glossary/regression" target="_blank" rel="noopener">Regression</a></h3>
   <p>Regression fits a relationship between numbers. Past afternoons can show entrance counts and a person's 1-to-5 rating of how busy the park felt. The method looks for a line, or a simple curve, that stands for that relationship. A new count can then be turned into a rating the line would give.</p>
+  <table>
+    <caption>Five past afternoons</caption>
+    <thead><tr><th scope="col">People counted at entrance</th><th scope="col">Busy rating (1 to 5)</th></tr></thead>
+    <tbody><tr><td>10</td><td>1</td></tr><tr><td>20</td><td>2</td></tr><tr><td>30</td><td>3</td></tr><tr><td>40</td><td>4</td></tr><tr><td>50</td><td>5</td></tr></tbody>
+  </table>
+  <p>These small example numbers follow a simple pattern: each 10 more people goes with one more rating point. For a new afternoon with 35 people, use the line “rating = count divided by 10.” The arithmetic is 35 ÷ 10 = 3.5. The line predicts a rating of about 3.5. This is an approximation based on the pattern in the five examples, not a measured rating.</p>
+  <p><strong>Limit:</strong> A line fitted to a few afternoons may not fit other days. A festival, weather, or a different gate count could change how well this pattern applies.</p>
+  <p><strong>Try it:</strong> Using the same line, what rating does a count of 25 predict?</p>
+  <details><summary>Worked answer</summary><p>Divide 25 by 10. The result is 2.5, so the line predicts about 2.5. It is an approximation from the example pattern.</p></details>
 
   <h3><a class="term" data-term="supervised-learning" href="/#/glossary/supervised-learning" target="_blank" rel="noopener">Supervised</a> and <a class="term" data-term="unsupervised-learning" href="/#/glossary/unsupervised-learning" target="_blank" rel="noopener">unsupervised</a> learning</h3>
   <figure>
@@ -32,12 +74,47 @@
     </svg>
     <figcaption>Two panels. Supervised learning starts from examples that already have labels. Unsupervised learning starts from examples without those labels and looks for groups in the examples themselves.</figcaption>
   </figure>
-  <p>Supervised learning uses examples that already have the answer attached. "Busy" and "quiet" were written by a person. The method learns to assign those labels to a new photo. The labels are data too.</p>
+  <p>Supervised learning uses examples that already have the answer attached. “Busy” and “quiet” were written by a person. The method learns to assign those labels to a new photo. The labels are data too.</p>
+  <p>For a small park example, a person has labeled three photos: crowded path, busy; empty path, quiet; crowded playground, busy. A fourth photo of a quiet path is labeled quiet. The method uses these four labeled examples to learn how to label a new photo.</p>
+  <p><strong>Limit:</strong> If the labels are wrong or the examples leave out important kinds of afternoon, the new labels may also be wrong or incomplete.</p>
+  <p><strong>Try it:</strong> A new photo is similar to the two examples labeled “busy.” What label might a supervised method give it?</p>
+  <details><summary>Worked answer</summary><p>It might label the new photo busy, because its examples with similar features were labeled busy. That is a prediction from the examples, not a guarantee that the label is correct.</p></details>
   <p>Unsupervised learning has the photos and not the labels. It gathers frames that resemble each other: crowded ones in one cluster, empty paths in another. A person can later decide that one cluster means busy. The method did not start with that word.</p>
+  <p>For example, imagine four afternoon photos with no labels. Two show many people near the playground; two show an empty path. A method might group the two crowded scenes together and the two empty-path scenes together.</p>
+  <p><strong>Limit:</strong> A group is only a pattern in the examples. It does not name itself. The groups may reflect lighting or camera angle instead of how busy the park is.</p>
+  <p><strong>Try it:</strong> A group contains two photos of the same empty path, taken at different times. What can you say about that group, and what can you not conclude yet?</p>
+  <details><summary>Worked answer</summary><p>You can say the method grouped those two similar photos together. Without labels or more context, you cannot conclude that the group means “quiet” or that all quiet parts of the park are represented.</p></details>
   <div class="grade-block" data-grade="c">
     <p class="meta">Shown from target C upward.</p>
     <p>A line fitted to past counts is a summary of those points. It is not a promise that tomorrow matches the line. Labels written carelessly are learned as readily as careful ones. That is quality, from <a href="/#/item/L1.C.2.2">L1.C.2.2</a>, inside the method.</p>
   </div>
+  <table>
+    <caption>Compare the four methods</caption>
+    <thead><tr><th scope="col">Method</th><th scope="col">What it needs</th><th scope="col">What it gives</th><th scope="col">Labels needed?</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Decision tree</th><td>Questions and rules for following answers</td><td>A path to an outcome</td><td>Not for a tree a person writes, as here. A tree learned from examples needs labeled examples.</td></tr>
+      <tr><th scope="row">Regression</th><td>Number pairs, such as count and rating</td><td>An estimated number</td><td>Yes, number outcomes for examples</td></tr>
+      <tr><th scope="row">Supervised learning</th><td>Examples with answers attached</td><td>A learned answer for a new example</td><td>Yes</td></tr>
+      <tr><th scope="row">Unsupervised learning</th><td>Examples without answer labels</td><td>Groups or patterns in examples</td><td>No</td></tr>
+    </tbody>
+  </table>
+  <p>Here, labels are known answers attached to examples. A regression table has a measured number as an answer for each count. The park tree on this page uses questions and rules that a person set. A decision tree can also be learned from labeled examples. That version is supervised learning that produces a tree.</p>
+  <div class="grade-block" data-grade="a">
+    <p class="meta">Shown from target A upward.</p>
+    <h3>When a method fits the past too closely</h3>
+    <p>A tree or curve can be made to fit every past afternoon exactly. For example, a very winding curve could pass through every count and rating in the table. That does not mean it will predict a new afternoon well. It may have followed small details in those examples that do not repeat. A useful check is to compare its predictions with examples it did not use when it was fitted.</p>
+  </div>
+
+  <section class="summary" aria-labelledby="sum-L1-C-6">
+    <h3 id="sum-L1-C-6">Summary</h3>
+  <ul>
+    <li>A decision tree follows questions to an outcome. Its result depends on the questions and rules.</li>
+    <li>Regression uses number patterns to estimate a number. A prediction is an approximation.</li>
+    <li>Supervised learning starts with examples that have labels.</li>
+    <li>Unsupervised learning starts without labels and can group similar examples.</li>
+    <li>Each method depends on examples or rules that fit the park question.</li>
+  </ul>
+  </section>
 
   <h3>Check</h3>
   <p>Skip this if you already know the page. Expect a fuller pass later, one method at a time.</p>
@@ -57,7 +134,7 @@
       <label><input type="radio" name="q2" value="d"> The summary of L1.C.2</label>
     </fieldset>
     <fieldset data-answer="a">
-      <legend>3. Photos that already say "busy" or "quiet" are the start of which learning?</legend>
+      <legend>3. Photos that already say “busy” or “quiet” are the start of which learning?</legend>
       <label><input type="radio" name="q3" value="a"> Supervised</label>
       <label><input type="radio" name="q3" value="b"> Unsupervised</label>
       <label><input type="radio" name="q3" value="c"> A usage cap</label>
@@ -69,6 +146,20 @@
       <label><input type="radio" name="q4" value="b"> Regression, because clusters are a line</label>
       <label><input type="radio" name="q4" value="c"> Search, because the goal was named first</label>
       <label><input type="radio" name="q4" value="d"> Unsupervised</label>
+    </fieldset>
+    <fieldset data-answer="c">
+      <legend>5. Using the example line, what rating does a count of 35 predict?</legend>
+      <label><input type="radio" name="q5" value="a"> 1.5</label>
+      <label><input type="radio" name="q5" value="b"> 2</label>
+      <label><input type="radio" name="q5" value="c"> About 3.5</label>
+      <label><input type="radio" name="q5" value="d"> 5</label>
+    </fieldset>
+    <fieldset data-answer="a">
+      <legend>6. What is needed to start supervised learning?</legend>
+      <label><input type="radio" name="q6" value="a"> Examples with labels</label>
+      <label><input type="radio" name="q6" value="b"> Examples with no data</label>
+      <label><input type="radio" name="q6" value="c"> A curve that fits exactly</label>
+      <label><input type="radio" name="q6" value="d"> A post about any topic</label>
     </fieldset>
     <button type="submit">Check answers</button>
   </form>
