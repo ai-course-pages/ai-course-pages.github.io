@@ -29,17 +29,64 @@
     <figcaption>A small graph. Search keeps a start, some steps, and a goal. The marked path is one way through. Other paths are still in the graph.</figcaption>
   </figure>
   <p>In the park, search can mean finding a walking route from the north entrance to the playground, among the paths that exist. It can also mean looking through a list of past afternoons for the ones already labeled busy. The goal is stated first. The search then looks for a way to meet it.</p>
+  <p>Search can also look through the park app's reports for a note about a broken water fountain. Each report is checked against the goal: find reports that mention the fountain. The result is a set of matching reports. Search does not decide whether the fountain is actually broken; that depends on what the reports say and how they were checked.</p>
+  <p>A common mistake is to think that search always finds the best answer. It can only work with the possibilities and rules it has. If a path is missing from the map, a route search cannot choose it. If the goal is vague, such as “find a nice route,” different choices may count as good.</p>
+  <h4>Try it: search</h4>
+  <p>The app has three reports: “crowded by the pond,” “quiet near the gate,” and “crowded at the playground.” The goal is to find reports about a crowded playground. Which report matches?</p>
+  <details><summary>Worked answer</summary><p>“Crowded at the playground” matches both parts of the goal. The pond report says crowded but names a different place. The gate report names a different condition and place.</p></details>
+  <div class="grade-block" data-grade="c">
+    <p class="meta">Shown from target C upward.</p>
+    <h4>Two ways to explore</h4>
+    <p>Breadth-first exploration checks nearby choices in layers. In a route search, it checks all paths one step from the start, then paths two steps away, and so on. When every step has the same cost, this can find a route with the fewest steps.</p>
+    <p>Depth-first exploration follows one path as far as it can, then returns to try another. It may reach a goal quickly, but it can spend time on a long path while a shorter one waits. Both are ways to explore choices. Neither can use a path that was left out of the map.</p>
+  </div>
 
   <h3><a class="term" data-term="classification" href="/#/glossary/classification" target="_blank" rel="noopener">Classification</a></h3>
   <p>Classification puts items into named groups. The groups exist before the item arrives: busy or quiet, question or complaint, bird or not a bird. The system takes one item and assigns it to a group.</p>
   <p>A photo of the main path, and the labels "busy" and "quiet", are a classification setup. The photo is the item. The two words are the groups. Quality still matters: if the photos are all from noon, the groups "busy" and "quiet" only learn noon.</p>
+  <p>Another park example is sorting visitor messages into “question” and “complaint.” A message that asks when the playground closes can go in the question group. A message that says a gate is stuck can go in the complaint group. The labels are chosen before the messages are sorted.</p>
+  <p>A common limit is that the groups may not fit every item. One message can ask a question and report a problem. If the system must choose only one group, it loses part of the meaning. Classification also makes mistakes when examples used to learn the groups do not match new cases.</p>
+  <h4>Try it: classification</h4>
+  <p>Use the groups “busy” and “quiet.” A note says, “Many people are waiting by the playground.” Which group fits the note? What detail could still make the choice uncertain?</p>
+  <details><summary>Worked answer</summary><p>“Busy” fits because the note describes many people waiting. The note does not say when it was written or whether it describes the whole park, so it may not answer whether the park is busy this afternoon.</p></details>
+  <div class="grade-block" data-grade="c">
+    <p class="meta">Shown from target C upward.</p>
+    <h4>Two kinds of classification error</h4>
+    <p>Suppose the app labels an afternoon “busy” or “quiet.” A false positive is when it says “busy” but the park is quiet. A false negative is when it says “quiet” but the park is busy. The names describe the answer compared with what was actually happening. Either error can matter to someone deciding whether to visit.</p>
+  </div>
 
   <h3><a class="term" data-term="object-recognition" href="/#/glossary/object-recognition" target="_blank" rel="noopener">Object recognition</a></h3>
   <p>Object recognition assigns a region in a scene to a category. The scene can hold many things. The technique is about one region, and the category name attached to it: person, bicycle, bench.</p>
   <p>A night photo of the path may contain lamps, two people, and a bicycle at the edge. Recognition, here, is marking the people and calling that region "person". The bicycle can stay in the photo and stay outside that region. The category is the extra step past merely marking a box. A later page on computer vision is the use. This paragraph is the technique.</p>
+  <p>A second example is a daytime photo of the picnic area. The system can mark a region around a bench and label it “bench.” It can leave the nearby grass and table outside that region. The photo is the input; the marked region and its category are the output.</p>
+  <p>A common mistake is to treat recognition as a count or as a complete description of a scene. A marked person does not tell the app whether that person is a visitor or staff member. A partly hidden object may also be hard to recognize. The category says what the system assigned to a region, not everything that can be known about it.</p>
+  <h4>Try it: object recognition</h4>
+  <p>A photo shows a bicycle leaning against a bench. Which region could the system mark, and what category could it attach?</p>
+  <details><summary>Worked answer</summary><p>It could mark the region containing the bicycle and attach the category “bicycle.” It could separately mark the bench as “bench.” These labels do not say who owns either object.</p></details>
+
+  <h3>Compare the techniques</h3>
+  <table>
+    <thead><tr><th>Technique</th><th>Input</th><th>Output</th><th>Park example</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Search</th><td>Possibilities and a goal</td><td>One or more matching choices or a path</td><td>A route from the north entrance to the playground</td></tr>
+      <tr><th scope="row">Classification</th><td>An item and named groups</td><td>A group label for the item</td><td>A visitor message sorted as a question or complaint</td></tr>
+      <tr><th scope="row">Object recognition</th><td>A scene or image</td><td>A marked region with a category</td><td>A bicycle marked and labeled in a park photo</td></tr>
+    </tbody>
+  </table>
+
+  <section class="summary" aria-labelledby="sum-L1-C-5">
+    <h3 id="sum-L1-C-5">Summary</h3>
+  <ul>
+    <li>Search explores possibilities to meet a stated goal.</li>
+    <li>Classification assigns an item to one of the named groups.</li>
+    <li>Object recognition marks a region in a scene and assigns it a category.</li>
+    <li>The input and the goal or labels shape what each technique can return.</li>
+    <li>An answer can be limited by missing possibilities, unsuitable groups, or unclear images.</li>
+  </ul>
+  </section>
 
   <h3>Check</h3>
-  <p>Skip this if you already know the page. Expect a fuller pass later, with one page for each technique.</p>
+  <p>Skip this if you already know the page.</p>
   <form class="quiz">
     <fieldset data-answer="b">
       <legend>1. Looking for a way from a start to a goal is which technique?</legend>
@@ -61,6 +108,20 @@
       <label><input type="radio" name="q3" value="b"> The whole of computer vision, finished on this page</label>
       <label><input type="radio" name="q3" value="c"> Quality</label>
       <label><input type="radio" name="q3" value="d"> A usage window</label>
+    </fieldset>
+    <fieldset data-answer="d">
+      <legend>4. The app sorts a visitor message into “question” or “complaint.” Which technique is this?</legend>
+      <label><input type="radio" name="q4" value="a"> Search</label>
+      <label><input type="radio" name="q4" value="b"> Object recognition</label>
+      <label><input type="radio" name="q4" value="c"> Data selection</label>
+      <label><input type="radio" name="q4" value="d"> Classification</label>
+    </fieldset>
+    <fieldset data-answer="b">
+      <legend>5. Which is a limit of search?</legend>
+      <label><input type="radio" name="q5" value="a"> It always knows whether a report is true</label>
+      <label><input type="radio" name="q5" value="b"> It cannot choose a path that is missing from its possibilities</label>
+      <label><input type="radio" name="q5" value="c"> It only works on photos</label>
+      <label><input type="radio" name="q5" value="d"> It always returns a category for each image region</label>
     </fieldset>
     <button type="submit">Check answers</button>
   </form>
