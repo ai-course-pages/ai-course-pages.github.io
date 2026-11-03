@@ -181,10 +181,37 @@
     }
   }
 
+  var firstRender = true;
+
+  function setTitle(text) {
+    document.title = text ? text + " · " + SITE.title : SITE.title;
+  }
+
+  function markNav(route) {
+    var here = "/#/" + (route.name === "item" ? "item/" + route.id : route.name === "home" ? "" : route.name);
+    Array.prototype.forEach.call(document.querySelectorAll(".site-nav a"), function (link) {
+      var href = link.getAttribute("href");
+      var on = href === here || (route.name === "glossary" && href === "/#/glossary") ||
+        (route.name === "item" && /^R\.3/.test(route.id) && href === "/#/item/R.3");
+      if (on) link.setAttribute("aria-current", "page");
+      else link.removeAttribute("aria-current");
+    });
+  }
+
   function render() {
     mountGradeControl();
     app.textContent = "";
     var route = parseRoute();
+    markNav(route);
+    if (route.name === "item") setTitle(route.id);
+    else if (route.name === "glossary") setTitle("Glossary");
+    else if (route.name === "tools") setTitle("Tools and models");
+    else setTitle("");
+    if (!firstRender && route.name !== "glossary") {
+      app.focus({ preventScroll: true });
+      window.scrollTo(0, 0);
+    }
+    firstRender = false;
     if (route.name === "item") renderItem(route.id);
     else if (route.name === "glossary") renderGlossary(route.id);
     else if (route.name === "tools") renderTools();
@@ -278,6 +305,9 @@
         return response.text();
       }).then(function (html) {
         slot.innerHTML = html;
+        var lessonTitle = slot.querySelector("h2");
+        if (lessonTitle) setTitle(item.id + " " + lessonTitle.textContent.trim());
+        wrapTables(slot);
         bindTerms(slot);
         bindCopy(slot);
         bindQuiz(slot);
@@ -290,6 +320,8 @@
       applyGrade(slot, id);
     }
     app.appendChild(slot);
+    var pager = pagerFor(item.id);
+    if (pager) app.appendChild(pager);
 
     var actions = h("div", "actions");
     actions.appendChild(button("I tried this", function () { markTried(item.id); }, "primary"));
@@ -587,6 +619,44 @@
     }
   }
 
+  function wrapTables(root) {
+    Array.prototype.forEach.call(root.querySelectorAll("table"), function (table) {
+      if (table.parentNode.classList && table.parentNode.classList.contains("table-wrap")) return;
+      var wrap = h("div", "table-wrap");
+      wrap.setAttribute("tabindex", "0");
+      wrap.setAttribute("role", "region");
+      wrap.setAttribute("aria-label", "Table, scrolls sideways on a narrow screen");
+      table.parentNode.insertBefore(wrap, table);
+      wrap.appendChild(table);
+    });
+  }
+
+  function sectionOf(id) {
+    return id.split(".")[0];
+  }
+
+  function pagerFor(id) {
+    if (!isPublished(id)) return null;
+    var same = SITE.published.filter(function (other) { return sectionOf(other) === sectionOf(id); });
+    var n = same.indexOf(id);
+    if (same.length < 2 || n === -1) return null;
+    var nav = h("nav", "pager");
+    nav.setAttribute("aria-label", "Previous and next page in this section");
+    if (n > 0) {
+      var prev = h("a", "prev", "Previous: " + same[n - 1]);
+      prev.href = "/#/item/" + same[n - 1];
+      prev.rel = "prev";
+      nav.appendChild(prev);
+    } else nav.appendChild(h("span", null, ""));
+    if (n < same.length - 1) {
+      var next = h("a", "next", "Next: " + same[n + 1]);
+      next.href = "/#/item/" + same[n + 1];
+      next.rel = "next";
+      nav.appendChild(next);
+    }
+    return nav;
+  }
+
   function bindQuiz(slot) {
     var form = slot.querySelector("form.quiz");
     if (!form) return;
@@ -614,6 +684,7 @@
       var summary = form.querySelector(".quiz-score");
       if (!summary) {
         summary = h("p", "quiz-score", "");
+        summary.setAttribute("role", "status");
         form.appendChild(summary);
       }
       summary.textContent = correct + " of " + questions.length + " match. The score locks nothing. If you already knew this, skip the quiz next time.";
@@ -664,8 +735,15 @@
 
   function flash(message) {
     var node = h("p", "rule", message);
+    node.setAttribute("role", "status");
     app.appendChild(node);
   }
+
+  var skip = document.querySelector("a.skip");
+  if (skip) skip.addEventListener("click", function (event) {
+    event.preventDefault();
+    app.focus();
+  });
 
   window.addEventListener("hashchange", render);
   render();
