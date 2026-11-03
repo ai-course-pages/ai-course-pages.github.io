@@ -74,7 +74,7 @@ window.CATALOG = {
     { id: "X.3", group: "cli", title: "CLI", track: "reference", place: "cli", text: "Grok Build, Codex, Claude Code, and OpenCode." },
   ],
   freshness: {
-    "L1.C.1": { added: "2026-09-25", updated: "2026-09-28" },
+    "L1.C.1": { added: "2026-09-25", updated: "2026-11-03" },
     "L1.C.2": { added: "2026-09-28", updated: "2026-09-28" },
     "L1.C.2.1": { added: "2026-09-28", updated: "2026-09-28" },
     "L1.C.2.2": { added: "2026-09-28", updated: "2026-09-28" },
